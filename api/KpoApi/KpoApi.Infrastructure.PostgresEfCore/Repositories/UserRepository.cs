@@ -14,13 +14,13 @@ public class UserRepository : IUsersRepository
     }
 
 
-    public Task<bool> CreateUsers(User user, CancellationToken cancellationToken)
+    public Task<User> CreateUsers(User user, CancellationToken cancellationToken)
     {
         var response = _appDbContext.Users.Add(user);
 
         _appDbContext.SaveChanges();
 
-        return Task.FromResult(true);
+        return Task.FromResult(response.Entity);
     }
 
     public Task<bool> UserAuthentication(string login, string password, CancellationToken cancellationToken)

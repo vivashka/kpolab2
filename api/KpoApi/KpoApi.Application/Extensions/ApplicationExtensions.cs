@@ -9,6 +9,7 @@ public static class ApplicationExtensions
     public static IServiceCollection ConfigureApplicationLayer(this IServiceCollection services)
     {
         services.AddScoped<ICardiogramService, CardiogramService>();
+        services.AddScoped<IUserService, UserService>();
         return services;
     }
 }

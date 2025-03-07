@@ -10372,3 +10372,701 @@ System.AggregateException: Some services are not able to be constructed (Error w
 2025-03-07 19:09:15.602 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 271
 2025-03-07 19:09:15.613 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
 2025-03-07 19:09:15.659 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:10:37.341 +05:00 [Information] Migrations
+2025-03-07 19:10:37.393 +05:00 [Information] 2025010501: CreateOrganizationTable
+2025-03-07 19:10:37.394 +05:00 [Information] 2025010502: CreateUsersTable
+2025-03-07 19:10:37.396 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable
+2025-03-07 19:10:37.397 +05:00 [Information] 2025010504: CreateCardiogramsStateTable
+2025-03-07 19:10:37.397 +05:00 [Information] 2025010505: CreateCardiographsTable
+2025-03-07 19:10:37.398 +05:00 [Information] 2025010506: CreateSexPatientsTable
+2025-03-07 19:10:37.398 +05:00 [Information] 2025010507: CreatePrioritiesTable
+2025-03-07 19:10:37.399 +05:00 [Information] 2025010508: CreateUsersCardiographsTable
+2025-03-07 19:10:37.399 +05:00 [Information] 2025010509: CreateCallsTable
+2025-03-07 19:10:37.400 +05:00 [Warning] 2025010510: CreateCardiogramsTable (current)
+2025-03-07 19:10:37.751 +05:00 [Warning] Overriding address(es) '"http://localhost:2324/swagger"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-03-07 19:10:37.865 +05:00 [Information] Now listening on: "http://0.0.0.0:2324"
+2025-03-07 19:10:37.884 +05:00 [Information] Application started. Press Ctrl+C to shut down.
+2025-03-07 19:10:37.887 +05:00 [Information] Hosting environment: "Development"
+2025-03-07 19:10:37.889 +05:00 [Information] Content root path: "C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost"
+2025-03-07 19:10:38.081 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - null null
+2025-03-07 19:10:38.482 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 415.2748ms
+2025-03-07 19:10:38.615 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - null null
+2025-03-07 19:10:38.634 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 21.4408ms
+2025-03-07 19:10:39.093 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - null null
+2025-03-07 19:10:39.490 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 397.9022ms
+2025-03-07 19:10:45.601 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 271
+2025-03-07 19:10:45.611 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:10:45.640 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:10:46.517 +05:00 [Information] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:10:46.604 +05:00 [Information] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2025-03-07 19:10:46.649 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" in 1002.3592ms
+2025-03-07 19:10:46.650 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:10:46.664 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - 400 null "application/problem+json; charset=utf-8" 1062.6184ms
+2025-03-07 19:11:54.033 +05:00 [Information] Migrations
+2025-03-07 19:11:54.074 +05:00 [Information] 2025010501: CreateOrganizationTable
+2025-03-07 19:11:54.076 +05:00 [Information] 2025010502: CreateUsersTable
+2025-03-07 19:11:54.077 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable
+2025-03-07 19:11:54.078 +05:00 [Information] 2025010504: CreateCardiogramsStateTable
+2025-03-07 19:11:54.079 +05:00 [Information] 2025010505: CreateCardiographsTable
+2025-03-07 19:11:54.080 +05:00 [Information] 2025010506: CreateSexPatientsTable
+2025-03-07 19:11:54.080 +05:00 [Information] 2025010507: CreatePrioritiesTable
+2025-03-07 19:11:54.081 +05:00 [Information] 2025010508: CreateUsersCardiographsTable
+2025-03-07 19:11:54.081 +05:00 [Information] 2025010509: CreateCallsTable
+2025-03-07 19:11:54.082 +05:00 [Warning] 2025010510: CreateCardiogramsTable (current)
+2025-03-07 19:11:54.310 +05:00 [Warning] Overriding address(es) '"http://localhost:2324/swagger"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-03-07 19:11:54.335 +05:00 [Information] Now listening on: "http://0.0.0.0:2324"
+2025-03-07 19:11:54.337 +05:00 [Information] Application started. Press Ctrl+C to shut down.
+2025-03-07 19:11:54.339 +05:00 [Information] Hosting environment: "Development"
+2025-03-07 19:11:54.340 +05:00 [Information] Content root path: "C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost"
+2025-03-07 19:11:54.822 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - null null
+2025-03-07 19:11:55.046 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 241.7369ms
+2025-03-07 19:11:55.142 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - null null
+2025-03-07 19:11:55.147 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 4.7175ms
+2025-03-07 19:11:55.533 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - null null
+2025-03-07 19:11:55.796 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 262.9465ms
+2025-03-07 19:12:01.282 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 272
+2025-03-07 19:12:01.291 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:12:01.317 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:12:02.077 +05:00 [Information] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:12:02.153 +05:00 [Information] Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+2025-03-07 19:12:02.192 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" in 868.3781ms
+2025-03-07 19:12:02.194 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:12:02.206 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - 400 null "application/problem+json; charset=utf-8" 923.2356ms
+2025-03-07 19:13:23.603 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 262
+2025-03-07 19:13:23.607 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:13:23.608 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:13:23.651 +05:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:13:23.669 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" - Validation state: Valid
+2025-03-07 19:13:23.671 +05:00 [Information] Поступил запрос на получение кардиограмм
+2025-03-07 19:13:23.925 +05:00 [Information] Executed DbCommand ("22"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Guid), @p5='?', @p6='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Users\" (\"UserUuid\", \"Appointment\", \"FullName\", \"Login\", \"OrganizationUuid\", \"Password\", \"PhoneNumber\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);"
+2025-03-07 19:13:23.943 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 269.9265ms.
+2025-03-07 19:13:23.947 +05:00 [Information] Executing "OkObjectResult", writing value of type '"System.Boolean"'.
+2025-03-07 19:13:23.950 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" in 340.4034ms
+2025-03-07 19:13:23.952 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:13:23.954 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - 200 null "application/json; charset=utf-8" 350.9165ms
+2025-03-07 19:22:45.605 +05:00 [Information] Migrations
+2025-03-07 19:22:45.657 +05:00 [Information] 2025010501: CreateOrganizationTable
+2025-03-07 19:22:45.660 +05:00 [Information] 2025010502: CreateUsersTable
+2025-03-07 19:22:45.661 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable
+2025-03-07 19:22:45.661 +05:00 [Information] 2025010504: CreateCardiogramsStateTable
+2025-03-07 19:22:45.662 +05:00 [Information] 2025010505: CreateCardiographsTable
+2025-03-07 19:22:45.663 +05:00 [Information] 2025010506: CreateSexPatientsTable
+2025-03-07 19:22:45.663 +05:00 [Information] 2025010507: CreatePrioritiesTable
+2025-03-07 19:22:45.664 +05:00 [Information] 2025010508: CreateUsersCardiographsTable
+2025-03-07 19:22:45.665 +05:00 [Information] 2025010509: CreateCallsTable
+2025-03-07 19:22:45.666 +05:00 [Warning] 2025010510: CreateCardiogramsTable (current)
+2025-03-07 19:22:45.895 +05:00 [Warning] Overriding address(es) '"http://localhost:2324/swagger"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-03-07 19:22:45.918 +05:00 [Information] Now listening on: "http://0.0.0.0:2324"
+2025-03-07 19:22:45.920 +05:00 [Information] Application started. Press Ctrl+C to shut down.
+2025-03-07 19:22:45.921 +05:00 [Information] Hosting environment: "Development"
+2025-03-07 19:22:45.922 +05:00 [Information] Content root path: "C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost"
+2025-03-07 19:22:46.729 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - null null
+2025-03-07 19:22:47.009 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 299.1546ms
+2025-03-07 19:22:47.113 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - null null
+2025-03-07 19:22:47.122 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 8.9039ms
+2025-03-07 19:22:47.437 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - null null
+2025-03-07 19:22:47.679 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 241.9201ms
+2025-03-07 19:22:50.270 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 262
+2025-03-07 19:22:50.279 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:22:50.307 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:22:51.045 +05:00 [Information] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:22:51.122 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" - Validation state: Valid
+2025-03-07 19:22:51.125 +05:00 [Information] Поступил запрос на получение кардиограмм
+2025-03-07 19:22:51.442 +05:00 [Error] Failed executing DbCommand ("27"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Guid), @p5='?', @p6='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Users\" (\"UserUuid\", \"Appointment\", \"FullName\", \"Login\", \"OrganizationUuid\", \"Password\", \"PhoneNumber\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);"
+2025-03-07 19:22:51.478 +05:00 [Error] An exception occurred in the database while saving changes for context type '"KpoApi.Infrastructure.PostgresEfCore.Models.AppDbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint \"Users_pkey\"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint \"Users_pkey\"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: cardiogram_schema
+    TableName: Users
+    ConstraintName: Users_pkey
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "Users_pkey"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint "Users_pkey"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: cardiogram_schema
+    TableName: Users
+    ConstraintName: Users_pkey
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2025-03-07 19:22:51.668 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" in 1353.6829ms
+2025-03-07 19:22:51.671 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:22:51.676 +05:00 [Error] Connection id ""0HNATGE41D50T"", Request id ""0HNATGE41D50T:00000004"": An unhandled exception was thrown by the application.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "Users_pkey"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint "Users_pkey"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: cardiogram_schema
+    TableName: Users
+    ConstraintName: Users_pkey
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at KpoApi.Infrastructure.PostgresEfCore.Repositories.UserRepository.CreateUsers(User user, CancellationToken cancellationToken) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresEfCore\Repositories\UserRepository.cs:line 21
+   at KpoApi.Infrastructure.PostgresEfCore.Services.PostgresEfCoreProvider.CreateUser(User user) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresEfCore\Services\PostgresEfCoreProvider.cs:line 18
+   at KpoApi.Presentation.Controllers.UserController.CreateUser(User user) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Presentation\Controllers\UserController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2025-03-07 19:22:51.702 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - 500 0 null 1432.6446ms
+2025-03-07 19:23:18.353 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 262
+2025-03-07 19:23:18.372 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:23:18.373 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:23:18.421 +05:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:23:18.434 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" - Validation state: Valid
+2025-03-07 19:23:18.435 +05:00 [Information] Поступил запрос на получение кардиограмм
+2025-03-07 19:23:18.444 +05:00 [Information] Executed DbCommand ("6"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Guid), @p5='?', @p6='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Users\" (\"UserUuid\", \"Appointment\", \"FullName\", \"Login\", \"OrganizationUuid\", \"Password\", \"PhoneNumber\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);"
+2025-03-07 19:23:18.465 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 25.847ms.
+2025-03-07 19:23:18.471 +05:00 [Information] Executing "OkObjectResult", writing value of type '"System.Boolean"'.
+2025-03-07 19:23:18.481 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" in 106.2659ms
+2025-03-07 19:23:18.482 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:23:18.483 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - 200 null "application/json; charset=utf-8" 129.5257ms
+2025-03-07 19:37:46.674 +05:00 [Information] Migrations
+2025-03-07 19:37:46.738 +05:00 [Information] 2025010501: CreateOrganizationTable
+2025-03-07 19:37:46.739 +05:00 [Information] 2025010502: CreateUsersTable
+2025-03-07 19:37:46.740 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable
+2025-03-07 19:37:46.741 +05:00 [Information] 2025010504: CreateCardiogramsStateTable
+2025-03-07 19:37:46.742 +05:00 [Information] 2025010505: CreateCardiographsTable
+2025-03-07 19:37:46.742 +05:00 [Information] 2025010506: CreateSexPatientsTable
+2025-03-07 19:37:46.743 +05:00 [Information] 2025010507: CreatePrioritiesTable
+2025-03-07 19:37:46.744 +05:00 [Information] 2025010508: CreateUsersCardiographsTable
+2025-03-07 19:37:46.744 +05:00 [Information] 2025010509: CreateCallsTable
+2025-03-07 19:37:46.745 +05:00 [Warning] 2025010510: CreateCardiogramsTable (current)
+2025-03-07 19:37:46.971 +05:00 [Warning] Overriding address(es) '"http://localhost:2324/swagger"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-03-07 19:37:46.996 +05:00 [Information] Now listening on: "http://0.0.0.0:2324"
+2025-03-07 19:37:46.997 +05:00 [Information] Application started. Press Ctrl+C to shut down.
+2025-03-07 19:37:46.997 +05:00 [Information] Hosting environment: "Development"
+2025-03-07 19:37:46.998 +05:00 [Information] Content root path: "C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost"
+2025-03-07 19:37:48.033 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - null null
+2025-03-07 19:37:48.363 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 350.9527ms
+2025-03-07 19:37:48.454 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - null null
+2025-03-07 19:37:48.469 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 16.2654ms
+2025-03-07 19:37:48.850 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - null null
+2025-03-07 19:37:49.211 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 360.9682ms
+2025-03-07 19:37:56.373 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 262
+2025-03-07 19:37:56.384 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:37:56.413 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:37:57.195 +05:00 [Information] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:37:57.272 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" - Validation state: Valid
+2025-03-07 19:37:57.274 +05:00 [Information] Поступил запрос на получение кардиограмм
+2025-03-07 19:37:57.646 +05:00 [Information] Executed DbCommand ("29"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Guid), @p5='?', @p6='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Users\" (\"UserUuid\", \"Appointment\", \"FullName\", \"Login\", \"OrganizationUuid\", \"Password\", \"PhoneNumber\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);"
+2025-03-07 19:37:57.666 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 388.9944ms.
+2025-03-07 19:37:57.677 +05:00 [Information] Executing "OkObjectResult", writing value of type '"KpoApi.Domain.Entities.User"'.
+2025-03-07 19:37:57.702 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" in 1280.5973ms
+2025-03-07 19:37:57.703 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:37:57.722 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - 200 null "application/json; charset=utf-8" 1348.4062ms
+2025-03-07 19:38:09.597 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 262
+2025-03-07 19:38:09.607 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:38:09.609 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:38:09.643 +05:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:38:09.648 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" - Validation state: Valid
+2025-03-07 19:38:09.649 +05:00 [Information] Поступил запрос на получение кардиограмм
+2025-03-07 19:38:09.664 +05:00 [Error] Failed executing DbCommand ("11"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Guid), @p5='?', @p6='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Users\" (\"UserUuid\", \"Appointment\", \"FullName\", \"Login\", \"OrganizationUuid\", \"Password\", \"PhoneNumber\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);"
+2025-03-07 19:38:09.696 +05:00 [Error] An exception occurred in the database while saving changes for context type '"KpoApi.Infrastructure.PostgresEfCore.Models.AppDbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint \"Users_pkey\"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint \"Users_pkey\"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: cardiogram_schema
+    TableName: Users
+    ConstraintName: Users_pkey
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "Users_pkey"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint "Users_pkey"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: cardiogram_schema
+    TableName: Users
+    ConstraintName: Users_pkey
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2025-03-07 19:38:09.870 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" in 258.2231ms
+2025-03-07 19:38:09.872 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:38:09.874 +05:00 [Error] Connection id ""0HNATGMGL0UIM"", Request id ""0HNATGMGL0UIM:00000005"": An unhandled exception was thrown by the application.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23505: duplicate key value violates unique constraint "Users_pkey"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23505
+    MessageText: duplicate key value violates unique constraint "Users_pkey"
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: cardiogram_schema
+    TableName: Users
+    ConstraintName: Users_pkey
+    File: nbtinsert.c
+    Line: 666
+    Routine: _bt_check_unique
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__112_0(DbContext _, ValueTuple`2 t)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at KpoApi.Infrastructure.PostgresEfCore.Repositories.UserRepository.CreateUsers(User user, CancellationToken cancellationToken) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresEfCore\Repositories\UserRepository.cs:line 21
+   at KpoApi.Infrastructure.PostgresEfCore.Services.PostgresEfCoreProvider.CreateUser(User user) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresEfCore\Services\PostgresEfCoreProvider.cs:line 18
+   at KpoApi.Presentation.Controllers.UserController.CreateUser(User user) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Presentation\Controllers\UserController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2025-03-07 19:38:09.910 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - 500 0 null 312.9318ms
+2025-03-07 19:42:15.556 +05:00 [Information] Migrations
+2025-03-07 19:42:15.604 +05:00 [Information] 2025010501: CreateOrganizationTable
+2025-03-07 19:42:15.605 +05:00 [Information] 2025010502: CreateUsersTable
+2025-03-07 19:42:15.606 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable
+2025-03-07 19:42:15.607 +05:00 [Information] 2025010504: CreateCardiogramsStateTable
+2025-03-07 19:42:15.608 +05:00 [Information] 2025010505: CreateCardiographsTable
+2025-03-07 19:42:15.608 +05:00 [Information] 2025010506: CreateSexPatientsTable
+2025-03-07 19:42:15.609 +05:00 [Information] 2025010507: CreatePrioritiesTable
+2025-03-07 19:42:15.610 +05:00 [Information] 2025010508: CreateUsersCardiographsTable
+2025-03-07 19:42:15.610 +05:00 [Information] 2025010509: CreateCallsTable
+2025-03-07 19:42:15.611 +05:00 [Warning] 2025010510: CreateCardiogramsTable (current)
+2025-03-07 19:42:15.859 +05:00 [Warning] Overriding address(es) '"http://localhost:2324/swagger"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-03-07 19:42:15.885 +05:00 [Information] Now listening on: "http://0.0.0.0:2324"
+2025-03-07 19:42:15.886 +05:00 [Information] Application started. Press Ctrl+C to shut down.
+2025-03-07 19:42:15.887 +05:00 [Information] Hosting environment: "Development"
+2025-03-07 19:42:15.888 +05:00 [Information] Content root path: "C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost"
+2025-03-07 19:42:16.854 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - null null
+2025-03-07 19:42:17.151 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 314.7335ms
+2025-03-07 19:42:17.425 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - null null
+2025-03-07 19:42:17.493 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 68.1946ms
+2025-03-07 19:42:17.815 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - null null
+2025-03-07 19:42:18.085 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 270.8397ms
+2025-03-07 19:42:21.821 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 262
+2025-03-07 19:42:21.830 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:42:21.861 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:42:22.709 +05:00 [Information] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:42:22.791 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" - Validation state: Valid
+2025-03-07 19:42:22.794 +05:00 [Information] Поступил запрос на получение кардиограмм
+2025-03-07 19:44:33.539 +05:00 [Information] Migrations
+2025-03-07 19:44:33.585 +05:00 [Information] 2025010501: CreateOrganizationTable
+2025-03-07 19:44:33.586 +05:00 [Information] 2025010502: CreateUsersTable
+2025-03-07 19:44:33.587 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable
+2025-03-07 19:44:33.587 +05:00 [Information] 2025010504: CreateCardiogramsStateTable
+2025-03-07 19:44:33.588 +05:00 [Information] 2025010505: CreateCardiographsTable
+2025-03-07 19:44:33.588 +05:00 [Information] 2025010506: CreateSexPatientsTable
+2025-03-07 19:44:33.589 +05:00 [Information] 2025010507: CreatePrioritiesTable
+2025-03-07 19:44:33.589 +05:00 [Information] 2025010508: CreateUsersCardiographsTable
+2025-03-07 19:44:33.589 +05:00 [Information] 2025010509: CreateCallsTable
+2025-03-07 19:44:33.591 +05:00 [Warning] 2025010510: CreateCardiogramsTable (current)
+2025-03-07 19:44:33.815 +05:00 [Warning] Overriding address(es) '"http://localhost:2324/swagger"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-03-07 19:44:33.840 +05:00 [Information] Now listening on: "http://0.0.0.0:2324"
+2025-03-07 19:44:33.841 +05:00 [Information] Application started. Press Ctrl+C to shut down.
+2025-03-07 19:44:33.842 +05:00 [Information] Hosting environment: "Development"
+2025-03-07 19:44:33.842 +05:00 [Information] Content root path: "C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost"
+2025-03-07 19:44:34.384 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - null null
+2025-03-07 19:44:34.706 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 343.2814ms
+2025-03-07 19:44:34.788 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - null null
+2025-03-07 19:44:34.803 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 16.3131ms
+2025-03-07 19:44:35.156 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - null null
+2025-03-07 19:44:35.406 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 250.2082ms
+2025-03-07 19:44:38.638 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 262
+2025-03-07 19:44:38.648 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:44:38.675 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:44:39.481 +05:00 [Information] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:44:39.555 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" - Validation state: Valid
+2025-03-07 19:44:39.558 +05:00 [Information] Поступил запрос на получение кардиограмм
+2025-03-07 19:46:28.656 +05:00 [Information] Executed DbCommand ("19"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = Guid), @p5='?', @p6='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Users\" (\"UserUuid\", \"Appointment\", \"FullName\", \"Login\", \"OrganizationUuid\", \"Password\", \"PhoneNumber\")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);"
+2025-03-07 19:46:30.959 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 111399.7531ms.
+2025-03-07 19:46:30.969 +05:00 [Information] Executing "OkObjectResult", writing value of type '"KpoApi.Domain.Entities.User"'.
+2025-03-07 19:46:30.984 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" in 112303.6613ms
+2025-03-07 19:46:30.985 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:46:30.996 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - 200 null "application/json; charset=utf-8" 112357.6827ms
+2025-03-07 19:47:54.601 +05:00 [Information] Migrations
+2025-03-07 19:47:54.652 +05:00 [Information] 2025010501: CreateOrganizationTable
+2025-03-07 19:47:54.654 +05:00 [Information] 2025010502: CreateUsersTable
+2025-03-07 19:47:54.654 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable
+2025-03-07 19:47:54.655 +05:00 [Information] 2025010504: CreateCardiogramsStateTable
+2025-03-07 19:47:54.655 +05:00 [Information] 2025010505: CreateCardiographsTable
+2025-03-07 19:47:54.656 +05:00 [Information] 2025010506: CreateSexPatientsTable
+2025-03-07 19:47:54.656 +05:00 [Information] 2025010507: CreatePrioritiesTable
+2025-03-07 19:47:54.657 +05:00 [Information] 2025010508: CreateUsersCardiographsTable
+2025-03-07 19:47:54.657 +05:00 [Information] 2025010509: CreateCallsTable
+2025-03-07 19:47:54.659 +05:00 [Warning] 2025010510: CreateCardiogramsTable (current)
+2025-03-07 19:47:54.887 +05:00 [Warning] Overriding address(es) '"http://localhost:2324/swagger"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-03-07 19:47:54.912 +05:00 [Information] Now listening on: "http://0.0.0.0:2324"
+2025-03-07 19:47:54.914 +05:00 [Information] Application started. Press Ctrl+C to shut down.
+2025-03-07 19:47:54.914 +05:00 [Information] Hosting environment: "Development"
+2025-03-07 19:47:54.915 +05:00 [Information] Content root path: "C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost"
+2025-03-07 19:47:55.100 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - null null
+2025-03-07 19:47:55.264 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 170.9609ms
+2025-03-07 19:47:55.361 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - null null
+2025-03-07 19:47:55.375 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 13.8931ms
+2025-03-07 19:47:55.681 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - null null
+2025-03-07 19:47:55.932 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 251.6115ms
+2025-03-07 19:48:01.219 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/User/CreateUser""" - "application/json" 262
+2025-03-07 19:48:01.226 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)"'
+2025-03-07 19:48:01.255 +05:00 [Information] Route matched with "{action = \"CreateUser\", controller = \"User\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(KpoApi.Domain.Entities.User)" on controller "KpoApi.Presentation.Controllers.UserController" ("KpoApi.Presentation").
+2025-03-07 19:48:02.066 +05:00 [Information] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-07 19:48:02.160 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.UserController.CreateUser (KpoApi.Presentation)" - Validation state: Valid
+2025-03-07 19:48:02.163 +05:00 [Information] Поступил запрос на получение кардиограмм

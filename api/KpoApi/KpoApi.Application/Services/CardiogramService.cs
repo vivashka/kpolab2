@@ -8,16 +8,14 @@ using Filter = KpoApi.Application.Models.Data.Filter;
 
 namespace KpoApi.Application.Services;
 
-public class CardiogramService : ICardiogramService, IUserService
+public class CardiogramService : ICardiogramService
 {
     private readonly IPostgresProvider _postgresProvider;
 
-    private readonly IPostgresEfCoreProvider _efCoreProvider;
     
     public CardiogramService(IPostgresProvider postgresProvider, IPostgresEfCoreProvider efCoreProvider)
     {
         _postgresProvider = postgresProvider;
-        _efCoreProvider = efCoreProvider;
     }
     
     public Task<Cardiogram> GetCardiogram(Guid guid)
@@ -46,14 +44,5 @@ public class CardiogramService : ICardiogramService, IUserService
             null);
     }
 
-    public Task<bool> CreateUsers(User user, CancellationToken cancellationToken)
-    {
-        var response = _efCoreProvider.CreateUser(user);
-        return response;
-    }
 
-    public Task<bool> UserAuthentication(string login, string password, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
 }

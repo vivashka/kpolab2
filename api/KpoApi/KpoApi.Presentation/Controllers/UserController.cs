@@ -1,7 +1,6 @@
-﻿using KpoApi.Application.Contracts.External;
+﻿using KpoApi.Application.Contracts;
+using KpoApi.Application.Contracts.External;
 using KpoApi.Domain.Entities;
-using KpoApi.Presentation.Dtos.Response;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -13,19 +12,19 @@ public class UserController : ControllerBase
 {
     private readonly ILogger<CardiogramController> _logger;
 
-    private readonly IPostgresEfCoreProvider _efCoreProvider;
+    private readonly IUserService _userService;
 
-    public UserController(ILogger<CardiogramController> logger, IPostgresEfCoreProvider efCoreProvider)
+    public UserController(ILogger<CardiogramController> logger, IUserService userService)
     {
         _logger = logger;
-        _efCoreProvider = efCoreProvider;
+        _userService = userService;
     }
 
     [HttpPost("CreateUser")]
     public async Task<IActionResult> CreateUser([FromBody] User user)
     {
         _logger.Log(LogLevel.Information, "Поступил запрос на получение кардиограмм");
-        var request = await _efCoreProvider.CreateUser(user);
+        var request = await _userService.CreateUser(user);
 
         return Ok(request);
     }
