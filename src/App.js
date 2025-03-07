@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import ruMessages from "devextreme/localization/messages/ru.json";
+import React from 'react';
+import {loadMessages, locale} from "devextreme/localization";
+import TreeList, {
+    Column,
+    ColumnChooser,
+    HeaderFilter,
+    SearchPanel,
+    Selection,
+    Lookup,
+} from 'devextreme-react/tree-list';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    loadMessages(ruMessages);
+    locale(navigator.language);
+
+    return (
+        <div>
+            <TreeList></TreeList>
+        </div>
+    );
+};
 
 export default App;

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpoApi.Infrastructure.Postgres", "KpoApi.Infrastructure.Postgres\KpoApi.Infrastructure.Postgres.csproj", "{125D2C79-AC13-4A71-8F15-6BDD6B231AB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpoApi.WebHost", "KpoApi.WebHost\KpoApi.WebHost.csproj", "{43460F2C-6DA5-48D5-98C9-C3D8C47E25C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpoApi.Infrastructure.PostgresMigrator", "KpoApi.Infrastructure.PostgresMigrator\KpoApi.Infrastructure.PostgresMigrator.csproj", "{959D4BBF-5980-4008-8DA2-FB0713218677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpoApi.Application", "KpoApi.Application\KpoApi.Application.csproj", "{8CE52B1A-B724-423B-B526-1FC3F664AA35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpoApi.Domain", "KpoApi.Domain\KpoApi.Domain.csproj", "{3F4906B0-7D6C-4770-BAD5-6D747FBAC9FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{125D2C79-AC13-4A71-8F15-6BDD6B231AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125D2C79-AC13-4A71-8F15-6BDD6B231AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125D2C79-AC13-4A71-8F15-6BDD6B231AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125D2C79-AC13-4A71-8F15-6BDD6B231AB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43460F2C-6DA5-48D5-98C9-C3D8C47E25C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43460F2C-6DA5-48D5-98C9-C3D8C47E25C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43460F2C-6DA5-48D5-98C9-C3D8C47E25C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43460F2C-6DA5-48D5-98C9-C3D8C47E25C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{959D4BBF-5980-4008-8DA2-FB0713218677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{959D4BBF-5980-4008-8DA2-FB0713218677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{959D4BBF-5980-4008-8DA2-FB0713218677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{959D4BBF-5980-4008-8DA2-FB0713218677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE52B1A-B724-423B-B526-1FC3F664AA35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE52B1A-B724-423B-B526-1FC3F664AA35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE52B1A-B724-423B-B526-1FC3F664AA35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE52B1A-B724-423B-B526-1FC3F664AA35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F4906B0-7D6C-4770-BAD5-6D747FBAC9FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4906B0-7D6C-4770-BAD5-6D747FBAC9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4906B0-7D6C-4770-BAD5-6D747FBAC9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F4906B0-7D6C-4770-BAD5-6D747FBAC9FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
