@@ -1,4 +1,5 @@
-﻿using FluentMigrator.Runner;
+﻿using FluentMigrator.Expressions;
+using FluentMigrator.Runner;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -12,7 +13,6 @@ public static class MigrationManager
         using var scope = host.Services.CreateScope();
         
         var migrationService = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
-
         try
         {
             migrationService.ListMigrations();

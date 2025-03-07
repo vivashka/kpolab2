@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "54Hb9FSm5VeDGBt/dIuaQ+4Im+18DucFAV0MKraHbuHYU++eXJ72J7dnjGuVAI2nzEvLiGzW6tLROvI+HrkBQw==",
+  "dgSpecHash": "vSv2ENfuHwQ+N21XAVBycjkr9PDhcxPzYeUnBiBrqcEp0XUYmsxqyDkjzJ0dvwvqs377TU+sq6da0+HgdDfjYQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj",
   "expectedPackageFiles": [
@@ -50,8 +50,12 @@
     "C:\\Users\\nikch\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.35.0\\microsoft.identitymodel.tokens.6.35.0.nupkg.sha512",
     "C:\\Users\\nikch\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\nikch\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\nikch\\.nuget\\packages\\microsoft.openapi\\1.6.22\\microsoft.openapi.1.6.22.nupkg.sha512",
     "C:\\Users\\nikch\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\nikch\\.nuget\\packages\\npgsql\\9.0.3\\npgsql.9.0.3.nupkg.sha512",
+    "C:\\Users\\nikch\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\7.3.1\\swashbuckle.aspnetcore.swagger.7.3.1.nupkg.sha512",
+    "C:\\Users\\nikch\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\7.3.1\\swashbuckle.aspnetcore.swaggergen.7.3.1.nupkg.sha512",
+    "C:\\Users\\nikch\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\7.3.1\\swashbuckle.aspnetcore.swaggerui.7.3.1.nupkg.sha512",
     "C:\\Users\\nikch\\.nuget\\packages\\system.clientmodel\\1.0.0\\system.clientmodel.1.0.0.nupkg.sha512",
     "C:\\Users\\nikch\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\nikch\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",

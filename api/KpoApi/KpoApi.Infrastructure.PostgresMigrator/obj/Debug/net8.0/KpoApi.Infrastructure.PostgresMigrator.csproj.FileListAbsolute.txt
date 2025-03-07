@@ -1,0 +1,13 @@
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\bin\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.deps.json
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\bin\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.dll
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\bin\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.pdb
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.csproj.AssemblyReference.cache
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.AssemblyInfoInputs.cache
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.AssemblyInfo.cs
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.csproj.CoreCompileInputs.cache
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.sourcelink.json
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.dll
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\refint\KpoApi.Infrastructure.PostgresMigrator.dll
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\KpoApi.Infrastructure.PostgresMigrator.pdb
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\obj\Debug\net8.0\ref\KpoApi.Infrastructure.PostgresMigrator.dll

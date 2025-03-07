@@ -4,6 +4,209 @@
     "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.WebHost\\KpoApi.WebHost.csproj": {}
   },
   "projects": {
+    "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj",
+        "projectName": "KpoApi.Application",
+        "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj",
+        "packagesPath": "C:\\Users\\nikch\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nikch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://192.168.1.44:5555/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Domain\\KpoApi.Domain.csproj": {
+                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Domain\\KpoApi.Domain.csproj"
+              },
+              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresMigrator\\KpoApi.Infrastructure.PostgresMigrator.csproj": {
+                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresMigrator\\KpoApi.Infrastructure.PostgresMigrator.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[7.3.1, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[7.3.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Domain\\KpoApi.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Domain\\KpoApi.Domain.csproj",
+        "projectName": "KpoApi.Domain",
+        "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Domain\\KpoApi.Domain.csproj",
+        "packagesPath": "C:\\Users\\nikch\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nikch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://192.168.1.44:5555/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresEfCore\\KpoApi.Infrastructure.PostgresEfCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresEfCore\\KpoApi.Infrastructure.PostgresEfCore.csproj",
+        "projectName": "KpoApi.Infrastructure.PostgresEfCore",
+        "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresEfCore\\KpoApi.Infrastructure.PostgresEfCore.csproj",
+        "packagesPath": "C:\\Users\\nikch\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresEfCore\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nikch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://192.168.1.44:5555/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj": {
+                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresMigrator\\KpoApi.Infrastructure.PostgresMigrator.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -78,6 +281,136 @@
         }
       }
     },
+    "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.Postgres\\KpoApi.Infrastructure.Postgres.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.Postgres\\KpoApi.Infrastructure.Postgres.csproj",
+        "projectName": "KpoApi.Infrastructure.Postgres",
+        "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.Postgres\\KpoApi.Infrastructure.Postgres.csproj",
+        "packagesPath": "C:\\Users\\nikch\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.Postgres\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nikch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://192.168.1.44:5555/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj": {
+                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.66, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[112.1.1-alpha.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Presentation\\KpoApi.Presentation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Presentation\\KpoApi.Presentation.csproj",
+        "projectName": "KpoApi.Presentation",
+        "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Presentation\\KpoApi.Presentation.csproj",
+        "packagesPath": "C:\\Users\\nikch\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Presentation\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nikch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://192.168.1.44:5555/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj": {
+                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.WebHost\\KpoApi.WebHost.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -103,8 +436,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresMigrator\\KpoApi.Infrastructure.PostgresMigrator.csproj": {
-                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresMigrator\\KpoApi.Infrastructure.PostgresMigrator.csproj"
+              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj": {
+                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Application\\KpoApi.Application.csproj"
+              },
+              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresEfCore\\KpoApi.Infrastructure.PostgresEfCore.csproj": {
+                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.PostgresEfCore\\KpoApi.Infrastructure.PostgresEfCore.csproj"
+              },
+              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.Postgres\\KpoApi.Infrastructure.Postgres.csproj": {
+                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Infrastructure.Postgres\\KpoApi.Infrastructure.Postgres.csproj"
+              },
+              "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Presentation\\KpoApi.Presentation.csproj": {
+                "projectPath": "C:\\Users\\nikch\\WebstormProjects\\kpolab2\\api\\KpoApi\\KpoApi.Presentation\\KpoApi.Presentation.csproj"
               }
             }
           }
@@ -119,25 +461,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.Extensions.Hosting": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[9.0.0, )"
-            },
-            "Swashbuckle.AspNetCore.Swagger": {
-              "target": "Package",
-              "version": "[7.3.1, )"
-            },
-            "Swashbuckle.AspNetCore.SwaggerGen": {
-              "target": "Package",
-              "version": "[7.3.1, )"
-            },
-            "Swashbuckle.AspNetCore.SwaggerUI": {
-              "target": "Package",
-              "version": "[7.3.1, )"
             }
           },
           "imports": [

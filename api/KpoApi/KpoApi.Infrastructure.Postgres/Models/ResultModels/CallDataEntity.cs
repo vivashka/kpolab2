@@ -1,7 +1,5 @@
 ﻿
 
-using KpoApi.Domain.Enums;
-
 namespace KpoApi.Models.ResultModels;
 
 public record CallDataEntity
@@ -19,7 +17,7 @@ public record CallDataEntity
     public int? StreetNumber { get; init; }
     public int? ApartmentNumber { get; init; }
     public int? Entrance { get; init; }
-    public Priority Priority { get; init; }
+    public int Priority { get; init; }
     public string? HospitalizationAddress { get; init; }
     public string? CallType { get; init; }
     public string? Reason { get; init; }

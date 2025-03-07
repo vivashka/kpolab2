@@ -1,5 +1,5 @@
-using CardioViewer.Infrastructure.PostgresMigrator.Migrations.Database;
 using KpoApi.Infrastructure.PostgresMigrator.Migrations.Database;
+using KpoApi.WebHost;
 using Microsoft.AspNetCore.Hosting;
 using Serilog;
 

@@ -4,19 +4,17 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UserSecretsId>dotnet-KpoApi.Presentation-4D8629BB-8B2E-453B-BCC8-2FDAC41C75A0</UserSecretsId>
-        <RootNamespace>KpoApi.Presentation</RootNamespace>
+        <AssemblyVersion>0.0.2</AssemblyVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
         <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.3.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="7.3.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.3.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\KpoApi.Infrastructure.PostgresMigrator\KpoApi.Infrastructure.PostgresMigrator.csproj" />
+      <ProjectReference Include="..\KpoApi.Application\KpoApi.Application.csproj" />
+      <ProjectReference Include="..\KpoApi.Infrastructure.PostgresEfCore\KpoApi.Infrastructure.PostgresEfCore.csproj" />
+      <ProjectReference Include="..\KpoApi.Infrastructure.Postgres\KpoApi.Infrastructure.Postgres.csproj" />
+      <ProjectReference Include="..\KpoApi.Presentation\KpoApi.Presentation.csproj" />
     </ItemGroup>
 </Project>

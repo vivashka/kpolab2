@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using System.Text;
+using Dapper;
 using KpoApi.Contracts.Repositories;
 using KpoApi.Models.Enums;
 using KpoApi.Models.ResultModels;
@@ -13,10 +14,9 @@ public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
     public async Task<CardiogramEntity?> GetCardiogram(Guid guid, CancellationToken cancellationToken)
     {
         string sqlQuery = """
-                          SET search_path TO cardiogram_schema;
-                          select *
-                          from "Cardiograms"
-                          where "CardiogramUuid" = @CardiogramUuid
+                          SELECT *
+                          FROM "Cardiograms"
+                          WHERE "CardiogramUuid" = @CardiogramUuid
                           """;
 
         var param = new DynamicParameters();
@@ -34,53 +34,52 @@ public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
         CancellationToken cancellationToken)
     {
         string sqlQuery = """
-                          FROM "Cardiograms" c
-                          UPDATE c SET "CardiogramState" = cardiogramState WHERE c.CardiogramUuid = guid
+                          UPDATE "Cardiograms" SET "CardiogramState" = @CardiogramState
+                          WHERE "CardiogramUuid" = @CustomerId
+                          RETURNING "CardiogramUuid";
                           """;
 
         var param = new DynamicParameters();
         param.Add("CustomerId", guid);
         param.Add("CardiogramState", cardiogramState);
 
-        return (await ExecuteNonQueryAsync<CardiogramEntity>(sqlQuery, param, cancellationToken))!
-            .CardiogramState != cardiogramState;
+        var response = await ExecuteNonQueryAsync<Guid>(sqlQuery, param, cancellationToken);
+
+        return !response.Equals(Guid.Empty) ;
     }
 
     public async Task<CardiogramEntity[]> GetCardiograms(Filter filter, CancellationToken cancellationToken)
     {
-        string dateFrom = filter.DateFrom.ToString("yyyy-MM-dd hh:mm:ss");
-        string dateTo = filter.DateFrom.ToString("yyyy-MM-dd hh:mm:ss");
         
-        string sqlQuery = """
-                           SET search_path TO cardiogram_schema;
-                           SELECT * FROM "Cardiograms" as c
-                           LEFT JOIN "Calls" as cl ON c."CallUuid" = cl."CallUuid"
-                           LEFT JOIN "ResultsCardiograms" as rc ON c."ResultCardiogramUuid" = rc."ResultCardiogramUuid"
-                           WHERE c."ReceivedTime" >= '@dateFrom' AND c."ReceivedTime" <= '@dateTo'
-                           """;
-        string? modeName = Enum.GetName(typeof(SortMode), filter.SortMode);
-        if (filter.SortAttribute == SortAttribute.ReceivedTime)
-        {
-            
-            sqlQuery += """
-                         
-                         ORDER BY c."ReceivedTime" @modeName; 
-                         """;
-        }
-        else if (filter.SortAttribute == SortAttribute.SsmpNumber)
-        {
-            sqlQuery += """ ORDER BY c."SsmpNumber" @modeName; """;
-        }
-        else
-        {
-            sqlQuery += """ ORDER BY c."ReceivedTime" DESC; """;
-        }
+        var sqlQuery = new StringBuilder("""
+                                             SELECT * FROM "Cardiograms" AS c
+                                             LEFT JOIN "Calls" AS cl ON c."CallUuid" = cl."CallUuid"
+                                             LEFT JOIN "ResultsCardiograms" AS rc ON c."ResultCardiogramUuid" = rc."ResultCardiogramUuid"
+                                             WHERE c."ReceivedTime" >= @DateFrom AND c."ReceivedTime" <= @DateTo
+                                         """);
         
-        var param = new DynamicParameters();
-        param.Add("dateFrom", dateFrom);
-        param.Add("dateTo", dateTo);
-        param.Add("modeName", modeName);
+        string? sortDirection = Enum.GetName(typeof(SortMode), filter.SortMode);
+        
+        switch (filter.SortAttribute)
+        {
+            case SortAttribute.ReceivedTime:
+                sqlQuery.Append(""" ORDER BY c."ReceivedTime" """ + sortDirection);
+                break;
+            case SortAttribute.SsmpNumber:
+                sqlQuery.Append(""" ORDER BY c."SsmpNumber" """ + sortDirection);
+                break;
+            default:
+                sqlQuery.Append(" ORDER BY c.\"ReceivedTime\" DESC");
+                break;
+        }
 
-        return await ExecuteQueryAsync<CardiogramEntity>(sqlQuery, param, cancellationToken);
+       
+        var param = new DynamicParameters();
+        param.Add("DateFrom", filter.DateFrom);
+        param.Add("DateTo", filter.DateTo);
+        param.Add("SortDirection", sortDirection);
+
+      
+        return await ExecuteQueryAsync<CardiogramEntity>(sqlQuery.ToString(), param, cancellationToken);
     }
 }

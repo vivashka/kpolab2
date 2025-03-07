@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using FluentMigrator.Runner;
+using FluentMigrator.Runner.VersionTableInfo;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KpoApi.Infrastructure.PostgresMigrator.Extensions;

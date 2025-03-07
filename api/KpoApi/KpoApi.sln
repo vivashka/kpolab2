@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpoApi.Application", "KpoAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpoApi.Domain", "KpoApi.Domain\KpoApi.Domain.csproj", "{3F4906B0-7D6C-4770-BAD5-6D747FBAC9FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpoApi.Presentation", "KpoApi.Presentation\KpoApi.Presentation.csproj", "{0CDB4D25-2E56-49B8-936B-C84B577D323A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpoApi.Infrastructure.PostgresEfCore", "KpoApi.Infrastructure.PostgresEfCore\KpoApi.Infrastructure.PostgresEfCore.csproj", "{7FF612EA-034C-489E-A426-5CDFAF6BCFD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,13 @@ Global
 		{3F4906B0-7D6C-4770-BAD5-6D747FBAC9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F4906B0-7D6C-4770-BAD5-6D747FBAC9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F4906B0-7D6C-4770-BAD5-6D747FBAC9FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CDB4D25-2E56-49B8-936B-C84B577D323A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CDB4D25-2E56-49B8-936B-C84B577D323A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CDB4D25-2E56-49B8-936B-C84B577D323A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CDB4D25-2E56-49B8-936B-C84B577D323A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FF612EA-034C-489E-A426-5CDFAF6BCFD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FF612EA-034C-489E-A426-5CDFAF6BCFD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FF612EA-034C-489E-A426-5CDFAF6BCFD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FF612EA-034C-489E-A426-5CDFAF6BCFD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

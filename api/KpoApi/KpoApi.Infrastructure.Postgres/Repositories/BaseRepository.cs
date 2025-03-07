@@ -31,7 +31,7 @@ public class BaseRepository
 
         await using var connection = GetConnection();
 
-        return (TResult?)await connection.ExecuteScalarAsync(command);
+        return await connection.ExecuteScalarAsync<TResult?>(command);
     }
     
     private NpgsqlConnection GetConnection()

@@ -2,10 +2,8 @@
 using KpoApi.Application.Models.Data;
 using KpoApi.Contracts.Mappers;
 using KpoApi.Contracts.Repositories;
-using KpoApi.Domain.Enums;
 
-
-namespace KpoApi.Services;
+namespace KpoApi.Infrastructure.PostgresEfCore.Services;
 
 public sealed class PostgresProvider : IPostgresProvider
 {
@@ -25,9 +23,11 @@ public sealed class PostgresProvider : IPostgresProvider
         throw new NotImplementedException();
     }
 
-    public Task<bool> ChangeCardiogramState(Guid guid, CardiogramState cardiogramState, CancellationToken cancellationToken)
+    public async Task<bool> ChangeCardiogramState(Guid guid, int cardiogramState, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var request = await _cardiogramsRepository.ChangeCardiogramState(guid, cardiogramState, cancellationToken);
+        
+        return request;
     }
 
     public async Task<CardiogramModel[]> GetCardiogramsByFilter(Filter filter, CancellationToken cancellationToken)

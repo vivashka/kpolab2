@@ -1,7 +1,10 @@
+using KpoApi.Application.Extensions;
+using KpoApi.Presentation.Extensions;
+using KpoApi.Infrastructure.PostgresEfCore.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Serilog;
 
-namespace KpoApi.Presentation;
+namespace KpoApi.WebHost;
 
 public class Startup 
 {
@@ -17,12 +20,11 @@ public class Startup
         
         service.AddSerilog();
         service.AddRouting();
-        // var assembly = Assembly.Load("CardioView.Presentation"); // TODO исправлено?
-        //
-        // service.AddControllers()
-        //     .AddApplicationPart(assembly);
-        
-        
+ 
+        service.ConfigurePostgresInfrastructure();
+        service.ConfigurePostgresInfrastructure(_configuration);
+        service.ConfigureApplicationLayer();
+        service.ConfigurePresentationLayer();
     }
     
     public void Configure(IApplicationBuilder applicationBuilder)
@@ -31,7 +33,6 @@ public class Startup
         
         applicationBuilder.UseSwagger();
         applicationBuilder.UseSwaggerUI();
-        
         applicationBuilder.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();

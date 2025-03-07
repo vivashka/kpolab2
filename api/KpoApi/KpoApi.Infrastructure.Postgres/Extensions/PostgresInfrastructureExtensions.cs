@@ -1,13 +1,13 @@
 ﻿using KpoApi.Application.Contracts.External;
 using KpoApi.Contracts.Mappers;
 using KpoApi.Contracts.Repositories;
+using KpoApi.Infrastructure.PostgresEfCore.Services;
 using KpoApi.Infrastructure.PostgresMigrator.Extensions;
 using KpoApi.Mappers;
 using KpoApi.Repositories;
-using KpoApi.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KpoApi.Extensions;
+namespace KpoApi.Infrastructure.PostgresEfCore.Extensions;
 
 public static class PostgresInfrastructureExtensions
 {
@@ -15,12 +15,6 @@ public static class PostgresInfrastructureExtensions
     
     public static void ConfigurePostgresInfrastructure(this IServiceCollection services)
     {
-        string? connectionString = Environment.GetEnvironmentVariable(DbConnectionString);
-        if (string.IsNullOrWhiteSpace(connectionString))
-        {
-            throw new InvalidOperationException(
-                $"Отсутствует переменная окружения {DbConnectionString}. Заполните ее и перезапустите приложение");
-        }
         string connectionStrings = GetConnectionString();
         
         services.ConfigureRepositories();

@@ -10,14 +10,13 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("dotnet-KpoApi.Presentation-4D8629BB-8B2E-453B-BCC8-2FDAC41C75A0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("KpoApi.WebHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6c22516d817c78ba8589df1bae4a8ddf5357d38")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("0.0.2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+147db6552f2ba15cb7b83b20e9d0588d582ec891")]
 [assembly: System.Reflection.AssemblyProductAttribute("KpoApi.WebHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KpoApi.WebHost")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("0.0.2")]
 
 // Создано классом WriteCodeFragment MSBuild.
 

@@ -1,7 +1,9 @@
 ﻿using KpoApi.Application.Models.Data;
 using KpoApi.Contracts.Mappers;
-using KpoApi.Domain.Enums;
+using KpoApi.Models.Enums;
 using KpoApi.Models.ResultModels;
+using CardiogramState = KpoApi.Domain.Enums.CardiogramState;
+using Priority = KpoApi.Domain.Enums.Priority;
 
 namespace KpoApi.Mappers;
 
@@ -44,7 +46,7 @@ public class CardiogramMapper : ICardiogramMapper
                 StreetNumber = cardiogramEntity.StreetNumber,
                 ApartmentNumber = cardiogramEntity.ApartmentNumber,
                 Entrance = cardiogramEntity.Entrance,
-                Priority = cardiogramEntity.Priority,
+                Priority = (Priority)cardiogramEntity.Priority,
                 HospitalizationAddress = cardiogramEntity.HospitalizationAddress,
     
                 Reason = cardiogramEntity.Reason,
@@ -88,7 +90,7 @@ public class CardiogramMapper : ICardiogramMapper
         StreetNumber = cardiogramModel.Call.StreetNumber,
         ApartmentNumber = cardiogramModel.Call.ApartmentNumber,
         Entrance = cardiogramModel.Call.Entrance,
-        Priority = cardiogramModel.Call.Priority,
+        Priority = (int)cardiogramModel.Call.Priority,
         HospitalizationAddress = cardiogramModel.Call.HospitalizationAddress,
         CallType = cardiogramModel.Call.CallType,
         Reason = cardiogramModel.Call.Reason,

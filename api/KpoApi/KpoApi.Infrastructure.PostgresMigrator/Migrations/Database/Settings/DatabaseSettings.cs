@@ -1,4 +1,4 @@
-﻿namespace CardioViewer.Infrastructure.PostgresMigrator.Migrations.Database.Settings;
+﻿namespace KpoApi.Infrastructure.PostgresMigrator.Migrations.Database.Settings;
 
 public class DatabaseSettings
 {
