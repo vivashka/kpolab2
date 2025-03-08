@@ -23,8 +23,27 @@ public class UserController : ControllerBase
     [HttpPost("CreateUser")]
     public async Task<IActionResult> CreateUser([FromBody] User user)
     {
-        _logger.Log(LogLevel.Information, "Поступил запрос на получение кардиограмм");
+        _logger.Log(LogLevel.Information, "Поступил запрос на регистрацию пользователя");
         var request = await _userService.CreateUser(user);
+
+        return Ok(request);
+    }
+    
+    [HttpDelete("DeleteUser")]
+    public async Task<IActionResult> DeleteUser([FromBody] User user, bool isAdmin)
+    {
+        _logger.Log(LogLevel.Information, "Поступил запрос на удаление пользователя");
+        var request = await _userService.DeleteUser(user, isAdmin);
+
+        return Ok(request);
+    }
+    
+    [HttpGet("GetUsers")]
+    public async Task<IActionResult> GetUsers()
+    {
+        _logger.Log(LogLevel.Information, "Поступил запрос на удаление пользователя");
+        
+        var request = await _userService.GetUsers();
 
         return Ok(request);
     }

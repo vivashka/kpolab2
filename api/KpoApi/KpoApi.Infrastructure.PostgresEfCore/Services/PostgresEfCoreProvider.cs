@@ -24,4 +24,18 @@ public class PostgresEfCoreProvider : IPostgresEfCoreProvider
     {
         throw new NotImplementedException();
     }
+
+    public async Task<bool> DeleteUser(User user)
+    {
+        bool isDeleted = await _usersRepository.DeleteUser(user, CancellationToken.None);
+
+        return isDeleted;
+    }
+
+    public async Task<User[]> GetUsers()
+    {
+        User[] users = await _usersRepository.GetUsers(CancellationToken.None);
+
+        return users;
+    }
 }

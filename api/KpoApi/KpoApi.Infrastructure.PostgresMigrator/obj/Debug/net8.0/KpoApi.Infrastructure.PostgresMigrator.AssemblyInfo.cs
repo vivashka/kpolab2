@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KpoApi.Infrastructure.PostgresMigrator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aee6ad16ce6c9cc6127ecc481aa784fdda771a96")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b99410253edfdeaea44dc10783e262d450b8cdaf")]
 [assembly: System.Reflection.AssemblyProductAttribute("KpoApi.Infrastructure.PostgresMigrator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KpoApi.Infrastructure.PostgresMigrator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

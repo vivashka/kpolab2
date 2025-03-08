@@ -39,4 +39,19 @@ public class UserService : IUserService
     {
         throw new NotImplementedException();
     }
+
+    public async Task<bool> DeleteUser(User user, bool isAdmin) // TODO как будет время нужно возвращать модель ответа 
+    {
+        if (isAdmin)
+        {
+            return await _efCoreProvider.DeleteUser(user); //TODO нужно удалять fk на таблину organization 
+        }
+        
+        return false;
+    }
+
+    public async Task<User[]> GetUsers()
+    {
+        return await _efCoreProvider.GetUsers();
+    }
 }
