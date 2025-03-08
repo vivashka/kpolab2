@@ -1,0 +1,580 @@
+2025-03-08 11:44:43.037 +05:00 [Information] VersionMigration migrating
+2025-03-08 11:44:43.149 +05:00 [Information] Beginning Transaction
+2025-03-08 11:44:43.175 +05:00 [Information] CreateTable VersionInfo
+2025-03-08 11:44:43.188 +05:00 [Information] CREATE TABLE "public"."VersionInfo" ("Version" bigint NOT NULL);
+2025-03-08 11:44:43.252 +05:00 [Information] => 0,0711926s
+2025-03-08 11:44:43.256 +05:00 [Information] Committing Transaction
+2025-03-08 11:44:43.289 +05:00 [Information] VersionMigration migrated
+2025-03-08 11:44:43.290 +05:00 [Information] => 0,1131576s
+2025-03-08 11:44:43.303 +05:00 [Information] VersionUniqueMigration migrating
+2025-03-08 11:44:43.304 +05:00 [Information] Beginning Transaction
+2025-03-08 11:44:43.317 +05:00 [Information] CreateIndex VersionInfo (Version)
+2025-03-08 11:44:43.338 +05:00 [Information] CREATE UNIQUE INDEX "UC_Version" ON "public"."VersionInfo" ("Version" ASC);
+2025-03-08 11:44:43.388 +05:00 [Information] => 0,070691s
+2025-03-08 11:44:43.389 +05:00 [Information] AlterTable VersionInfo
+2025-03-08 11:44:43.391 +05:00 [Information] 
+2025-03-08 11:44:43.391 +05:00 [Information] => 0,0014662s
+2025-03-08 11:44:43.393 +05:00 [Information] CreateColumn VersionInfo AppliedOn DateTime
+2025-03-08 11:44:43.395 +05:00 [Information] ALTER TABLE "public"."VersionInfo" ADD "AppliedOn" timestamp;
+2025-03-08 11:44:43.432 +05:00 [Information] => 0,0389519s
+2025-03-08 11:44:43.433 +05:00 [Information] Committing Transaction
+2025-03-08 11:44:43.439 +05:00 [Information] VersionUniqueMigration migrated
+2025-03-08 11:44:43.440 +05:00 [Information] => 0,0456547s
+2025-03-08 11:44:43.450 +05:00 [Information] VersionDescriptionMigration migrating
+2025-03-08 11:44:43.450 +05:00 [Information] Beginning Transaction
+2025-03-08 11:44:43.453 +05:00 [Information] AlterTable VersionInfo
+2025-03-08 11:44:43.453 +05:00 [Information] 
+2025-03-08 11:44:43.454 +05:00 [Information] => 0,0006086s
+2025-03-08 11:44:43.454 +05:00 [Information] CreateColumn VersionInfo Description String
+2025-03-08 11:44:43.457 +05:00 [Information] ALTER TABLE "public"."VersionInfo" ADD "Description" varchar(1024);
+2025-03-08 11:44:43.546 +05:00 [Information] => 0,0911195s
+2025-03-08 11:44:43.547 +05:00 [Information] Committing Transaction
+2025-03-08 11:44:43.584 +05:00 [Information] VersionDescriptionMigration migrated
+2025-03-08 11:44:43.585 +05:00 [Information] => 0,1286062s
+2025-03-08 11:44:43.627 +05:00 [Information] Migrations
+2025-03-08 11:44:43.641 +05:00 [Information] 2025010501: CreateOrganizationTable (not applied)
+2025-03-08 11:44:43.642 +05:00 [Information] 2025010502: CreateUsersTable (not applied)
+2025-03-08 11:44:43.642 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable (not applied)
+2025-03-08 11:44:43.643 +05:00 [Information] 2025010504: CreateCardiogramsStateTable (not applied)
+2025-03-08 11:44:43.644 +05:00 [Information] 2025010505: CreateCardiographsTable (not applied)
+2025-03-08 11:44:43.645 +05:00 [Information] 2025010506: CreateSexPatientsTable (not applied)
+2025-03-08 11:44:43.645 +05:00 [Information] 2025010507: CreatePrioritiesTable (not applied)
+2025-03-08 11:44:43.646 +05:00 [Information] 2025010508: CreateUsersCardiographsTable (not applied)
+2025-03-08 11:44:43.647 +05:00 [Information] 2025010509: CreateCallsTable (not applied)
+2025-03-08 11:44:43.647 +05:00 [Information] 2025010510: CreateCardiogramsTable (not applied)
+2025-03-08 11:44:43.654 +05:00 [Information] 2025010501: CreateOrganizationTable migrating
+2025-03-08 11:44:43.655 +05:00 [Information] Beginning Transaction
+2025-03-08 11:44:43.657 +05:00 [Information] ExecuteSqlStatement CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+2025-03-08 11:44:43.659 +05:00 [Information] CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+2025-03-08 11:44:43.717 +05:00 [Error] An error occurred executing the following sql:
+CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+The error was 42P07: relation "Organizations" already exists
+
+System.Exception: An error occurred executing the following sql:
+CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+The error was 42P07: relation "Organizations" already exists
+
+ ---> Npgsql.PostgresException (0x80004005): 42P07: relation "Organizations" already exists
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P07
+    MessageText: relation "Organizations" already exists
+    File: heap.c
+    Line: 1159
+    Routine: heap_create_with_catalog
+   --- End of inner exception stack trace ---
+   at FluentMigrator.Runner.Processors.ProcessorBase.ReThrowWithSql(Exception ex, String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Execute(String template, Object[] args)
+   at FluentMigrator.Runner.Processors.ProcessorBase.Execute(String sql)
+   at FluentMigrator.Expressions.ExecuteSqlStatementExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+2025-03-08 11:44:43.737 +05:00 [Information] Rolling back transaction
+2025-03-08 11:44:43.767 +05:00 [Fatal] The Application failed to start.
+System.Exception: An error occurred executing the following sql:
+CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+The error was 42P07: relation "Organizations" already exists
+
+ ---> Npgsql.PostgresException (0x80004005): 42P07: relation "Organizations" already exists
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P07
+    MessageText: relation "Organizations" already exists
+    File: heap.c
+    Line: 1159
+    Routine: heap_create_with_catalog
+   --- End of inner exception stack trace ---
+   at FluentMigrator.Runner.Processors.ProcessorBase.ReThrowWithSql(Exception ex, String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Execute(String template, Object[] args)
+   at FluentMigrator.Runner.Processors.ProcessorBase.Execute(String sql)
+   at FluentMigrator.Expressions.ExecuteSqlStatementExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteMigration(IMigration migration, Action`2 getExpressions)
+   at FluentMigrator.Runner.MigrationRunner.ApplyMigrationUp(IMigrationInfo migrationInfo, Boolean useTransaction)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Int64 targetVersion, Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp()
+   at KpoApi.Infrastructure.PostgresMigrator.Migrations.Database.MigrationManager.MigrateDatabase(IHost host) in C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\Migrations\Database\MigrationManager.cs:line 19
+   at KpoApi.Presentation.Program.Main(String[] args) in C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.WebHost\Program.cs:line 26
+2025-03-08 11:45:25.880 +05:00 [Information] Migrations
+2025-03-08 11:45:25.939 +05:00 [Information] 2025010501: CreateOrganizationTable (not applied)
+2025-03-08 11:45:25.940 +05:00 [Information] 2025010502: CreateUsersTable (not applied)
+2025-03-08 11:45:25.941 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable (not applied)
+2025-03-08 11:45:25.941 +05:00 [Information] 2025010504: CreateCardiogramsStateTable (not applied)
+2025-03-08 11:45:25.941 +05:00 [Information] 2025010505: CreateCardiographsTable (not applied)
+2025-03-08 11:45:25.942 +05:00 [Information] 2025010506: CreateSexPatientsTable (not applied)
+2025-03-08 11:45:25.942 +05:00 [Information] 2025010507: CreatePrioritiesTable (not applied)
+2025-03-08 11:45:25.943 +05:00 [Information] 2025010508: CreateUsersCardiographsTable (not applied)
+2025-03-08 11:45:25.943 +05:00 [Information] 2025010509: CreateCallsTable (not applied)
+2025-03-08 11:45:25.944 +05:00 [Information] 2025010510: CreateCardiogramsTable (not applied)
+2025-03-08 11:45:25.950 +05:00 [Information] 2025010501: CreateOrganizationTable migrating
+2025-03-08 11:45:25.952 +05:00 [Information] Beginning Transaction
+2025-03-08 11:45:25.970 +05:00 [Information] ExecuteSqlStatement CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+2025-03-08 11:45:25.973 +05:00 [Information] CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+2025-03-08 11:45:26.034 +05:00 [Error] An error occurred executing the following sql:
+CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+The error was 42P07: relation "Organizations" already exists
+
+System.Exception: An error occurred executing the following sql:
+CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+The error was 42P07: relation "Organizations" already exists
+
+ ---> Npgsql.PostgresException (0x80004005): 42P07: relation "Organizations" already exists
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P07
+    MessageText: relation "Organizations" already exists
+    File: heap.c
+    Line: 1159
+    Routine: heap_create_with_catalog
+   --- End of inner exception stack trace ---
+   at FluentMigrator.Runner.Processors.ProcessorBase.ReThrowWithSql(Exception ex, String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Execute(String template, Object[] args)
+   at FluentMigrator.Runner.Processors.ProcessorBase.Execute(String sql)
+   at FluentMigrator.Expressions.ExecuteSqlStatementExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+2025-03-08 11:45:26.054 +05:00 [Information] Rolling back transaction
+2025-03-08 11:45:26.077 +05:00 [Fatal] The Application failed to start.
+System.Exception: An error occurred executing the following sql:
+CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+The error was 42P07: relation "Organizations" already exists
+
+ ---> Npgsql.PostgresException (0x80004005): 42P07: relation "Organizations" already exists
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P07
+    MessageText: relation "Organizations" already exists
+    File: heap.c
+    Line: 1159
+    Routine: heap_create_with_catalog
+   --- End of inner exception stack trace ---
+   at FluentMigrator.Runner.Processors.ProcessorBase.ReThrowWithSql(Exception ex, String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Execute(String template, Object[] args)
+   at FluentMigrator.Runner.Processors.ProcessorBase.Execute(String sql)
+   at FluentMigrator.Expressions.ExecuteSqlStatementExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteMigration(IMigration migration, Action`2 getExpressions)
+   at FluentMigrator.Runner.MigrationRunner.ApplyMigrationUp(IMigrationInfo migrationInfo, Boolean useTransaction)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Int64 targetVersion, Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp()
+   at KpoApi.Infrastructure.PostgresMigrator.Migrations.Database.MigrationManager.MigrateDatabase(IHost host) in C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\Migrations\Database\MigrationManager.cs:line 19
+   at KpoApi.Presentation.Program.Main(String[] args) in C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.WebHost\Program.cs:line 26
+2025-03-08 11:53:06.256 +05:00 [Information] VersionMigration migrating
+2025-03-08 11:53:06.308 +05:00 [Information] Beginning Transaction
+2025-03-08 11:53:06.333 +05:00 [Information] CreateTable VersionInfo
+2025-03-08 11:53:06.344 +05:00 [Information] CREATE TABLE "public"."VersionInfo" ("Version" bigint NOT NULL);
+2025-03-08 11:53:06.401 +05:00 [Information] => 0,0612883s
+2025-03-08 11:53:06.405 +05:00 [Information] Committing Transaction
+2025-03-08 11:53:06.437 +05:00 [Information] VersionMigration migrated
+2025-03-08 11:53:06.438 +05:00 [Information] => 0,1028324s
+2025-03-08 11:53:06.451 +05:00 [Information] VersionUniqueMigration migrating
+2025-03-08 11:53:06.452 +05:00 [Information] Beginning Transaction
+2025-03-08 11:53:06.465 +05:00 [Information] CreateIndex VersionInfo (Version)
+2025-03-08 11:53:06.483 +05:00 [Information] CREATE UNIQUE INDEX "UC_Version" ON "public"."VersionInfo" ("Version" ASC);
+2025-03-08 11:53:06.536 +05:00 [Information] => 0,0697714s
+2025-03-08 11:53:06.537 +05:00 [Information] AlterTable VersionInfo
+2025-03-08 11:53:06.538 +05:00 [Information] 
+2025-03-08 11:53:06.539 +05:00 [Information] => 0,001587s
+2025-03-08 11:53:06.541 +05:00 [Information] CreateColumn VersionInfo AppliedOn DateTime
+2025-03-08 11:53:06.544 +05:00 [Information] ALTER TABLE "public"."VersionInfo" ADD "AppliedOn" timestamp;
+2025-03-08 11:53:06.573 +05:00 [Information] => 0,0317101s
+2025-03-08 11:53:06.574 +05:00 [Information] Committing Transaction
+2025-03-08 11:53:06.579 +05:00 [Information] VersionUniqueMigration migrated
+2025-03-08 11:53:06.580 +05:00 [Information] => 0,0380258s
+2025-03-08 11:53:06.590 +05:00 [Information] VersionDescriptionMigration migrating
+2025-03-08 11:53:06.591 +05:00 [Information] Beginning Transaction
+2025-03-08 11:53:06.593 +05:00 [Information] AlterTable VersionInfo
+2025-03-08 11:53:06.593 +05:00 [Information] 
+2025-03-08 11:53:06.594 +05:00 [Information] => 0,000579s
+2025-03-08 11:53:06.594 +05:00 [Information] CreateColumn VersionInfo Description String
+2025-03-08 11:53:06.596 +05:00 [Information] ALTER TABLE "public"."VersionInfo" ADD "Description" varchar(1024);
+2025-03-08 11:53:06.676 +05:00 [Information] => 0,0809116s
+2025-03-08 11:53:06.677 +05:00 [Information] Committing Transaction
+2025-03-08 11:53:06.713 +05:00 [Information] VersionDescriptionMigration migrated
+2025-03-08 11:53:06.714 +05:00 [Information] => 0,1184088s
+2025-03-08 11:53:06.737 +05:00 [Information] Migrations
+2025-03-08 11:53:06.749 +05:00 [Information] 2025010501: CreateOrganizationTable (not applied)
+2025-03-08 11:53:06.750 +05:00 [Information] 2025010502: CreateUsersTable (not applied)
+2025-03-08 11:53:06.751 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable (not applied)
+2025-03-08 11:53:06.751 +05:00 [Information] 2025010504: CreateCardiogramsStateTable (not applied)
+2025-03-08 11:53:06.752 +05:00 [Information] 2025010505: CreateCardiographsTable (not applied)
+2025-03-08 11:53:06.753 +05:00 [Information] 2025010506: CreateSexPatientsTable (not applied)
+2025-03-08 11:53:06.753 +05:00 [Information] 2025010507: CreatePrioritiesTable (not applied)
+2025-03-08 11:53:06.754 +05:00 [Information] 2025010508: CreateUsersCardiographsTable (not applied)
+2025-03-08 11:53:06.755 +05:00 [Information] 2025010509: CreateCallsTable (not applied)
+2025-03-08 11:53:06.755 +05:00 [Information] 2025010510: CreateCardiogramsTable (not applied)
+2025-03-08 11:53:06.762 +05:00 [Information] 2025010501: CreateOrganizationTable migrating
+2025-03-08 11:53:06.763 +05:00 [Information] Beginning Transaction
+2025-03-08 11:53:06.765 +05:00 [Information] ExecuteSqlStatement CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+2025-03-08 11:53:06.766 +05:00 [Information] CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+2025-03-08 11:53:06.840 +05:00 [Error] An error occurred executing the following sql:
+CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+The error was 42P07: relation "Organizations" already exists
+
+System.Exception: An error occurred executing the following sql:
+CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+The error was 42P07: relation "Organizations" already exists
+
+ ---> Npgsql.PostgresException (0x80004005): 42P07: relation "Organizations" already exists
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P07
+    MessageText: relation "Organizations" already exists
+    File: heap.c
+    Line: 1159
+    Routine: heap_create_with_catalog
+   --- End of inner exception stack trace ---
+   at FluentMigrator.Runner.Processors.ProcessorBase.ReThrowWithSql(Exception ex, String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Execute(String template, Object[] args)
+   at FluentMigrator.Runner.Processors.ProcessorBase.Execute(String sql)
+   at FluentMigrator.Expressions.ExecuteSqlStatementExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+2025-03-08 11:53:06.859 +05:00 [Information] Rolling back transaction
+2025-03-08 11:53:06.895 +05:00 [Fatal] The Application failed to start.
+System.Exception: An error occurred executing the following sql:
+CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+The error was 42P07: relation "Organizations" already exists
+
+ ---> Npgsql.PostgresException (0x80004005): 42P07: relation "Organizations" already exists
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P07
+    MessageText: relation "Organizations" already exists
+    File: heap.c
+    Line: 1159
+    Routine: heap_create_with_catalog
+   --- End of inner exception stack trace ---
+   at FluentMigrator.Runner.Processors.ProcessorBase.ReThrowWithSql(Exception ex, String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Execute(String template, Object[] args)
+   at FluentMigrator.Runner.Processors.ProcessorBase.Execute(String sql)
+   at FluentMigrator.Expressions.ExecuteSqlStatementExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteMigration(IMigration migration, Action`2 getExpressions)
+   at FluentMigrator.Runner.MigrationRunner.ApplyMigrationUp(IMigrationInfo migrationInfo, Boolean useTransaction)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Int64 targetVersion, Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp()
+   at KpoApi.Infrastructure.PostgresMigrator.Migrations.Database.MigrationManager.MigrateDatabase(IHost host) in C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\Migrations\Database\MigrationManager.cs:line 19
+   at KpoApi.Presentation.Program.Main(String[] args) in C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.WebHost\Program.cs:line 26
+2025-03-08 11:54:10.968 +05:00 [Information] Migrations
+2025-03-08 11:54:11.031 +05:00 [Information] 2025010501: CreateOrganizationTable (not applied)
+2025-03-08 11:54:11.033 +05:00 [Information] 2025010502: CreateUsersTable (not applied)
+2025-03-08 11:54:11.033 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable (not applied)
+2025-03-08 11:54:11.034 +05:00 [Information] 2025010504: CreateCardiogramsStateTable (not applied)
+2025-03-08 11:54:11.034 +05:00 [Information] 2025010505: CreateCardiographsTable (not applied)
+2025-03-08 11:54:11.034 +05:00 [Information] 2025010506: CreateSexPatientsTable (not applied)
+2025-03-08 11:54:11.035 +05:00 [Information] 2025010507: CreatePrioritiesTable (not applied)
+2025-03-08 11:54:11.035 +05:00 [Information] 2025010508: CreateUsersCardiographsTable (not applied)
+2025-03-08 11:54:11.036 +05:00 [Information] 2025010509: CreateCallsTable (not applied)
+2025-03-08 11:54:11.036 +05:00 [Information] 2025010510: CreateCardiogramsTable (not applied)
+2025-03-08 11:54:11.043 +05:00 [Information] 2025010501: CreateOrganizationTable migrating
+2025-03-08 11:54:11.046 +05:00 [Information] Beginning Transaction
+2025-03-08 11:54:11.061 +05:00 [Information] ExecuteSqlStatement CREATE TABLE IF NOT EXISTS "Organizations" (
+    "OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+2025-03-08 11:54:11.063 +05:00 [Information] CREATE TABLE IF NOT EXISTS "Organizations" (
+    "OrganizationUuid" UUID PRIMARY KEY,
+"Name" varchar(256),
+"SsmpNumber" int not null,
+"SsmpAdress" varchar(1024) not null,
+"PhoneContactName" varchar(256),
+"PhoneNumber" int);
+2025-03-08 11:54:11.127 +05:00 [Information] => 0,0604921s
+2025-03-08 11:54:11.133 +05:00 [Information] INSERT INTO "public"."VersionInfo" ("Version","AppliedOn","Description") VALUES (2025010501,'2025-03-08T06:54:11','CreateOrganizationTable');
+2025-03-08 11:54:11.156 +05:00 [Information] Committing Transaction
+2025-03-08 11:54:11.167 +05:00 [Information] 2025010501: CreateOrganizationTable migrated
+2025-03-08 11:54:11.168 +05:00 [Information] => 0,1047696s
+2025-03-08 11:54:11.168 +05:00 [Information] 2025010502: CreateUsersTable migrating
+2025-03-08 11:54:11.169 +05:00 [Information] Beginning Transaction
+2025-03-08 11:54:11.170 +05:00 [Information] ExecuteSqlStatement CREATE TABLE "Users" ("UserUuid" UUID PRIMARY KEY,
+"Login" varchar(8) not null,
+"Password" varchar(64) not null,
+"PhoneNumber" int,
+"FullName" varchar(256) not null,
+"OrganizationUuid" UUID not null,
+"Appointment" varchar(256) not null,
+constraint fk_users_organizations
+FOREIGN KEY ("OrganizationUuid") 
+    REFERENCES "Organizations" ("OrganizationUuid"));
+
+2025-03-08 11:54:11.171 +05:00 [Information] CREATE TABLE "Users" ("UserUuid" UUID PRIMARY KEY,
+"Login" varchar(8) not null,
+"Password" varchar(64) not null,
+"PhoneNumber" int,
+"FullName" varchar(256) not null,
+"OrganizationUuid" UUID not null,
+"Appointment" varchar(256) not null,
+constraint fk_users_organizations
+FOREIGN KEY ("OrganizationUuid") 
+    REFERENCES "Organizations" ("OrganizationUuid"));
+
+2025-03-08 11:54:11.230 +05:00 [Error] An error occurred executing the following sql:
+CREATE TABLE "Users" ("UserUuid" UUID PRIMARY KEY,
+"Login" varchar(8) not null,
+"Password" varchar(64) not null,
+"PhoneNumber" int,
+"FullName" varchar(256) not null,
+"OrganizationUuid" UUID not null,
+"Appointment" varchar(256) not null,
+constraint fk_users_organizations
+FOREIGN KEY ("OrganizationUuid") 
+    REFERENCES "Organizations" ("OrganizationUuid"));
+
+The error was 42P07: relation "Users" already exists
+
+System.Exception: An error occurred executing the following sql:
+CREATE TABLE "Users" ("UserUuid" UUID PRIMARY KEY,
+"Login" varchar(8) not null,
+"Password" varchar(64) not null,
+"PhoneNumber" int,
+"FullName" varchar(256) not null,
+"OrganizationUuid" UUID not null,
+"Appointment" varchar(256) not null,
+constraint fk_users_organizations
+FOREIGN KEY ("OrganizationUuid") 
+    REFERENCES "Organizations" ("OrganizationUuid"));
+
+The error was 42P07: relation "Users" already exists
+
+ ---> Npgsql.PostgresException (0x80004005): 42P07: relation "Users" already exists
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P07
+    MessageText: relation "Users" already exists
+    File: heap.c
+    Line: 1159
+    Routine: heap_create_with_catalog
+   --- End of inner exception stack trace ---
+   at FluentMigrator.Runner.Processors.ProcessorBase.ReThrowWithSql(Exception ex, String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Execute(String template, Object[] args)
+   at FluentMigrator.Runner.Processors.ProcessorBase.Execute(String sql)
+   at FluentMigrator.Expressions.ExecuteSqlStatementExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+2025-03-08 11:54:11.249 +05:00 [Information] Rolling back transaction
+2025-03-08 11:54:11.286 +05:00 [Fatal] The Application failed to start.
+System.Exception: An error occurred executing the following sql:
+CREATE TABLE "Users" ("UserUuid" UUID PRIMARY KEY,
+"Login" varchar(8) not null,
+"Password" varchar(64) not null,
+"PhoneNumber" int,
+"FullName" varchar(256) not null,
+"OrganizationUuid" UUID not null,
+"Appointment" varchar(256) not null,
+constraint fk_users_organizations
+FOREIGN KEY ("OrganizationUuid") 
+    REFERENCES "Organizations" ("OrganizationUuid"));
+
+The error was 42P07: relation "Users" already exists
+
+ ---> Npgsql.PostgresException (0x80004005): 42P07: relation "Users" already exists
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult()
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P07
+    MessageText: relation "Users" already exists
+    File: heap.c
+    Line: 1159
+    Routine: heap_create_with_catalog
+   --- End of inner exception stack trace ---
+   at FluentMigrator.Runner.Processors.ProcessorBase.ReThrowWithSql(Exception ex, String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Process(String sql)
+   at FluentMigrator.Runner.Processors.Postgres.PostgresProcessor.Execute(String template, Object[] args)
+   at FluentMigrator.Runner.Processors.ProcessorBase.Execute(String sql)
+   at FluentMigrator.Expressions.ExecuteSqlStatementExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteMigration(IMigration migration, Action`2 getExpressions)
+   at FluentMigrator.Runner.MigrationRunner.ApplyMigrationUp(IMigrationInfo migrationInfo, Boolean useTransaction)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Int64 targetVersion, Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp()
+   at KpoApi.Infrastructure.PostgresMigrator.Migrations.Database.MigrationManager.MigrateDatabase(IHost host) in C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Infrastructure.PostgresMigrator\Migrations\Database\MigrationManager.cs:line 19
+   at KpoApi.Presentation.Program.Main(String[] args) in C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.WebHost\Program.cs:line 26

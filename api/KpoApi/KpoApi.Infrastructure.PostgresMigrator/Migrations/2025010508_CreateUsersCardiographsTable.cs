@@ -8,7 +8,7 @@ public class CreateUsersCardiographsTable : Migration
     public override void Up()
     {
         Execute.Sql("""
-                    CREATE TABLE "UsersCardiographs" ("UsersCardiographsId" SERIAL PRIMARY KEY,
+                    CREATE TABLE IF NOT EXISTS "UsersCardiographs" ("UsersCardiographsId" SERIAL PRIMARY KEY,
                     "UserUuid" UUID not null,
                     "CardiographId" varchar(128) not null,
                     constraint fk_UsersCardiographs_users 

@@ -770,7 +770,10 @@
       "System.ValueTuple/4.5.0": {},
       "KpoApi.Domain/1.0.0": {
         "runtime": {
-          "KpoApi.Domain.dll": {}
+          "KpoApi.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "KpoApi.Infrastructure.PostgresMigrator/1.0.0": {
@@ -781,7 +784,10 @@
           "Npgsql": "9.0.3"
         },
         "runtime": {
-          "KpoApi.Infrastructure.PostgresMigrator.dll": {}
+          "KpoApi.Infrastructure.PostgresMigrator.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

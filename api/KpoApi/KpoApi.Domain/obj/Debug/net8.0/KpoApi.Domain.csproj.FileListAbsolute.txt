@@ -10,3 +10,15 @@ C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\refint\KpoApi.Domain.dll
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\KpoApi.Domain.pdb
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\ref\KpoApi.Domain.dll
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\bin\Debug\net8.0\KpoApi.Domain.deps.json
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\bin\Debug\net8.0\KpoApi.Domain.dll
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\bin\Debug\net8.0\KpoApi.Domain.pdb
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\KpoApi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\KpoApi.Domain.AssemblyInfoInputs.cache
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\KpoApi.Domain.AssemblyInfo.cs
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\KpoApi.Domain.csproj.CoreCompileInputs.cache
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\KpoApi.Domain.sourcelink.json
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\KpoApi.Domain.dll
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\refint\KpoApi.Domain.dll
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\KpoApi.Domain.pdb
+C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.Domain\obj\Debug\net8.0\ref\KpoApi.Domain.dll

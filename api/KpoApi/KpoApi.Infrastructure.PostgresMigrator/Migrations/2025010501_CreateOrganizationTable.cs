@@ -8,7 +8,8 @@ public class CreateOrganizationTable : Migration
     public override void Up()
     {
         Execute.Sql("""
-                    CREATE TABLE "Organizations" ("OrganizationUuid" UUID PRIMARY KEY,
+                    CREATE TABLE IF NOT EXISTS "Organizations" (
+                        "OrganizationUuid" UUID PRIMARY KEY,
                     "Name" varchar(256),
                     "SsmpNumber" int not null,
                     "SsmpAdress" varchar(1024) not null,
@@ -19,6 +20,6 @@ public class CreateOrganizationTable : Migration
 
     public override void Down()
     {
-        Execute.Sql("drop table if exists organizations;");
+        Execute.Sql("drop table if exists \"Organizations\";");
     }
 }

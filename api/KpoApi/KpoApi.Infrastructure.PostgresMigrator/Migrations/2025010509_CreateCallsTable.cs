@@ -8,7 +8,7 @@ public class CreateCallsTable : Migration
     public override void Up()
     {
         Execute.Sql("""
-                    CREATE TABLE "Calls" ("CallUuid" varchar(36)  PRIMARY KEY,
+                    CREATE TABLE IF NOT EXISTS "Calls" ("CallUuid" varchar(36)  PRIMARY KEY,
                     "CallState" int,
                     "PatientName" varchar(256),
                     "PatientSurname" varchar(256),

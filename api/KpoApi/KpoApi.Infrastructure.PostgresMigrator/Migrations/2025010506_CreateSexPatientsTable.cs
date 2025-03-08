@@ -8,7 +8,7 @@ public class CreateSexPatientsTable : Migration
     public override void Up()
     {
         Execute.Sql("""
-                    CREATE TABLE "SexPatients" ("SexId" int PRIMARY KEY,
+                    CREATE TABLE IF NOT EXISTS "SexPatients" ("SexId" int PRIMARY KEY,
                     "SexName" varchar(64) not null);
                     """);
     }

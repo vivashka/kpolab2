@@ -8,7 +8,7 @@ public class CreateResultsCardiogramsTable : Migration
     public override void Up()
     {
         Execute.Sql("""
-                    CREATE TABLE "ResultsCardiograms" ("ResultCardiogramUuid" UUID PRIMARY KEY,
+                    CREATE TABLE IF NOT EXISTS "ResultsCardiograms" ("ResultCardiogramUuid" UUID PRIMARY KEY,
                     "Description" varchar(1024),
                     "DiagnosisMain" varchar(256));
                     """);

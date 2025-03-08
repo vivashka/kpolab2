@@ -8,7 +8,7 @@ public class CreateCardiogramsStateTable : Migration
     public override void Up()
     {
         Execute.Sql("""
-                    CREATE TABLE "CardiogramsState" ("CardiogramState" SERIAL PRIMARY KEY,
+                    CREATE TABLE IF NOT EXISTS "CardiogramsState" ("CardiogramState" SERIAL PRIMARY KEY,
                     "StateName" varchar(64) not null);
                     """);
     }

@@ -1047,12 +1047,18 @@
           "Swashbuckle.AspNetCore.SwaggerUI": "7.3.1"
         },
         "runtime": {
-          "KpoApi.Application.dll": {}
+          "KpoApi.Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "KpoApi.Domain/1.0.0": {
         "runtime": {
-          "KpoApi.Domain.dll": {}
+          "KpoApi.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "KpoApi.Infrastructure.Postgres/1.0.0": {
@@ -1062,7 +1068,10 @@
           "RestSharp": "112.1.1-alpha.0.4"
         },
         "runtime": {
-          "KpoApi.Infrastructure.Postgres.dll": {}
+          "KpoApi.Infrastructure.Postgres.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "KpoApi.Infrastructure.PostgresEfCore/1.0.0": {
@@ -1072,7 +1081,10 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4"
         },
         "runtime": {
-          "KpoApi.Infrastructure.PostgresEfCore.dll": {}
+          "KpoApi.Infrastructure.PostgresEfCore.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "KpoApi.Infrastructure.PostgresMigrator/1.0.0": {
@@ -1083,7 +1095,10 @@
           "Npgsql": "9.0.3"
         },
         "runtime": {
-          "KpoApi.Infrastructure.PostgresMigrator.dll": {}
+          "KpoApi.Infrastructure.PostgresMigrator.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "KpoApi.Presentation/1.0.0": {
@@ -1091,7 +1106,10 @@
           "KpoApi.Application": "1.0.0"
         },
         "runtime": {
-          "KpoApi.Presentation.dll": {}
+          "KpoApi.Presentation.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

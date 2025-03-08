@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using FluentMigrator.Runner;
+using FluentMigrator.Runner.Versioning;
 using FluentMigrator.Runner.VersionTableInfo;
 using Microsoft.Extensions.DependencyInjection;
 

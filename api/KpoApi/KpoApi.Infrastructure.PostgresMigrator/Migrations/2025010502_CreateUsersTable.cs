@@ -8,7 +8,7 @@ public class CreateUsersTable : Migration
     public override void Up()
     {
         Execute.Sql("""
-                    CREATE TABLE "Users" ("UserUuid" UUID PRIMARY KEY,
+                    CREATE TABLE IF NOT EXISTS "Users" ("UserUuid" UUID PRIMARY KEY,
                     "Login" varchar(8) not null,
                     "Password" varchar(64) not null,
                     "PhoneNumber" int,
@@ -24,6 +24,6 @@ public class CreateUsersTable : Migration
 
     public override void Down()
     {
-        Execute.Sql("drop table if exists users;");
+        Execute.Sql("drop table if exists \"Users\";");
     }
 }

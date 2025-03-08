@@ -8,7 +8,7 @@
       "applicationUrl": "http://localhost:2324/swagger",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development",
-        "POSTGRES_CONNECTION_STRING": "Server=localhost;Port=5430;User Id=admin;Password=admin;Database=postgres;SearchPath=cardiogram_schema"
+        "POSTGRES_CONNECTION_STRING": "Server=192.168.8.163;Port=5430;User Id=admin;Password=admin;Database=postgres;SearchPath=cardiogram_schema"
       }
     }
   }
