@@ -19,6 +19,18 @@ public class BaseRepository
         return result.ToArray();
     }
     
+    protected async Task<TModel> ExecuteQuerySingleAsync<TModel>(
+        string sql,
+        object param,
+        CancellationToken token)
+    {
+        var command = new CommandDefinition(sql, param, cancellationToken: token);
+
+        await using var connection = GetConnection();
+        var result = await connection.QuerySingleAsync<TModel>(command);
+        return result;
+    }
+    
     protected async Task<TResult?> ExecuteNonQueryAsync<TResult>(
         string sql,
         object param,

@@ -5,7 +5,7 @@ namespace KpoApi.Application.Contracts.External;
 
 public interface IPostgresProvider
 {
-    Task<CardiogramModel> GetCardiogram(Guid guid, CancellationToken cancellationToken);
+    Task<EntireCardiogramModel?> GetCardiogram(Guid guid, CancellationToken cancellationToken);
     
     Task<bool> ChangeCardiogramState(Guid guid, int cardiogramState, CancellationToken cancellationToken);
     

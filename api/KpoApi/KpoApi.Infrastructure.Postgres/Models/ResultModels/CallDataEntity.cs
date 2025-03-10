@@ -1,6 +1,6 @@
 ﻿
 
-namespace KpoApi.Models.ResultModels;
+namespace KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
 
 public record CallDataEntity
 {

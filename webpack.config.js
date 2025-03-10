@@ -16,6 +16,14 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
             {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader",
+                ],
+            },
+            {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
@@ -29,8 +37,9 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebPackPlugin({
+        new HtmlWebpackPlugin({
             template: './src/index.html',
         }),
+        new Dotenv(),
     ],
 };

@@ -2,9 +2,9 @@
 
 public record Filter
 {
-    public DateTime DateFrom { get; init; }
+    public DateTime DateFrom { get; set; }
     
-    public DateTime DateTo { get; init; }
+    public DateTime DateTo { get; set; }
     
     public SortAttribute SortAttribute { get; init; }
     

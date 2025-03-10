@@ -1,12 +1,11 @@
 ﻿using KpoApi.Application.Models.Data;
-using KpoApi.Models.Enums;
-using KpoApi.Models.ResultModels;
+using KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
 
-namespace KpoApi.Contracts.Repositories;
+namespace KpoApi.Infrastructure.PostgresEfCore.Contracts.Repositories;
 
 public interface ICardiogramsRepository
 {
-    Task<CardiogramEntity?> GetCardiogram(Guid guid, CancellationToken cancellationToken);
+    Task<EntireCardiogramEntity?> GetCardiogram(Guid guid, CancellationToken cancellationToken);
     
     Task<bool> ChangeCardiogramState(Guid guid, int cardiogramState, CancellationToken cancellationToken);
     

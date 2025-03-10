@@ -3,11 +3,13 @@ using KpoApi.Application.Models.Data;
 using KpoApi.Domain.Enums;
 using KpoApi.Presentation.Contracts;
 using KpoApi.Presentation.Dtos.Response;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace KpoApi.Presentation.Controllers;
+
 
 [ApiController]
 [Route("Api/[controller]")]
@@ -27,7 +29,7 @@ public class CardiogramController : ControllerBase
         _cardiogramMapper = cardiogramMapper;
     }
 
-
+    [EnableCors]
     [HttpPost("GetListCardiograms")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetCardiogramsResponseDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(GetCardiogramsResponseDto))]
@@ -52,14 +54,27 @@ public class CardiogramController : ControllerBase
         });
     }
     
-    [HttpPut("GetListCardiograms")]
+    [EnableCors]
+    [HttpPut("ChangeStatusCardiogram")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(bool))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(bool))]
-    public async Task<IActionResult> GetListCardiograms(Guid guid, CardiogramState cardiogramState)
+    public async Task<IActionResult> ChangeStatusCardiogram([FromQuery] Guid guid, [FromQuery] CardiogramState cardiogramState)
     {
         _logger.Log(LogLevel.Information, "Поступил запрос на изменение кардиограммы");
         var request = await _cardiogramService.ChangeCardiogramState(guid, cardiogramState);
+        
+        return Ok(request);
+        
+    }
+    
+    [EnableCors]
+    [HttpGet("GetEntireModel")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EntireCardiogramModel))]
+    public async Task<IActionResult> GetCardiogram([FromQuery] Guid guid)
+    {
+        _logger.Log(LogLevel.Information, "Поступил запрос на изменение кардиограммы");
+        var request = await _cardiogramService.GetCardiogram(guid);
         
         return Ok(request);
         

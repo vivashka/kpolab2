@@ -11,16 +11,17 @@ namespace KpoApi.Application.Services;
 public class CardiogramService : ICardiogramService
 {
     private readonly IPostgresProvider _postgresProvider;
-
     
     public CardiogramService(IPostgresProvider postgresProvider, IPostgresEfCoreProvider efCoreProvider)
     {
         _postgresProvider = postgresProvider;
     }
     
-    public Task<Cardiogram> GetCardiogram(Guid guid)
+    public async Task<EntireCardiogramModel?> GetCardiogram(Guid guid)
     {
-        throw new NotImplementedException();
+        var entireModel = await _postgresProvider.GetCardiogram(guid, CancellationToken.None);
+
+        return entireModel;
     }
 
     public Task<Cardiogram> SendCardiogram(Guid guid)
@@ -37,6 +38,15 @@ public class CardiogramService : ICardiogramService
 
     public async Task<ResponseModel<CardiogramModel[]>> GetCardiograms(Filter filter)
     {
+        if (string.IsNullOrWhiteSpace(filter.DateFrom.ToString()))
+        {
+            filter.DateFrom = DateTime.MinValue;
+        }
+        
+        if (string.IsNullOrWhiteSpace(filter.DateTo.ToString()))
+        {
+            filter.DateTo = DateTime.Now;
+        }
         var cardiograms = await _postgresProvider.GetCardiogramsByFilter(filter, CancellationToken.None);
 
         return new ResponseModel<CardiogramModel[]> (cardiograms,

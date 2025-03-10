@@ -8,7 +8,7 @@ namespace KpoApi.Application.Contracts;
 
 public interface ICardiogramService
 {
-    Task<Cardiogram> GetCardiogram(Guid guid);
+    Task<EntireCardiogramModel?> GetCardiogram(Guid guid);
     
     Task<Cardiogram> SendCardiogram(Guid guid);
     

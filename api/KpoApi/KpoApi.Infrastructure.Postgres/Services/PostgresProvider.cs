@@ -1,7 +1,8 @@
 ﻿using KpoApi.Application.Contracts.External;
 using KpoApi.Application.Models.Data;
-using KpoApi.Contracts.Mappers;
-using KpoApi.Contracts.Repositories;
+using KpoApi.Infrastructure.PostgresEfCore.Contracts.Mappers;
+using KpoApi.Infrastructure.PostgresEfCore.Contracts.Repositories;
+using KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
 
 namespace KpoApi.Infrastructure.PostgresEfCore.Services;
 
@@ -9,18 +10,32 @@ public sealed class PostgresProvider : IPostgresProvider
 {
     private readonly ICardiogramsRepository _cardiogramsRepository;
 
-    private readonly ICardiogramMapper _cardiogramMapper;
+    private readonly ICardiogramsMapper _cardiogramsMapper;
+
+    private readonly IEntireCardiogramMapper _entireCardiogramMapper;
     
-    public PostgresProvider(ICardiogramsRepository cardiogramsRepository, ICardiogramMapper cardiogramMapper)
+    public PostgresProvider(ICardiogramsRepository cardiogramsRepository, ICardiogramsMapper cardiogramsMapper, IEntireCardiogramMapper entireCardiogramMapper)
     {
         _cardiogramsRepository = cardiogramsRepository;
-        _cardiogramMapper = cardiogramMapper;
+        _cardiogramsMapper = cardiogramsMapper;
+        _entireCardiogramMapper = entireCardiogramMapper;
     }
 
 
-    public Task<CardiogramModel> GetCardiogram(Guid guid, CancellationToken cancellationToken)
+    public async Task<EntireCardiogramModel?> GetCardiogram(Guid guid, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        EntireCardiogramEntity? requestResult = await _cardiogramsRepository.GetCardiogram(guid, cancellationToken);
+
+        if (requestResult != null)
+        {
+            var entireModel = _entireCardiogramMapper.MapOrderEntityToModel(requestResult);
+
+            return entireModel;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public async Task<bool> ChangeCardiogramState(Guid guid, int cardiogramState, CancellationToken cancellationToken)
@@ -38,7 +53,7 @@ public sealed class PostgresProvider : IPostgresProvider
         
         for (int i = 0; i < requestResult.Length; i++)
         {
-            CardiogramModel cardiogramModel = _cardiogramMapper.MapOrderEntityToModel(requestResult[i]);
+            CardiogramModel cardiogramModel = _cardiogramsMapper.MapOrderEntityToModel(requestResult[i]);
             cardiogramModels[i] = cardiogramModel;
         }
 

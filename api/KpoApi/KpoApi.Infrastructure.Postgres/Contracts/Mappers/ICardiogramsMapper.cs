@@ -1,9 +1,9 @@
 ﻿using KpoApi.Application.Models.Data;
-using KpoApi.Models.ResultModels;
+using KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
 
-namespace KpoApi.Contracts.Mappers;
+namespace KpoApi.Infrastructure.PostgresEfCore.Contracts.Mappers;
 
-public interface ICardiogramMapper
+public interface ICardiogramsMapper
 {
      CardiogramModel MapOrderEntityToModel(CardiogramEntity cardiogramEntity);
      

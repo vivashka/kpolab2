@@ -1,28 +1,31 @@
 ﻿using System.Text;
 using Dapper;
-using KpoApi.Contracts.Repositories;
-using KpoApi.Models.Enums;
-using KpoApi.Models.ResultModels;
+using KpoApi.Infrastructure.PostgresEfCore.Contracts.Repositories;
+using KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
+using KpoApi.Repositories;
 using Filter = KpoApi.Application.Models.Data.Filter;
 using SortAttribute = KpoApi.Application.Models.Data.SortAttribute;
 using SortMode = KpoApi.Application.Models.Data.SortMode;
 
-namespace KpoApi.Repositories;
+namespace KpoApi.Infrastructure.PostgresEfCore.Repositories;
 
 public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
 {
-    public async Task<CardiogramEntity?> GetCardiogram(Guid guid, CancellationToken cancellationToken)
+    public async Task<EntireCardiogramEntity?> GetCardiogram(Guid guid, CancellationToken cancellationToken)
     {
         string sqlQuery = """
                           SELECT *
-                          FROM "Cardiograms"
-                          WHERE "CardiogramUuid" = @CardiogramUuid
+                          FROM "Cardiograms" AS c
+                          LEFT JOIN "Calls" AS cl ON c."CallUuid" = cl."CallUuid"
+                          LEFT JOIN "ResultsCardiograms" AS rc ON c."ResultCardiogramUuid" = rc."ResultCardiogramUuid"
+                          LEFT JOIN "Cardiographs" AS cs ON c."CardiographUuid" = cs."SerialNumber"
+                          WHERE c."CardiogramUuid" = @CardiogramUuid
                           """;
 
         var param = new DynamicParameters();
         param.Add("CardiogramUuid", guid);
 
-        return await ExecuteNonQueryAsync<CardiogramEntity>(sqlQuery, param, cancellationToken);
+        return await ExecuteQuerySingleAsync<EntireCardiogramEntity>(sqlQuery, param, cancellationToken);
     }
 
     public Task<CardiogramEntity> SendCardiogram(Guid guid, CancellationToken cancellationToken)
@@ -45,7 +48,7 @@ public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
 
         var response = await ExecuteNonQueryAsync<Guid>(sqlQuery, param, cancellationToken);
 
-        return !response.Equals(Guid.Empty) ;
+        return !response.Equals(Guid.Empty);
     }
 
     public async Task<CardiogramEntity[]> GetCardiograms(Filter filter, CancellationToken cancellationToken)

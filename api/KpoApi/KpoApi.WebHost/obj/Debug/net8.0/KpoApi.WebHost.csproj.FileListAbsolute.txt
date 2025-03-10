@@ -254,3 +254,4 @@ C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.WebHost\obj\Debug\net8.0\KpoApi.
 C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.WebHost\obj\Debug\net8.0\KpoApi.WebHost.genruntimeconfig.cache
 C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.WebHost\obj\Debug\net8.0\ref\KpoApi.WebHost.dll
 C:\Users\vovac\source\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250308.json
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250310.json

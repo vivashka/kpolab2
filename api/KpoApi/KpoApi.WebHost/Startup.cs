@@ -17,7 +17,7 @@ public class Startup
     
     public void ConfigureServices(IServiceCollection service)
     {
-        
+        service.AddCors();
         service.AddSerilog();
         service.AddRouting();
  
@@ -25,6 +25,7 @@ public class Startup
         service.ConfigurePostgresInfrastructure(_configuration);
         service.ConfigureApplicationLayer();
         service.ConfigurePresentationLayer();
+        
     }
     
     public void Configure(IApplicationBuilder applicationBuilder)
@@ -33,9 +34,13 @@ public class Startup
         
         applicationBuilder.UseSwagger();
         applicationBuilder.UseSwaggerUI();
+        applicationBuilder.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader());
         applicationBuilder.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
         });
+
+        
+        applicationBuilder.UseAuthorization();
     }
 }

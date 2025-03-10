@@ -1,13 +1,12 @@
 ﻿using KpoApi.Application.Models.Data;
-using KpoApi.Contracts.Mappers;
-using KpoApi.Models.Enums;
-using KpoApi.Models.ResultModels;
+using KpoApi.Infrastructure.PostgresEfCore.Contracts.Mappers;
+using KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
 using CardiogramState = KpoApi.Domain.Enums.CardiogramState;
 using Priority = KpoApi.Domain.Enums.Priority;
 
-namespace KpoApi.Mappers;
+namespace KpoApi.Infrastructure.PostgresEfCore.Mappers;
 
-public class CardiogramMapper : ICardiogramMapper
+public class CardiogramsMapper : ICardiogramsMapper
 {
 
     public CardiogramModel MapOrderEntityToModel(CardiogramEntity cardiogramEntity)
