@@ -54,5 +54,31 @@ public class CardiogramService : ICardiogramService
             null);
     }
 
+    public Task<Organization[]> GetOrganizations()
+    {
+        var organizationArray = _postgresProvider.GetOrganizations(CancellationToken.None);
 
+        return organizationArray;
+    }
+
+    public Task<User[]> GetUsers(Guid organizationGuid)
+    {
+        var usersArray = _postgresProvider.GetUsers(organizationGuid ,CancellationToken.None);
+
+        return usersArray;
+    }
+
+    public Task<Cardiograph[]> GetCardiographs(Guid userGuid)
+    {
+        var cardiographs = _postgresProvider.GetCardiographs(userGuid ,CancellationToken.None);
+
+        return cardiographs;
+    }
+
+    public Task<Cardiogram[]> GetCardiograms(string serialNumber)
+    {
+        var cardiograms = _postgresProvider.GetCardiograms(serialNumber ,CancellationToken.None);
+
+        return cardiograms;
+    }
 }

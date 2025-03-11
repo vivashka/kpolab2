@@ -15,4 +15,12 @@ public interface ICardiogramService
     Task<bool> ChangeCardiogramState(Guid guid, CardiogramState cardiogramState);
     
     Task<ResponseModel<CardiogramModel[]>> GetCardiograms(Filter filter);
+    
+    Task<Organization[]> GetOrganizations();
+
+    Task<User[]> GetUsers(Guid organizationGuid);
+    
+    Task<Cardiograph[]> GetCardiographs(Guid userGuid);
+    
+    Task<Cardiogram[]> GetCardiograms(string serialNumber);
 }

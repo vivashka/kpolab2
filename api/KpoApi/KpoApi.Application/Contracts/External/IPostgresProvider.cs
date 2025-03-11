@@ -1,5 +1,7 @@
 ﻿using KpoApi.Application.Models.Data;
+using KpoApi.Domain.Entities;
 using KpoApi.Domain.Enums;
+using Filter = KpoApi.Application.Models.Data.Filter;
 
 namespace KpoApi.Application.Contracts.External;
 
@@ -10,4 +12,12 @@ public interface IPostgresProvider
     Task<bool> ChangeCardiogramState(Guid guid, int cardiogramState, CancellationToken cancellationToken);
     
     Task<CardiogramModel[]> GetCardiogramsByFilter(Filter filter, CancellationToken cancellationToken);
+    
+    Task<Organization[]> GetOrganizations(CancellationToken cancellationToken);
+
+    Task<User[]> GetUsers(Guid organizationGuid, CancellationToken cancellationToken);
+    
+    Task<Cardiograph[]> GetCardiographs(Guid userGuid, CancellationToken cancellationToken);
+    
+    Task<Cardiogram[]> GetCardiograms(string serialNumber, CancellationToken cancellationToken);
 }

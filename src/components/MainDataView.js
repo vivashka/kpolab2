@@ -1,86 +1,133 @@
-import React, {useEffect, useState} from "react";
-import {getListCardiograms} from "../services/getListCardiograms";
+import React, {useMemo, useState} from "react";
 import TreeView from 'devextreme-react/tree-view';
-import {Popup} from "devextreme-react";
-import AdditionalInformation from "./AdditionalInformation.jsx";
-import {tabKindEnum} from "../domain/additionalInformationSource";
-import {getEntireCardiogram} from "../services/getEntireCardiogram";
 import {formatDate} from "devextreme/localization";
+import CustomStore from "devextreme/data/custom_store";
+import {getOrganizations} from "../services/getOrganizations";
+import {getUsers} from "../services/getUsers";
+import {getCardiographs} from "../services/getCardiographs";
+import {getCardiograms} from "../services/getCardiograms";
+import {getEntireCardiogram} from "../services/getEntireCardiogram";
+import AdditionalInformation from "./AdditionalInformation";
+import {Button} from "devextreme-react";
+import './MainDataView.scss'
 
 export default function MainDataView() {
     const [data, setData] = useState(null);
     const [currentItem, setCurrentItem] = useState(null);
     const [itemVisible, setItemVisible] = useState(null);
 
-    const defaultFilter = {
-        "dateFrom": "2023-03-10T09:10:23.121Z",
-        "dateTo": "2025-03-10T09:10:23.121Z",
-        "sortAttribute": 0,
-        "sortMode": 0
-    }
+    const handleItemClick = async (e) => {
+        const { itemData } = e;
+        // Если у узла есть дочерние элементы - раскрываем/закрываем
+        if (itemData.hasItems) {
+            await e.component.expandItem(itemData.id);
+        }
 
-
-
-    useEffect(() =>{
-        async function fetchData(){
-            try {
-                const request = await getListCardiograms(defaultFilter);
-                if (request.success) {
-                    const transformedData = request.content.map(cardiogram => ({
-                        id: cardiogram.cardiogramUuid,
-                        text: `Кардиограмма: ${formatDateTime(cardiogram.receivedTime)}`,
-                        items: [
-                            {
-                                id: `${cardiogram.cardiogramUuid}-call`,
-                                text: `Пациент: ${cardiogram.call.patientSurname} ${cardiogram.call.patientName}`,
-                                data: cardiogram.call,
-                                items:[
-                                    {
-                                        id: `${cardiogram.cardiogramUuid}-result`,
-                                        text: `Результат: ${cardiogram.result.diagnosisMain}`,
-                                        data: cardiogram.result,
-                                        isLeaf: true
-                                    }
-
-                                ],
-                            },
-                        ]
-                    }));
-                    setData(transformedData);
+        // Если это кардиограмма - показываем дополнительную информацию
+        else {
+            const [nodeType, guid] = itemData.id.split('|');
+            if (nodeType === 'cardiogram') {
+                try {
+                    const request = await getEntireCardiogram(guid);
+                    setCurrentItem(request);
+                    setItemVisible(true);
+                } catch (error) {
+                    console.error('Ошибка загрузки кардиограммы:', error);
+                    // Можно добавить уведомление об ошибке
                 }
-            } catch (error) {
-                console.error("Ошибка при загрузке данных:", error);
             }
         }
-        fetchData();
-    },[])
-
-    async function selectItem(e) {
-
-        if (e?.itemData?.id?.includes("-result")) {
-            const request = await getEntireCardiogram(e.itemData.id.replace("-result", ""));
-
-            if (request.cardiogramUuid != null) {
-                setCurrentItem(request);
-            }
-            setItemVisible(true);
-        }
-    }
+    };
 
     const formatDateTime = (isoString) => {
         const date = new Date(isoString);
         return formatDate(date, "dd.MM.yyyy HH:mm") || "Не указано";
     };
 
+    const dataSource = useMemo(() => new CustomStore({
+        key: 'id',
+        parentIdExpr: 'parentId',
+        hasItemsExpr: 'hasItems',
+
+        async load(loadOptions) {
+            const parentNode = loadOptions?.filter[1] || null;
+
+            if (!parentNode) {
+                const organizations = await getOrganizations();
+                return organizations.map(organization => ({
+                    id: `organization|${organization.organizationUuid}`,
+                    text: organization.name,
+                    parentId: null,
+                    hasItems: true
+                }));
+            }
+
+            const [nodeType, guid] = parentNode.split('|');
+
+            try {
+                switch(nodeType) {
+                    case 'organization':
+                        const users = await getUsers(guid);
+                        return users.map(user => ({
+                            id: `user|${user.userUuid}`,
+                            text: user.fullName,
+                            parentId: parentNode,
+                            hasItems: true
+                        }));
+                    case 'user':
+                        const cardiograph = await getCardiographs(guid);
+                        return cardiograph.map(graph => ({
+                            id: `cardiograph|${graph.serialNumber}|${Date.now()}`,
+                            text:  graph.cardiographName,
+                            parentId: parentNode,
+                            hasItems: true
+                        }));
+                    case 'cardiograph':
+                        const cardiogram = await getCardiograms(guid);
+                        return cardiogram.map(gram => ({
+                            id: `cardiogram|${gram.cardiogramUuid}|${Date.now()}`,
+                            text: "Кардиограмма от " + formatDateTime(gram.measurementTime),
+                            parentId: parentNode,
+                            hasItems: false,
+                            data: gram
+                        }));
+
+                    default:
+                        return [];
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки:', error);
+                return [];
+            }
+        }
+    }), [getUsers, getCardiographs, getCardiograms]);
+
 
     return (<div className="form">
             {currentItem && <AdditionalInformation data={currentItem} visible={itemVisible} setVisible={setItemVisible}/>}
-            <TreeView
-                items={data}
-                onItemClick={selectItem}
-            >
 
-            </TreeView>
+            <header className={"top-menu"} >
+                <Button
+                    width={"max-content"}
+                >
+                    Добавить
+                </Button>
+            </header>
+
+            <div className="form">
+                <TreeView
+                    dataSource={dataSource}
+                    dataStructure="plain"
+                    rootValue={null}
+                    displayExpr="text"
+                    keyExpr="id"
+                    parentIdExpr="parentId"
+                    hasItemsExpr="hasItems"
+                    virtualModeEnabled={true}
+                    expandNodesRecursive={false}
+                    onItemClick={handleItemClick}
+                />
+            </div>
         </div>
 
     )

@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Dapper;
+using KpoApi.Domain.Entities;
 using KpoApi.Infrastructure.PostgresEfCore.Contracts.Repositories;
 using KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
 using KpoApi.Repositories;
@@ -84,5 +85,50 @@ public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
 
       
         return await ExecuteQueryAsync<CardiogramEntity>(sqlQuery.ToString(), param, cancellationToken);
+    }
+
+    public async Task<Organization[]> GetOrganizations(CancellationToken cancellationToken)
+    {
+        string sqlQuery = """
+                          SELECT * FROM "Organizations"
+                          """;
+        var param = new DynamicParameters();
+        return await ExecuteQueryAsync<Organization>(sqlQuery, param, cancellationToken);
+    }
+
+    public async Task<User[]> GetUsers(Guid organizationGuid, CancellationToken cancellationToken)
+    {
+        string sqlQuery = """
+                          SELECT * FROM "Users" AS u
+                          WHERE u."OrganizationUuid" = @OrganizationGuid
+                          """;
+        var param = new DynamicParameters();
+        param.Add("OrganizationGuid", organizationGuid);
+        return await ExecuteQueryAsync<User>(sqlQuery, param, cancellationToken);
+    }
+
+    public async Task<Cardiograph[]> GetCardiographs(Guid userGuid, CancellationToken cancellationToken)
+    {
+        string sqlQuery = """
+                          SELECT *
+                          FROM "Cardiographs" c
+                          INNER JOIN "UsersCardiographs" uc 
+                            ON c."SerialNumber" = uc."CardiographId"
+                          WHERE uc."UserUuid" = @userGuid;
+                          """;
+        var param = new DynamicParameters();
+        param.Add("userGuid", userGuid);
+        return await ExecuteQueryAsync<Cardiograph>(sqlQuery, param, cancellationToken);
+    }
+
+    public async Task<Cardiogram[]> GetCardiograms(string serialNumber, CancellationToken cancellationToken)
+    {
+        string sqlQuery = """
+                          SELECT * FROM "Cardiograms" AS c
+                          WHERE c."CardiographUuid" = @serialNumber
+                          """;
+        var param = new DynamicParameters();
+        param.Add("serialNumber", serialNumber);
+        return await ExecuteQueryAsync<Cardiogram>(sqlQuery, param, cancellationToken);
     }
 }

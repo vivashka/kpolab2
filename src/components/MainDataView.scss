@@ -1,0 +1,28 @@
+.button{
+  margin: 10px 0;
+}
+
+.button-save{
+  margin: 10px 0;
+  background-color: #4B77EAFF !important;
+  color: white !important;
+}
+
+.button-change{
+  margin: 10px 0;
+  background-color: orange !important;
+  color: white !important;
+}
+
+.additional-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: white; /* Чтобы кнопки не перекрывались контентом */
+  display: flex;
+  justify-content: space-between; /* Выравнивание кнопок */
+  gap: 10px; /* Расстояние между кнопками */
+  border-top: 1px solid #ddd; /* Разделительная линия */
+}

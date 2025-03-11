@@ -1,8 +1,10 @@
 ﻿using KpoApi.Application.Contracts.External;
 using KpoApi.Application.Models.Data;
+using KpoApi.Domain.Entities;
 using KpoApi.Infrastructure.PostgresEfCore.Contracts.Mappers;
 using KpoApi.Infrastructure.PostgresEfCore.Contracts.Repositories;
 using KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
+using Filter = KpoApi.Application.Models.Data.Filter;
 
 namespace KpoApi.Infrastructure.PostgresEfCore.Services;
 
@@ -58,5 +60,33 @@ public sealed class PostgresProvider : IPostgresProvider
         }
 
         return cardiogramModels;
+    }
+
+    public async Task<Organization[]> GetOrganizations(CancellationToken cancellationToken)
+    {
+        var requestResult = await _cardiogramsRepository.GetOrganizations(cancellationToken);
+
+        return requestResult;
+    }
+
+    public async Task<User[]> GetUsers(Guid organizationGuid, CancellationToken cancellationToken)
+    {
+        var requestResult = await _cardiogramsRepository.GetUsers(organizationGuid, cancellationToken);
+
+        return requestResult;
+    }
+
+    public async Task<Cardiograph[]> GetCardiographs(Guid userGuid, CancellationToken cancellationToken)
+    {
+        var requestResult = await _cardiogramsRepository.GetCardiographs(userGuid, cancellationToken);
+
+        return requestResult;
+    }
+
+    public async Task<Cardiogram[]> GetCardiograms(string serialNumber, CancellationToken cancellationToken)
+    {
+        var requestResult = await _cardiogramsRepository.GetCardiograms(serialNumber, cancellationToken);
+
+        return requestResult;
     }
 }

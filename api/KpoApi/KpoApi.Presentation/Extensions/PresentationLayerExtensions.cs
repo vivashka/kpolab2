@@ -17,6 +17,9 @@ public static class PresentationLayerExtensions
         services.AddControllers()
             .AddApplicationPart(typeof(UserController).Assembly);
         
+        services.AddControllers()
+            .AddApplicationPart(typeof(SeparateDataController).Assembly);
+        
         services.AddEndpointsApiExplorer();
 
         services.AddSwaggerGen(c =>
