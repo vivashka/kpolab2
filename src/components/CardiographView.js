@@ -1,12 +1,10 @@
 import { TextBox } from "devextreme-react";
 
-export function CardiographView({ cardiograph, isModify, onFieldChange }) {
+export function CardiographView({ cardiograph, isModify }) {
     if (!cardiograph) return <div>Нет данных об оборудовании</div>;
 
     const handleChange = (field, value) => {
-        if (onFieldChange) {
-            onFieldChange({ ...cardiograph, [field]: value });
-        }
+
     };
 
     return (

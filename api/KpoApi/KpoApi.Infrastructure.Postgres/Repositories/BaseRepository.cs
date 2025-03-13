@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using Npgsql;
 
-namespace KpoApi.Repositories;
+namespace KpoApi.Infrastructure.PostgresEfCore.Repositories;
 
 public class BaseRepository
 {

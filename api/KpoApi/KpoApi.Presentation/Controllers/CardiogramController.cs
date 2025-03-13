@@ -73,7 +73,7 @@ public class CardiogramController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EntireCardiogramModel))]
     public async Task<IActionResult> GetCardiogram([FromQuery] Guid guid)
     {
-        _logger.Log(LogLevel.Information, "Поступил запрос на изменение кардиограммы");
+        _logger.Log(LogLevel.Information, "Поступил запрос на получение всей информации по кардиограмме");
         var request = await _cardiogramService.GetCardiogram(guid);
         
         return Ok(request);

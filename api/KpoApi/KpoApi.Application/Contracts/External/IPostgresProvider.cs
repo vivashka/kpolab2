@@ -20,4 +20,14 @@ public interface IPostgresProvider
     Task<Cardiograph[]> GetCardiographs(Guid userGuid, CancellationToken cancellationToken);
     
     Task<Cardiogram[]> GetCardiograms(string serialNumber, CancellationToken cancellationToken);
+    
+    Task<User[]> GetUsersByCardiograms(Guid cardiogramUuid, CancellationToken cancellationToken);
+    
+    Task<User> SaveUser(User newUser, CancellationToken cancellationToken);
+    
+    Task<Cardiogram> SaveCardiogram(Cardiogram newCardiogram, CancellationToken cancellationToken);
+    
+    Task<Call> SaveCall(Call newCall, CancellationToken cancellationToken);
+    
+    Task<Cardiograph> SaveCardiograph(Cardiograph newCardiograph, CancellationToken cancellationToken);
 }

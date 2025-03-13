@@ -1,9 +1,9 @@
 ﻿using System.Text;
 using Dapper;
+using KpoApi.Application.Models.Data;
 using KpoApi.Domain.Entities;
 using KpoApi.Infrastructure.PostgresEfCore.Contracts.Repositories;
 using KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
-using KpoApi.Repositories;
 using Filter = KpoApi.Application.Models.Data.Filter;
 using SortAttribute = KpoApi.Application.Models.Data.SortAttribute;
 using SortMode = KpoApi.Application.Models.Data.SortMode;
@@ -130,5 +130,20 @@ public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
         var param = new DynamicParameters();
         param.Add("serialNumber", serialNumber);
         return await ExecuteQueryAsync<Cardiogram>(sqlQuery, param, cancellationToken);
+    }
+
+    public async Task<User[]> GetUsersByCardiograms(Guid cardiogramUuid, CancellationToken cancellationToken)
+    {
+        string sqlQuery = """
+                              SELECT *
+                              FROM "Users" u
+                              INNER JOIN "UsersCardiographs" uc ON u."UserUuid" = uc."UserUuid"
+                              INNER JOIN "Cardiographs" c ON uc."CardiographId" = c."SerialNumber"
+                              INNER JOIN "Cardiograms" ca ON c."SerialNumber" = ca."CardiographUuid"
+                              WHERE ca."CardiogramUuid" = @cardiogramUuid;
+                          """;
+        var param = new DynamicParameters();
+        param.Add("cardiogramUuid", cardiogramUuid);
+        return await ExecuteQueryAsync<User>(sqlQuery, param, cancellationToken);
     }
 }

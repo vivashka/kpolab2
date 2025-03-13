@@ -10,6 +10,7 @@ public static class ApplicationExtensions
     {
         services.AddScoped<ICardiogramService, CardiogramService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<ISaveEntitiesService, CardiogramService>();
         return services;
     }
 }

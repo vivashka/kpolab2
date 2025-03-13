@@ -28,6 +28,7 @@ public record Call
     public int? Entrance { get; init; }
     public Priority Priority { get; init; }
     public string? HospitalizationAddress { get; init; }
+    public double? HospitalizationDistance { get; init; }
     public string? CallType { get; init; }
     public string? Reason { get; init; }
     public DateTime? ReceiveTime { get; init; }

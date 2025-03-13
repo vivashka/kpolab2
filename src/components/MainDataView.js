@@ -107,7 +107,7 @@ export default function MainDataView() {
             {currentItem && <AdditionalInformation data={currentItem} visible={itemVisible} setVisible={setItemVisible}/>}
 
             <header className={"top-menu"} >
-                <Button
+                <Button className={"button-apply"}
                     width={"max-content"}
                 >
                     Добавить

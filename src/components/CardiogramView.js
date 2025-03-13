@@ -1,17 +1,46 @@
 import { formatDate } from "devextreme/localization";
 import { TextBox, SelectBox, DateBox } from "devextreme-react";
+import {useEffect, useState} from "react";
+import {saveCardiogram} from "../services/SaveCardiogram";
 
-export function CardiogramView({ cardiogram, isModify, onFieldChange }) {
+export function CardiogramView({ cardiogram, isModify }) {
+
+    const cardiogramState = {
+        cardiogramUuid: cardiogram.cardiogramUuid,
+        receivedTime: cardiogram.receivedTime,
+        measurementTime: cardiogram.measurementTime,
+        rawCardiogram: cardiogram.rawCardiogram,
+        cardiogramState: cardiogram.cardiogramState,
+        callUuid: cardiogram.call.callUuid,
+        cardiographUuid: cardiogram.cardiograph.serialNumber,
+        resultCardiogramUuid: cardiogram.result.resultCardiogramUuid
+    }
+
+    const [newData, setNewData] = useState(cardiogramState || {});
+
     const formatDateTime = (isoString) => {
         const date = new Date(isoString);
         return formatDate(date, "dd.MM.yyyy HH:mm") || "Не указано";
     };
 
     const handleChange = (field, value) => {
-        if (onFieldChange) {
-            onFieldChange({ ...cardiogram, [field]: value });
-        }
+        setNewData(prev => ({ ...prev, [field]: value }));
     };
+
+    useEffect(() => {
+
+        if (!isModify) {
+            async function pushData() {
+                console.log(newData)
+                const response = await saveCardiogram(newData);
+                if (response.cardiogramUuid) {
+                    console.log("Успешно обновлено");
+                    setNewData(response)
+                }
+            }
+            pushData();
+        }
+    }, [isModify]);
 
     // Пример возможных статусов для SelectBox
     const states = {
@@ -29,12 +58,12 @@ export function CardiogramView({ cardiogram, isModify, onFieldChange }) {
                 <label>Статус:</label>
                 {isModify ? (
                     <SelectBox
-                        value={states[cardiogram.cardiogramState]}
+                        value={states[newData.cardiogramState]}
                         onValueChanged={(e) => handleChange("cardiogramState", e.value)}
                         dataSource={Object.values(states)}
                     />
                 ) : (
-                    <span>{states[cardiogram.cardiogramState]}</span>
+                    <span>{states[newData.cardiogramState]}</span>
                 )}
             </div>
 
@@ -42,79 +71,29 @@ export function CardiogramView({ cardiogram, isModify, onFieldChange }) {
                 <label>Время измерения:</label>
                 {isModify ? (
                     <DateBox
-                        value={new Date(cardiogram.measurementTime)}
+                        value={new Date(newData.measurementTime)}
                         onValueChanged={(e) =>
                             handleChange("measurementTime", e.value.toISOString())
                         }
                         type="datetime"
                     />
                 ) : (
-                    <span>{formatDateTime(cardiogram.measurementTime)}</span>
+                    <span>{formatDateTime(newData.measurementTime)}</span>
                 )}
             </div>
 
             <div className="field">
-                <label>Вызов:</label>
+                <label>Время получения:</label>
                 {isModify ? (
-                    <div className="call-input">
-                        <TextBox
-                            value={cardiogram.call?.dayNumber}
-                            onValueChanged={(e) =>
-                                handleChange("call", {
-                                    ...cardiogram.call,
-                                    dayNumber: e.value
-                                })
-                            }
-                        />
-                        /
-                        <TextBox
-                            value={cardiogram.call?.yearNumber}
-                            onValueChanged={(e) =>
-                                handleChange("call", {
-                                    ...cardiogram.call,
-                                    yearNumber: e.value
-                                })
-                            }
-                        />
-                    </div>
-                ) : (
-                    <span>
-            {cardiogram.call?.dayNumber}/{cardiogram.call?.yearNumber}
-          </span>
-                )}
-            </div>
-
-            <div className="field">
-                <label>Результат:</label>
-                {isModify ? (
-                    <TextBox
-                        value={cardiogram.result?.description}
+                    <DateBox
+                        value={new Date(newData.receivedTime)}
                         onValueChanged={(e) =>
-                            handleChange("result", {
-                                ...cardiogram.result,
-                                description: e.value
-                            })
+                            handleChange("measurementTime", e.value.toISOString())
                         }
+                        type="datetime"
                     />
                 ) : (
-                    <span>{cardiogram.result?.description}</span>
-                )}
-            </div>
-
-            <div className="field">
-                <label>Кардиограф:</label>
-                {isModify ? (
-                    <TextBox
-                        value={cardiogram.cardiograph?.serialNumber}
-                        onValueChanged={(e) =>
-                            handleChange("cardiograph", {
-                                ...cardiogram.cardiograph,
-                                serialNumber: e.value
-                            })
-                        }
-                    />
-                ) : (
-                    <span>{cardiogram.cardiograph?.serialNumber}</span>
+                    <span>{formatDateTime(newData.receivedTime)}</span>
                 )}
             </div>
         </div>

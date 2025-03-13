@@ -8,7 +8,8 @@ public record CardiogramModel
     public Guid CardiogramUuid { get; init; }
     public DateTime? ReceivedTime { get; init; }
     public DateTime? MeasurementTime { get; init; }
-    // public string CardiographUuid { get; init; }
+    
+    public string RawCardiogram { get; init; }
     
     
     public CardiogramState CardiogramState { get; init; }

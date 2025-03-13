@@ -1,11 +1,11 @@
-﻿using KpoApi.Application.Contracts.External;
+﻿using KpoApi.Application.Contracts;
+using KpoApi.Application.Contracts.External;
 using KpoApi.Infrastructure.PostgresEfCore.Contracts.Mappers;
 using KpoApi.Infrastructure.PostgresEfCore.Contracts.Repositories;
 using KpoApi.Infrastructure.PostgresEfCore.Mappers;
 using KpoApi.Infrastructure.PostgresEfCore.Repositories;
 using KpoApi.Infrastructure.PostgresEfCore.Services;
 using KpoApi.Infrastructure.PostgresMigrator.Extensions;
-using KpoApi.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KpoApi.Infrastructure.PostgresEfCore.Extensions;
@@ -31,6 +31,7 @@ public static class PostgresInfrastructureExtensions
         
         services.AddScoped<ICardiogramsRepository, CardiogramsRepository>();
         services.AddScoped<IEntireCardiogramMapper, EntireCardiogramMapper>();
+        services.AddScoped<ISaveEntitiesRepository, SaveEntitiesRepository>();
         
         return services;
     }

@@ -15,12 +15,16 @@ public sealed class PostgresProvider : IPostgresProvider
     private readonly ICardiogramsMapper _cardiogramsMapper;
 
     private readonly IEntireCardiogramMapper _entireCardiogramMapper;
-    
-    public PostgresProvider(ICardiogramsRepository cardiogramsRepository, ICardiogramsMapper cardiogramsMapper, IEntireCardiogramMapper entireCardiogramMapper)
+
+    private readonly ISaveEntitiesRepository _saveEntitiesRepository;
+
+    public PostgresProvider(ICardiogramsRepository cardiogramsRepository, ICardiogramsMapper cardiogramsMapper,
+        IEntireCardiogramMapper entireCardiogramMapper, ISaveEntitiesRepository saveEntitiesRepository)
     {
         _cardiogramsRepository = cardiogramsRepository;
         _cardiogramsMapper = cardiogramsMapper;
         _entireCardiogramMapper = entireCardiogramMapper;
+        _saveEntitiesRepository = saveEntitiesRepository;
     }
 
 
@@ -43,7 +47,7 @@ public sealed class PostgresProvider : IPostgresProvider
     public async Task<bool> ChangeCardiogramState(Guid guid, int cardiogramState, CancellationToken cancellationToken)
     {
         var request = await _cardiogramsRepository.ChangeCardiogramState(guid, cardiogramState, cancellationToken);
-        
+
         return request;
     }
 
@@ -52,7 +56,7 @@ public sealed class PostgresProvider : IPostgresProvider
         var requestResult = await _cardiogramsRepository.GetCardiograms(filter, cancellationToken);
 
         CardiogramModel[] cardiogramModels = new CardiogramModel[requestResult.Length];
-        
+
         for (int i = 0; i < requestResult.Length; i++)
         {
             CardiogramModel cardiogramModel = _cardiogramsMapper.MapOrderEntityToModel(requestResult[i]);
@@ -86,6 +90,41 @@ public sealed class PostgresProvider : IPostgresProvider
     public async Task<Cardiogram[]> GetCardiograms(string serialNumber, CancellationToken cancellationToken)
     {
         var requestResult = await _cardiogramsRepository.GetCardiograms(serialNumber, cancellationToken);
+
+        return requestResult;
+    }
+
+    public async Task<User[]> GetUsersByCardiograms(Guid cardiogramUuid, CancellationToken cancellationToken)
+    {
+        var requestResult = await _cardiogramsRepository.GetUsersByCardiograms(cardiogramUuid, cancellationToken);
+
+        return requestResult;
+    }
+
+    public async Task<User> SaveUser(User newUser, CancellationToken cancellationToken)
+    {
+        var requestResult = await _saveEntitiesRepository.SaveUser(newUser, cancellationToken);
+
+        return requestResult;
+    }
+
+    public async Task<Cardiogram> SaveCardiogram(Cardiogram newCardiogram, CancellationToken cancellationToken)
+    {
+        var requestResult = await _saveEntitiesRepository.SaveCardiogram(newCardiogram, cancellationToken);
+
+        return requestResult;
+    }
+
+    public async Task<Call> SaveCall(Call newCall, CancellationToken cancellationToken)
+    {
+        var requestResult = await _saveEntitiesRepository.SaveCall(newCall, cancellationToken);
+
+        return requestResult;
+    }
+
+    public async Task<Cardiograph> SaveCardiograph(Cardiograph newCardiograph, CancellationToken cancellationToken)
+    {
+        var requestResult = await _saveEntitiesRepository.SaveCardiograph(newCardiograph, cancellationToken);
 
         return requestResult;
     }

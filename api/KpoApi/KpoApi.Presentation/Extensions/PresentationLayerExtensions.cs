@@ -10,25 +10,27 @@ public static class PresentationLayerExtensions
 {
     public static IServiceCollection ConfigurePresentationLayer(this IServiceCollection services)
     {
-        
         services.AddControllers()
             .AddApplicationPart(typeof(CardiogramController).Assembly);
-        
+
         services.AddControllers()
             .AddApplicationPart(typeof(UserController).Assembly);
-        
+
         services.AddControllers()
             .AddApplicationPart(typeof(SeparateDataController).Assembly);
-        
+
+        services.AddControllers()
+            .AddApplicationPart(typeof(SaveEntitiesController).Assembly);
+
         services.AddEndpointsApiExplorer();
 
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "API CardioViewer.Backend", Version = "v1" });
         });
-        
+
         services.ConfigureMappers();
-        
+
         return services;
     }
 

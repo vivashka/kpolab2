@@ -1,4 +1,5 @@
-﻿using KpoApi.Domain.Entities;
+﻿using KpoApi.Application.Models.Data;
+using KpoApi.Domain.Entities;
 using KpoApi.Infrastructure.PostgresEfCore.Models.ResultModels;
 using Filter = KpoApi.Application.Models.Data.Filter;
 
@@ -20,4 +21,6 @@ public interface ICardiogramsRepository
     Task<Cardiograph[]> GetCardiographs(Guid userGuid, CancellationToken cancellationToken);
     
     Task<Cardiogram[]> GetCardiograms(string serialNumber, CancellationToken cancellationToken);
+    
+    Task<User[]> GetUsersByCardiograms(Guid cardiogramUuid, CancellationToken cancellationToken);
 }

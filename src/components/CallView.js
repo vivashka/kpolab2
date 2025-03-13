@@ -1,20 +1,37 @@
 import { formatDate } from "devextreme/localization";
 import { TextBox, SelectBox, DateBox } from "devextreme-react";
+import {useEffect, useState} from "react";
+import {SaveCall} from "../services/SaveCall";
 
-export default function CallView({ call, isModify, onFieldChange }) {
-    if (!call) return <div>Нет данных о вызове</div>;
+export default function CallView({ call, isModify, isSave }) {
+
+    const [newData, setNewData] = useState(call || {}); // Инициализируем данными
+
+    const handleChange = (field, value) => {
+        setNewData(prev => ({ ...prev, [field]: value })); // Меняем только одно поле
+    };
+
+    useEffect(() => {
+
+        if (!isModify) {
+            async function pushData() {
+                console.log(newData)
+                const response = await SaveCall(newData);
+                if (response.callUuid) {
+                    console.log("Успешно обновлено");
+                    setNewData(response)
+                }
+            }
+            pushData();
+        }
+    }, [isModify]);
 
     const formatDateTime = (isoString) => {
         const date = new Date(isoString);
         return formatDate(date, "dd.MM.yyyy HH:mm") || "Не указано";
     };
 
-    const handleChange = (field, value) => {
-        if (onFieldChange) {
-            onFieldChange({ ...call, [field]: value });
-        }
-    };
-
+    if (!call) return <div>Нет данных о вызове</div>;
     const getGender = (sex) => {
         switch(sex) {
             case 0: return "Женский";
@@ -37,79 +54,108 @@ export default function CallView({ call, isModify, onFieldChange }) {
                 <div><strong>Тип вызова:</strong>
                     {isModify ? (
                         <TextBox
-                            value={call.callType}
+                            value={newData.callType}
                             onValueChanged={(e) => handleChange("callType", e.value)}
                         />
                     ) : (
-                        call.callType || "Не указан"
+                        newData.callType || "Не указан"
                     )}
                 </div>
                 <div><strong>Приоритет:</strong>
                     {isModify ? (
                         <TextBox
-                            value={call.priority}
-                            onValueChanged={(e) => handleChange("priority", e.value)}
+                            value={Number(newData.priority)}
+                            onValueChanged={(e) => handleChange("priority", Number(e.value))}
                         />
                     ) : (
-                        call.priority
+                        Number(newData.priority)
                     )}
                 </div>
                 <div><strong>Диагноз:</strong>
                     {isModify ? (
-                        <TextBox
-                            value={call.callDiagnosis}
+                        <TextBox mode={""}
+                            value={newData.callDiagnosis}
                             onValueChanged={(e) => handleChange("callDiagnosis", e.value)}
                         />
                     ) : (
-                        call.callDiagnosis || "Не указан"
+                        newData.callDiagnosis || "Не указан"
+                    )}
+                </div>
+                <div><strong>Номер:</strong>
+                    {isModify ? (
+                        <div className="call-input">
+                            <TextBox
+                                value={call?.dayNumber}
+                                onValueChanged={(e) =>
+                                    handleChange("call", {
+                                        ...cardiogram.call,
+                                        dayNumber: e.value
+                                    })
+                                }
+                            />
+                            /
+                            <TextBox
+                                value={call?.yearNumber}
+                                onValueChanged={(e) =>
+                                    handleChange("call", {
+                                        ...cardiogram.call,
+                                        yearNumber: e.value
+                                    })
+                                }
+                            />
+                        </div>
+                    ) : (
+                        <span>
+            {call?.dayNumber}/{call?.yearNumber}
+          </span>
                     )}
                 </div>
             </div>
 
-            <div className="section" style={{ marginTop: "15px" }}>
+            <div className="section" style={{marginTop: "15px"}}>
                 <h2>Пациент</h2>
                 <div><strong>ФИО:</strong>
                     {isModify ? (
                         <>
                             <TextBox
-                                value={call.patientSurname}
+                                value={newData.patientSurname}
                                 onValueChanged={(e) => handleChange("patientSurname", e.value)}
                             />
                             <TextBox
-                                value={call.patientName}
+                                value={newData.patientName}
                                 onValueChanged={(e) => handleChange("patientName", e.value)}
                             />
                             <TextBox
-                                value={call.patientPatronymic}
+                                value={newData.patientPatronymic}
                                 onValueChanged={(e) => handleChange("patientPatronymic", e.value)}
                             />
                         </>
                     ) : (
-                        [call.patientSurname, call.patientName, call.patientPatronymic]
+                        [newData.patientSurname, newData.patientName, newData.patientPatronymic]
                             .filter(Boolean).join(" ")
                     )}
                 </div>
                 <div><strong>Возраст:</strong>
                     {isModify ? (
                         <TextBox
-                            value={call.patientAge}
+                            value={newData.patientAge}
                             onValueChanged={(e) => handleChange("patientAge", e.value)}
                         />
                     ) : (
-                        call.patientAge
+                        newData.patientAge
                     )}
                 </div>
                 <div><strong>Пол:</strong>
                     {isModify ? (
                         <SelectBox
-                            value={call.patientSex}
+                            value={newData.patientSex}
                             onValueChanged={(e) => handleChange("patientSex", e.value)}
                             dataSource={genderOptions}
                             displayExpr="text"
                             valueExpr="value"
                         />
                     ) : (
-                        getGender(call.patientSex)
+                        getGender(newData.patientSex)
                     )}
                 </div>
             </div>
@@ -120,34 +166,34 @@ export default function CallView({ call, isModify, onFieldChange }) {
                     {isModify ? (
                         <>
                             <TextBox
-                                value={call.street}
+                                value={newData.street}
                                 onValueChanged={(e) => handleChange("street", e.value)}
                             />
                             <TextBox
-                                value={call.streetNumber}
+                                value={newData.streetNumber}
                                 onValueChanged={(e) => handleChange("streetNumber", e.value)}
                             />
                             <TextBox
-                                value={call.apartmentNumber}
+                                value={newData.apartmentNumber}
                                 onValueChanged={(e) => handleChange("apartmentNumber", e.value)}
                             />
                         </>
                     ) : (
                         [
-                            `ул. ${call.street}`,
-                            `д. ${call.streetNumber}`,
-                            call.apartmentNumber && `кв. ${call.apartmentNumber}`
+                            `ул. ${newData.street}`,
+                            `д. ${newData.streetNumber}`,
+                            newData.apartmentNumber && `кв. ${newData.apartmentNumber}`
                         ].filter(Boolean).join(", ")
                     )}
                 </div>
                 <div><strong>Адрес госпитализации:</strong>
                     {isModify ? (
                         <TextBox
-                            value={call.hospitalizationAddress}
+                            value={newData.hospitalizationAddress}
                             onValueChanged={(e) => handleChange("hospitalizationAddress", e.value)}
                         />
                     ) : (
-                        call.hospitalizationAddress
+                        newData.hospitalizationAddress
                     )}
                 </div>
             </div>
@@ -159,12 +205,12 @@ export default function CallView({ call, isModify, onFieldChange }) {
                         <strong>{field}:</strong>
                         {isModify ? (
                             <DateBox
-                                value={new Date(call[field])}
+                                value={new Date(newData[field])}
                                 onValueChanged={(e) => handleChange(field, e.value.toISOString())}
                                 type="datetime"
                             />
                         ) : (
-                            formatDateTime(call[field])
+                            formatDateTime(newData[field])
                         )}
                     </div>
                 ))}
@@ -175,31 +221,31 @@ export default function CallView({ call, isModify, onFieldChange }) {
                 <div><strong>Бригада №:</strong>
                     {isModify ? (
                         <TextBox
-                            value={call.brigadeNumber}
+                            value={newData.brigadeNumber}
                             onValueChanged={(e) => handleChange("brigadeNumber", e.value)}
                         />
                     ) : (
-                        call.brigadeNumber
+                        newData.brigadeNumber
                     )}
                 </div>
                 <div><strong>Номер ССМП:</strong>
                     {isModify ? (
                         <TextBox
-                            value={call.ssmpNumber}
+                            value={newData.ssmpNumber}
                             onValueChanged={(e) => handleChange("ssmpNumber", e.value)}
                         />
                     ) : (
-                        call.ssmpNumber
+                        newData.ssmpNumber
                     )}
                 </div>
                 <div><strong>Причина вызова:</strong>
                     {isModify ? (
                         <TextBox
-                            value={call.reason}
+                            value={newData.reason}
                             onValueChanged={(e) => handleChange("reason", e.value)}
                         />
                     ) : (
-                        call.reason
+                        newData.reason
                     )}
                 </div>
             </div>

@@ -10,14 +10,16 @@ public class EntireCardiogramMapper : IEntireCardiogramMapper
 {
     public EntireCardiogramModel MapOrderEntityToModel(EntireCardiogramEntity cardiogramEntity)
     {
-        EntireCardiogramModel entireCardiogramModel = new EntireCardiogramModel()
+        EntireCardiogramModel entireCardiogramModel = new EntireCardiogramModel
         {
             CardiogramUuid = cardiogramEntity.CardiogramUuid,
             ReceivedTime = cardiogramEntity.ReceivedTime,
             MeasurementTime = cardiogramEntity.MeasurementTime,
             CardiogramState = (CardiogramState)cardiogramEntity.CardiogramState,
+            RawCardiogram = cardiogramEntity.RawCardiogram,
             
-            Result = new ResultCardiogramModel()
+            
+            Result = new ResultCardiogramModel
             {
                 Description = cardiogramEntity.Description,
                 DiagnosisMain = cardiogramEntity.DiagnosisMain,
@@ -27,6 +29,7 @@ public class EntireCardiogramMapper : IEntireCardiogramMapper
             Call = new CallDataModel
             {
                 CallUuid = cardiogramEntity.CallUuid,
+                CallState = cardiogramEntity.CallState,
                 CallType = cardiogramEntity.CallType,
                 CallDiagnosis = cardiogramEntity.CallDiagnosis,
     
@@ -35,10 +38,18 @@ public class EntireCardiogramMapper : IEntireCardiogramMapper
                 PatientPatronymic = cardiogramEntity.PatientPatronymic,
                 PatientAge = cardiogramEntity.PatientAge,
                 PatientSex = cardiogramEntity.PatientSex,
+                PatientId = cardiogramEntity.PatientId,
     
                 BrigadeNumber = cardiogramEntity.BrigadeNumber,
+                BrigadeProfile = cardiogramEntity.BrigadeProfile,
+                MainChiefNumber = cardiogramEntity.MainChiefNumber,
+                MainChiefFullName = cardiogramEntity.MainChiefFullName,
+                
+                
                 YearNumber = cardiogramEntity.YearNumber,
                 DayNumber = cardiogramEntity.DayNumber,
+                RegionCode = cardiogramEntity.RegionCode,
+                City = cardiogramEntity.City,
                 SsmpNumber = cardiogramEntity.SsmpNumber,
                 Street = cardiogramEntity.Street,
                 StreetNumber = cardiogramEntity.StreetNumber,
@@ -46,6 +57,7 @@ public class EntireCardiogramMapper : IEntireCardiogramMapper
                 Entrance = cardiogramEntity.Entrance,
                 Priority = (Priority)cardiogramEntity.Priority,
                 HospitalizationAddress = cardiogramEntity.HospitalizationAddress,
+                HospitalizationDistance = cardiogramEntity.HospitalizationDistance,
     
                 Reason = cardiogramEntity.Reason,
                 ReceiveTime = cardiogramEntity.ReceiveTime,
@@ -58,9 +70,7 @@ public class EntireCardiogramMapper : IEntireCardiogramMapper
                 CardiographName = cardiogramEntity.CardiographName,
                 SerialNumber = cardiogramEntity.CardiographUuid,
                 ManufacturerName = cardiogramEntity.ManufacturerName
-                
             }
-
         };
 
         return entireCardiogramModel;

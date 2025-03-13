@@ -23,4 +23,6 @@ public interface ICardiogramService
     Task<Cardiograph[]> GetCardiographs(Guid userGuid);
     
     Task<Cardiogram[]> GetCardiograms(string serialNumber);
+    
+    Task<User[]> GetUsersByCardiograms(Guid cardiogramUuid);
 }

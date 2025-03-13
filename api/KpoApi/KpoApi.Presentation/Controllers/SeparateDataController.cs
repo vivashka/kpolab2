@@ -85,4 +85,20 @@ public class SeparateDataController : ControllerBase
         return BadRequest();
 
     }
+    
+    [EnableCors]
+    [HttpGet("GetUsersByCardiograms")]
+    public async Task<IActionResult> GetUsersByCardiograms([FromQuery] Guid cardiogramUuid)
+    {
+        _logger.Log(LogLevel.Information, "Поступил запрос на получение пользователей по кардиограмме");
+        var request = await _cardiogramService.GetUsersByCardiograms(cardiogramUuid);
+
+        if (request.Length > 0)
+        {
+            return Ok(request);
+        }
+
+        return BadRequest();
+
+    }
 }

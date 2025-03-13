@@ -8,7 +8,7 @@ using Filter = KpoApi.Application.Models.Data.Filter;
 
 namespace KpoApi.Application.Services;
 
-public class CardiogramService : ICardiogramService
+public class CardiogramService : ICardiogramService, ISaveEntitiesService
 {
     private readonly IPostgresProvider _postgresProvider;
     
@@ -80,5 +80,40 @@ public class CardiogramService : ICardiogramService
         var cardiograms = _postgresProvider.GetCardiograms(serialNumber ,CancellationToken.None);
 
         return cardiograms;
+    }
+
+    public Task<User[]> GetUsersByCardiograms(Guid cardiogramUuid)
+    {
+        var cardiograms = _postgresProvider.GetUsersByCardiograms(cardiogramUuid ,CancellationToken.None);
+
+        return cardiograms;
+    }
+
+    public async Task<User> SaveUser(User newUser)
+    {
+        var user = await _postgresProvider.SaveUser(newUser ,CancellationToken.None);
+
+        return user;
+    }
+    
+    public async Task<Cardiogram> SaveCardiogram(Cardiogram newCardiogram)
+    {
+        var cardiogram = await _postgresProvider.SaveCardiogram(newCardiogram ,CancellationToken.None);
+
+        return cardiogram;
+    }
+    
+    public async Task<Call> SaveCall(Call newCall)
+    {
+        var call = await _postgresProvider.SaveCall(newCall ,CancellationToken.None);
+
+        return call;
+    }
+    
+    public async Task<Cardiograph> SaveCardiograph(Cardiograph newCardiograph)
+    {
+        var cardiograph = await _postgresProvider.SaveCardiograph(newCardiograph ,CancellationToken.None);
+
+        return cardiograph;
     }
 }

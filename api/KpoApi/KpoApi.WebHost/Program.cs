@@ -1,9 +1,8 @@
 using KpoApi.Infrastructure.PostgresMigrator.Migrations.Database;
-using KpoApi.WebHost;
 using Microsoft.AspNetCore.Hosting;
 using Serilog;
 
-namespace KpoApi.Presentation;
+namespace KpoApi.WebHost;
 
 public class Program
 {

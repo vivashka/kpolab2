@@ -1,4 +1,5 @@
-﻿using KpoApi.Domain.Enums;
+﻿using System.Text.Json.Nodes;
+using KpoApi.Domain.Enums;
 
 namespace KpoApi.Domain.Entities;
 
@@ -13,5 +14,5 @@ public record Cardiogram
     public CardiogramState CardiogramState { get; init; }
 
     public Guid ResultCardiogramUuid { get; init; }
-    public string? RawCardiogram { get; init; }
+    public JsonObject? RawCardiogram { get; init; }
 }
