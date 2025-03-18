@@ -128,4 +128,11 @@ public sealed class PostgresProvider : IPostgresProvider
 
         return requestResult;
     }
+    
+    public async Task<ResultsCardiogram> SaveResult(ResultsCardiogram newResult, CancellationToken cancellationToken)
+    {
+        var requestResult = await _saveEntitiesRepository.SaveResult(newResult, cancellationToken);
+
+        return requestResult;
+    }
 }

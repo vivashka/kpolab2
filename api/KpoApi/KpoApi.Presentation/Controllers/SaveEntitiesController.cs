@@ -59,4 +59,14 @@ public class SaveEntitiesController : ControllerBase
         
         return Ok(request);
     }
+    
+    [EnableCors]
+    [HttpPost("SaveResult")]
+    public async Task<IActionResult> SaveResult([FromBody] ResultsCardiogram newResult)
+    {
+        _logger.Log(LogLevel.Information, "Поступил запрос сохранение результата кардиограммы");
+        var request = await _saveEntitiesService.SaveResult(newResult);
+        
+        return Ok(request);
+    }
 }

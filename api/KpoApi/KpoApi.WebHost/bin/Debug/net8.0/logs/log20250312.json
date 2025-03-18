@@ -18780,3 +18780,397 @@ WHERE
         )"
 2025-03-12 19:49:21.297 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)" - Validation state: Valid
 2025-03-12 19:49:21.300 +05:00 [Information] Поступил запрос сохранение кардиограммы
+2025-03-12 19:52:49.275 +05:00 [Information] Migrations
+2025-03-12 19:52:49.330 +05:00 [Information] 2025010501: CreateOrganizationTable
+2025-03-12 19:52:49.332 +05:00 [Information] 2025010502: CreateUsersTable
+2025-03-12 19:52:49.333 +05:00 [Information] 2025010503: CreateResultsCardiogramsTable
+2025-03-12 19:52:49.333 +05:00 [Information] 2025010504: CreateCardiogramsStateTable
+2025-03-12 19:52:49.334 +05:00 [Information] 2025010505: CreateCardiographsTable
+2025-03-12 19:52:49.335 +05:00 [Information] 2025010506: CreateSexPatientsTable
+2025-03-12 19:52:49.336 +05:00 [Information] 2025010507: CreatePrioritiesTable
+2025-03-12 19:52:49.336 +05:00 [Information] 2025010508: CreateUsersCardiographsTable
+2025-03-12 19:52:49.337 +05:00 [Information] 2025010509: CreateCallsTable
+2025-03-12 19:52:49.338 +05:00 [Warning] 2025010510: CreateCardiogramsTable (current)
+2025-03-12 19:52:49.588 +05:00 [Warning] Overriding address(es) '"http://localhost:2324/swagger"'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-03-12 19:52:49.613 +05:00 [Information] Now listening on: "http://0.0.0.0:2324"
+2025-03-12 19:52:49.614 +05:00 [Information] Application started. Press Ctrl+C to shut down.
+2025-03-12 19:52:49.615 +05:00 [Information] Hosting environment: "Development"
+2025-03-12 19:52:49.616 +05:00 [Information] Content root path: "C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost"
+2025-03-12 19:52:50.607 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - null null
+2025-03-12 19:52:51.320 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 749.6294ms
+2025-03-12 19:52:51.476 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - null null
+2025-03-12 19:52:51.794 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 318.6132ms
+2025-03-12 19:52:52.315 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - null null
+2025-03-12 19:52:52.752 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 436.8391ms
+2025-03-12 19:53:02.188 +05:00 [Information] Request starting "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - null null
+2025-03-12 19:53:02.196 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:53:02.199 +05:00 [Information] Request finished "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - 204 null null 10.7929ms
+2025-03-12 19:53:02.210 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - "application/json" 271
+2025-03-12 19:53:02.214 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:53:02.220 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)"'
+2025-03-12 19:53:02.262 +05:00 [Information] Route matched with "{action = \"SaveCardiogram\", controller = \"SaveEntities\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveCardiogram(KpoApi.Domain.Entities.Cardiogram)" on controller "KpoApi.Presentation.Controllers.SaveEntitiesController" ("KpoApi.Presentation").
+2025-03-12 19:53:02.984 +05:00 [Information] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-12 19:53:03.059 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)" - Validation state: Valid
+2025-03-12 19:53:03.062 +05:00 [Information] Поступил запрос сохранение кардиограммы
+2025-03-12 19:54:39.311 +05:00 [Information] Request starting "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetOrganizations""" - null null
+2025-03-12 19:54:39.325 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:39.326 +05:00 [Information] Request finished "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetOrganizations""" - 204 null null 15.4691ms
+2025-03-12 19:54:39.332 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetOrganizations""" - "application/json" null
+2025-03-12 19:54:39.335 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:39.337 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetOrganizations (KpoApi.Presentation)"'
+2025-03-12 19:54:39.340 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)" in 97067.4307ms
+2025-03-12 19:54:39.346 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)"'
+2025-03-12 19:54:39.347 +05:00 [Information] Route matched with "{action = \"GetOrganizations\", controller = \"SeparateData\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrganizations()" on controller "KpoApi.Presentation.Controllers.SeparateDataController" ("KpoApi.Presentation").
+2025-03-12 19:54:39.356 +05:00 [Error] Connection id ""0HNB1EM7KNMGM"", Request id ""0HNB1EM7KNMGM:00000002"": An unhandled exception was thrown by the application.
+Npgsql.PostgresException (0x80004005): 23503: insert or update on table "Cardiograms" violates foreign key constraint "fk4"
+
+DETAIL: Key (ResultCardiogramUuid)=(00000000-0000-0000-0000-000000000000) is not present in table "ResultsCardiograms".
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.<ReadMessage>g__ReadMessageSequential|49_0(NpgsqlConnector connector, Boolean async)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at KpoApi.Infrastructure.PostgresEfCore.Repositories.BaseRepository.ExecuteQuerySingleAsync[TModel](String sql, Object param, CancellationToken token) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.Postgres\Repositories\BaseRepository.cs:line 30
+   at KpoApi.Infrastructure.PostgresEfCore.Repositories.BaseRepository.ExecuteQuerySingleAsync[TModel](String sql, Object param, CancellationToken token) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.Postgres\Repositories\BaseRepository.cs:line 31
+   at KpoApi.Infrastructure.PostgresEfCore.Repositories.SaveEntitiesRepository.SaveCardiogram(Cardiogram newCardiogram, CancellationToken cancellationToken) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.Postgres\Repositories\SaveEntitiesRepository.cs:line 63
+   at KpoApi.Infrastructure.PostgresEfCore.Services.PostgresProvider.SaveCardiogram(Cardiogram newCardiogram, CancellationToken cancellationToken) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.Postgres\Services\PostgresProvider.cs:line 113
+   at KpoApi.Application.Services.CardiogramService.SaveCardiogram(Cardiogram newCardiogram) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Application\Services\CardiogramService.cs:line 101
+   at KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram(Cardiogram newCardiogram) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Presentation\Controllers\SaveEntitiesController.cs:line 48
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23503
+    MessageText: insert or update on table "Cardiograms" violates foreign key constraint "fk4"
+    Detail: Key (ResultCardiogramUuid)=(00000000-0000-0000-0000-000000000000) is not present in table "ResultsCardiograms".
+    SchemaName: cardiogram_schema
+    TableName: Cardiograms
+    ConstraintName: fk4
+    File: ri_triggers.c
+    Line: 2599
+    Routine: ri_ReportViolation
+2025-03-12 19:54:39.402 +05:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-12 19:54:39.407 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - 499 null null 97196.9805ms
+2025-03-12 19:54:39.408 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.SeparateDataController.GetOrganizations (KpoApi.Presentation)" - Validation state: Valid
+2025-03-12 19:54:39.414 +05:00 [Information] Поступил запрос на получение организаций
+2025-03-12 19:54:39.461 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.SeparateDataController.GetOrganizations (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 42.6178ms.
+2025-03-12 19:54:39.476 +05:00 [Information] Executing "OkObjectResult", writing value of type '"KpoApi.Domain.Entities.Organization[]"'.
+2025-03-12 19:54:39.506 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.SeparateDataController.GetOrganizations (KpoApi.Presentation)" in 157.3412ms
+2025-03-12 19:54:39.509 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetOrganizations (KpoApi.Presentation)"'
+2025-03-12 19:54:39.510 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetOrganizations""" - 200 null "application/json; charset=utf-8" 178.4002ms
+2025-03-12 19:54:40.608 +05:00 [Information] Request starting "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetUsers""?organizationGuid=87488bc6-c7a6-401b-94c7-ae26968a4c09" - null null
+2025-03-12 19:54:40.610 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:40.611 +05:00 [Information] Request finished "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetUsers""?organizationGuid=87488bc6-c7a6-401b-94c7-ae26968a4c09" - 204 null null 3.7064ms
+2025-03-12 19:54:40.618 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetUsers""?organizationGuid=87488bc6-c7a6-401b-94c7-ae26968a4c09" - "application/json" null
+2025-03-12 19:54:40.621 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:40.623 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetUsers (KpoApi.Presentation)"'
+2025-03-12 19:54:40.636 +05:00 [Information] Route matched with "{action = \"GetUsers\", controller = \"SeparateData\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUsers(System.Guid)" on controller "KpoApi.Presentation.Controllers.SeparateDataController" ("KpoApi.Presentation").
+2025-03-12 19:54:40.699 +05:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-12 19:54:40.712 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.SeparateDataController.GetUsers (KpoApi.Presentation)" - Validation state: Valid
+2025-03-12 19:54:40.715 +05:00 [Information] Поступил запрос на получение организаций
+2025-03-12 19:54:40.725 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.SeparateDataController.GetUsers (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 11.3281ms.
+2025-03-12 19:54:40.727 +05:00 [Information] Executing "OkObjectResult", writing value of type '"KpoApi.Domain.Entities.User[]"'.
+2025-03-12 19:54:40.742 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.SeparateDataController.GetUsers (KpoApi.Presentation)" in 104.2801ms
+2025-03-12 19:54:40.743 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetUsers (KpoApi.Presentation)"'
+2025-03-12 19:54:40.745 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetUsers""?organizationGuid=87488bc6-c7a6-401b-94c7-ae26968a4c09" - 200 null "application/json; charset=utf-8" 126.9215ms
+2025-03-12 19:54:41.218 +05:00 [Information] Request starting "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetCardiographs""?userGuid=53571440-bbea-4eae-8e73-36a682d80fa0" - null null
+2025-03-12 19:54:41.242 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:41.243 +05:00 [Information] Request finished "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetCardiographs""?userGuid=53571440-bbea-4eae-8e73-36a682d80fa0" - 204 null null 25.4123ms
+2025-03-12 19:54:41.248 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetCardiographs""?userGuid=53571440-bbea-4eae-8e73-36a682d80fa0" - "application/json" null
+2025-03-12 19:54:41.257 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:41.258 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetCardiographs (KpoApi.Presentation)"'
+2025-03-12 19:54:41.264 +05:00 [Information] Route matched with "{action = \"GetCardiographs\", controller = \"SeparateData\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCardiographs(System.Guid)" on controller "KpoApi.Presentation.Controllers.SeparateDataController" ("KpoApi.Presentation").
+2025-03-12 19:54:41.297 +05:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-12 19:54:41.301 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.SeparateDataController.GetCardiographs (KpoApi.Presentation)" - Validation state: Valid
+2025-03-12 19:54:41.303 +05:00 [Information] Поступил запрос на получение организаций
+2025-03-12 19:54:41.314 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.SeparateDataController.GetCardiographs (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 11.9342ms.
+2025-03-12 19:54:41.316 +05:00 [Information] Executing "OkObjectResult", writing value of type '"KpoApi.Domain.Entities.Cardiograph[]"'.
+2025-03-12 19:54:41.319 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.SeparateDataController.GetCardiographs (KpoApi.Presentation)" in 43.9081ms
+2025-03-12 19:54:41.320 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetCardiographs (KpoApi.Presentation)"'
+2025-03-12 19:54:41.322 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetCardiographs""?userGuid=53571440-bbea-4eae-8e73-36a682d80fa0" - 200 null "application/json; charset=utf-8" 73.9305ms
+2025-03-12 19:54:41.703 +05:00 [Information] Request starting "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetCardiograms""?serialNumber=38988324379573" - null null
+2025-03-12 19:54:41.705 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:41.706 +05:00 [Information] Request finished "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetCardiograms""?serialNumber=38988324379573" - 204 null null 3.3911ms
+2025-03-12 19:54:41.710 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetCardiograms""?serialNumber=38988324379573" - "application/json" null
+2025-03-12 19:54:41.712 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:41.713 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetCardiograms (KpoApi.Presentation)"'
+2025-03-12 19:54:41.716 +05:00 [Information] Route matched with "{action = \"GetCardiograms\", controller = \"SeparateData\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCardiograms(System.String)" on controller "KpoApi.Presentation.Controllers.SeparateDataController" ("KpoApi.Presentation").
+2025-03-12 19:54:41.735 +05:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-12 19:54:41.739 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.SeparateDataController.GetCardiograms (KpoApi.Presentation)" - Validation state: Valid
+2025-03-12 19:54:41.743 +05:00 [Information] Поступил запрос на получение организаций
+2025-03-12 19:54:41.757 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.SeparateDataController.GetCardiograms (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 16.2157ms.
+2025-03-12 19:54:41.758 +05:00 [Information] Executing "OkObjectResult", writing value of type '"KpoApi.Domain.Entities.Cardiogram[]"'.
+2025-03-12 19:54:41.769 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.SeparateDataController.GetCardiograms (KpoApi.Presentation)" in 52.076ms
+2025-03-12 19:54:41.771 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetCardiograms (KpoApi.Presentation)"'
+2025-03-12 19:54:41.773 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetCardiograms""?serialNumber=38988324379573" - 200 null "application/json; charset=utf-8" 62.357ms
+2025-03-12 19:54:42.202 +05:00 [Information] Request starting "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/Cardiogram/GetEntireModel""?guid=2ff8b1be-a413-4ee0-a975-5b1487789a81" - null null
+2025-03-12 19:54:42.205 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:42.236 +05:00 [Information] Request finished "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/Cardiogram/GetEntireModel""?guid=2ff8b1be-a413-4ee0-a975-5b1487789a81" - 204 null null 33.5586ms
+2025-03-12 19:54:42.252 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/Cardiogram/GetEntireModel""?guid=2ff8b1be-a413-4ee0-a975-5b1487789a81" - "application/json" null
+2025-03-12 19:54:42.255 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:42.255 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.CardiogramController.GetCardiogram (KpoApi.Presentation)"'
+2025-03-12 19:54:42.267 +05:00 [Information] Route matched with "{action = \"GetCardiogram\", controller = \"Cardiogram\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCardiogram(System.Guid)" on controller "KpoApi.Presentation.Controllers.CardiogramController" ("KpoApi.Presentation").
+2025-03-12 19:54:42.292 +05:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-12 19:54:42.296 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.CardiogramController.GetCardiogram (KpoApi.Presentation)" - Validation state: Valid
+2025-03-12 19:54:42.298 +05:00 [Information] Поступил запрос на получение всей информации по кардиограмме
+2025-03-12 19:54:42.319 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.CardiogramController.GetCardiogram (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 22.8249ms.
+2025-03-12 19:54:42.321 +05:00 [Information] Executing "OkObjectResult", writing value of type '"KpoApi.Application.Models.Data.EntireCardiogramModel"'.
+2025-03-12 19:54:42.341 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.CardiogramController.GetCardiogram (KpoApi.Presentation)" in 71.8108ms
+2025-03-12 19:54:42.342 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.CardiogramController.GetCardiogram (KpoApi.Presentation)"'
+2025-03-12 19:54:42.343 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/Cardiogram/GetEntireModel""?guid=2ff8b1be-a413-4ee0-a975-5b1487789a81" - 200 null "application/json; charset=utf-8" 91.3729ms
+2025-03-12 19:54:42.364 +05:00 [Information] Request starting "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetUsersByCardiograms""?cardiogramUuid=2ff8b1be-a413-4ee0-a975-5b1487789a81" - null null
+2025-03-12 19:54:42.366 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:42.367 +05:00 [Information] Request finished "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SeparateData/GetUsersByCardiograms""?cardiogramUuid=2ff8b1be-a413-4ee0-a975-5b1487789a81" - 204 null null 3.2911ms
+2025-03-12 19:54:42.373 +05:00 [Information] Request starting "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetUsersByCardiograms""?cardiogramUuid=2ff8b1be-a413-4ee0-a975-5b1487789a81" - "application/json" null
+2025-03-12 19:54:42.376 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:42.377 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetUsersByCardiograms (KpoApi.Presentation)"'
+2025-03-12 19:54:42.383 +05:00 [Information] Route matched with "{action = \"GetUsersByCardiograms\", controller = \"SeparateData\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUsersByCardiograms(System.Guid)" on controller "KpoApi.Presentation.Controllers.SeparateDataController" ("KpoApi.Presentation").
+2025-03-12 19:54:42.402 +05:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-12 19:54:42.407 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.SeparateDataController.GetUsersByCardiograms (KpoApi.Presentation)" - Validation state: Valid
+2025-03-12 19:54:42.409 +05:00 [Information] Поступил запрос на получение пользователей по кардиограмме
+2025-03-12 19:54:42.418 +05:00 [Information] Executed action method "KpoApi.Presentation.Controllers.SeparateDataController.GetUsersByCardiograms (KpoApi.Presentation)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 9.6126ms.
+2025-03-12 19:54:42.419 +05:00 [Information] Executing "OkObjectResult", writing value of type '"KpoApi.Domain.Entities.User[]"'.
+2025-03-12 19:54:42.420 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.SeparateDataController.GetUsersByCardiograms (KpoApi.Presentation)" in 35.0712ms
+2025-03-12 19:54:42.422 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.SeparateDataController.GetUsersByCardiograms (KpoApi.Presentation)"'
+2025-03-12 19:54:42.423 +05:00 [Information] Request finished "HTTP/1.1" "GET" "http"://"localhost:2324""""/Api/SeparateData/GetUsersByCardiograms""?cardiogramUuid=2ff8b1be-a413-4ee0-a975-5b1487789a81" - 200 null "application/json; charset=utf-8" 49.9427ms
+2025-03-12 19:54:42.454 +05:00 [Information] Request starting "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - null null
+2025-03-12 19:54:42.456 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:42.458 +05:00 [Information] Request finished "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - 204 null null 4.4573ms
+2025-03-12 19:54:42.464 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - "application/json" 335
+2025-03-12 19:54:42.466 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:42.467 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)"'
+2025-03-12 19:54:42.469 +05:00 [Information] Route matched with "{action = \"SaveCardiogram\", controller = \"SaveEntities\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveCardiogram(KpoApi.Domain.Entities.Cardiogram)" on controller "KpoApi.Presentation.Controllers.SaveEntitiesController" ("KpoApi.Presentation").
+2025-03-12 19:54:42.510 +05:00 [Information] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-12 19:54:42.527 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)" - Validation state: Valid
+2025-03-12 19:54:42.529 +05:00 [Information] Поступил запрос сохранение кардиограммы
+2025-03-12 19:54:45.773 +05:00 [Information] Executed action "KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)" in 3301.0186ms
+2025-03-12 19:54:45.775 +05:00 [Information] Executed endpoint '"KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)"'
+2025-03-12 19:54:45.776 +05:00 [Error] Connection id ""0HNB1EM7KNMGO"", Request id ""0HNB1EM7KNMGO:0000000E"": An unhandled exception was thrown by the application.
+Npgsql.PostgresException (0x80004005): 42P01: relation "statistics_log" does not exist
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.<ReadMessage>g__ReadMessageSequential|49_0(NpgsqlConnector connector, Boolean async)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 489
+   at KpoApi.Infrastructure.PostgresEfCore.Repositories.BaseRepository.ExecuteQuerySingleAsync[TModel](String sql, Object param, CancellationToken token) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.Postgres\Repositories\BaseRepository.cs:line 30
+   at KpoApi.Infrastructure.PostgresEfCore.Repositories.BaseRepository.ExecuteQuerySingleAsync[TModel](String sql, Object param, CancellationToken token) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.Postgres\Repositories\BaseRepository.cs:line 31
+   at KpoApi.Infrastructure.PostgresEfCore.Repositories.SaveEntitiesRepository.SaveCardiogram(Cardiogram newCardiogram, CancellationToken cancellationToken) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.Postgres\Repositories\SaveEntitiesRepository.cs:line 63
+   at KpoApi.Infrastructure.PostgresEfCore.Services.PostgresProvider.SaveCardiogram(Cardiogram newCardiogram, CancellationToken cancellationToken) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Infrastructure.Postgres\Services\PostgresProvider.cs:line 113
+   at KpoApi.Application.Services.CardiogramService.SaveCardiogram(Cardiogram newCardiogram) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Application\Services\CardiogramService.cs:line 101
+   at KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram(Cardiogram newCardiogram) in C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.Presentation\Controllers\SaveEntitiesController.cs:line 48
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "statistics_log" does not exist
+    InternalPosition: 13
+    InternalQuery: INSERT INTO statistics_log (name, amount)
+        VALUES (state."StateName", state.p_amount)
+    Where: PL/pgSQL function change_all_state_cardiogram() line 11 at SQL statement
+    File: parse_relation.c
+    Line: 1449
+    Routine: parserOpenTable
+2025-03-12 19:54:45.795 +05:00 [Information] Request finished "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - 500 0 null 3330.6871ms
+2025-03-12 19:54:53.286 +05:00 [Information] Request starting "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - null null
+2025-03-12 19:54:53.289 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:53.289 +05:00 [Information] Request finished "HTTP/1.1" "OPTIONS" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - 204 null null 3.0995ms
+2025-03-12 19:54:53.292 +05:00 [Information] Request starting "HTTP/1.1" "POST" "http"://"localhost:2324""""/Api/SaveEntities/SaveCardiogram""" - "application/json" 333
+2025-03-12 19:54:53.294 +05:00 [Information] CORS policy execution successful.
+2025-03-12 19:54:53.295 +05:00 [Information] Executing endpoint '"KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)"'
+2025-03-12 19:54:53.297 +05:00 [Information] Route matched with "{action = \"SaveCardiogram\", controller = \"SaveEntities\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveCardiogram(KpoApi.Domain.Entities.Cardiogram)" on controller "KpoApi.Presentation.Controllers.SaveEntitiesController" ("KpoApi.Presentation").
+2025-03-12 19:54:53.315 +05:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )"
+2025-03-12 19:54:53.319 +05:00 [Information] Executing action method "KpoApi.Presentation.Controllers.SaveEntitiesController.SaveCardiogram (KpoApi.Presentation)" - Validation state: Valid
+2025-03-12 19:54:53.320 +05:00 [Information] Поступил запрос сохранение кардиограммы

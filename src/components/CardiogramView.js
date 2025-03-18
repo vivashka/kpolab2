@@ -47,7 +47,9 @@ export function CardiogramView({ cardiogram, isModify }) {
         0 : "Просмотрено",
         1 : "Не просмотрено",
         2 : "Утверждено",
-
+    }
+    function getKeyByValue(object, value) {
+        return Object.keys(object).find(key => object[key] === value);
     }
 
     return (
@@ -59,7 +61,10 @@ export function CardiogramView({ cardiogram, isModify }) {
                 {isModify ? (
                     <SelectBox
                         value={states[newData.cardiogramState]}
-                        onValueChanged={(e) => handleChange("cardiogramState", e.value)}
+                        onValueChanged={(e) => {
+                            handleChange("cardiogramState", Number(getKeyByValue(states, e.value)));
+                            console.log(e)
+                        }}
                         dataSource={Object.values(states)}
                     />
                 ) : (

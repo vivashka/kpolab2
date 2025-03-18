@@ -11,4 +11,6 @@ public interface ISaveEntitiesRepository
     Task<Call> SaveCall(Call newCall, CancellationToken cancellationToken);
     
     Task<Cardiograph> SaveCardiograph(Cardiograph newCardiogram, CancellationToken cancellationToken);
+    
+    Task<ResultsCardiogram> SaveResult(ResultsCardiogram newResult, CancellationToken cancellationToken);
 }

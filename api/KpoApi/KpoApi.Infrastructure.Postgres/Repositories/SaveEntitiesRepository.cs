@@ -162,4 +162,23 @@ public class SaveEntitiesRepository : BaseRepository, ISaveEntitiesRepository
 
         return await ExecuteQuerySingleAsync<Cardiograph>(sqlQuery, param, cancellationToken);
     }
+
+    public async Task<ResultsCardiogram> SaveResult(ResultsCardiogram newResult, CancellationToken cancellationToken)
+    {
+        string sqlQuery = """
+                              INSERT INTO "ResultsCardiograms"
+                              VALUES (
+                                  @ResultCardiogramUuid, @Description, @DiagnosisMain
+                              )
+                              ON CONFLICT ("ResultCardiogramUuid")
+                              DO UPDATE SET
+                                  "Description" = @Description,
+                                  "DiagnosisMain" = @DiagnosisMain
+                              RETURNING *;
+                          """;
+
+        var param = new DynamicParameters(newResult);
+
+        return await ExecuteQuerySingleAsync<ResultsCardiogram>(sqlQuery, param, cancellationToken);
+    }
 }

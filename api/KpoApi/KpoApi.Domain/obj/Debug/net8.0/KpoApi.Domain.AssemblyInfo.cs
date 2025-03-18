@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KpoApi.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9069f22a2a0cecca5380e81f3df72ca0a0aaa176")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9db7157f0dd8302113d5a6bb54bf09f410dc00e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("KpoApi.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KpoApi.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

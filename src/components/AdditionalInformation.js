@@ -47,6 +47,7 @@ export default function AdditionalInformation({
             title="Доплонительная информация"
         >
             <TabPanel
+                className={"tab-info"}
                 animationEnabled={true}
                 tabsPosition={"top"}
                 stylingMode={"secondary"}

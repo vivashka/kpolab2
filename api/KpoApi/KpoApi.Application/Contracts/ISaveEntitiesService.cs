@@ -11,4 +11,6 @@ public interface ISaveEntitiesService
     Task<Call> SaveCall(Call newCall);
     
     Task<Cardiograph> SaveCardiograph(Cardiograph newCardiogram);
+    
+    Task<ResultsCardiogram> SaveResult(ResultsCardiogram newCardiogram);
 }

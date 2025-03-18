@@ -116,4 +116,11 @@ public class CardiogramService : ICardiogramService, ISaveEntitiesService
 
         return cardiograph;
     }
+    
+    public async Task<ResultsCardiogram> SaveResult(ResultsCardiogram newCardiograph)
+    {
+        var cardiograph = await _postgresProvider.SaveResult(newCardiograph ,CancellationToken.None);
+
+        return cardiograph;
+    }
 }

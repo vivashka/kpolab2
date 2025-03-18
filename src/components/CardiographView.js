@@ -1,11 +1,30 @@
 import { TextBox } from "devextreme-react";
+import {useEffect, useState} from "react";
+import {SaveCardiograph, saveCardiograph} from "../services/SaveCardiograph";
 
 export function CardiographView({ cardiograph, isModify }) {
     if (!cardiograph) return <div>Нет данных об оборудовании</div>;
 
-    const handleChange = (field, value) => {
+    const [newData, setNewData] = useState(cardiograph || {});
 
+    const handleChange = (field, value) => {
+        setNewData({ ...cardiograph, [field]: value });
     };
+
+    useEffect(() => {
+
+        if (!isModify) {
+            async function pushData() {
+                console.log(newData)
+                const response = await SaveCardiograph(newData);
+                if (response.cardiogramUuid) {
+                    console.log("Успешно обновлено");
+                    setNewData(response)
+                }
+            }
+            pushData();
+        }
+    }, [isModify]);
 
     return (
         <div className="cardiograph-container" style={{ padding: "20px", maxWidth: "600px" }}>
@@ -16,21 +35,21 @@ export function CardiographView({ cardiograph, isModify }) {
                 <div><strong>Серийный номер:</strong>
                     {isModify ? (
                         <TextBox
-                            value={cardiograph.serialNumber}
+                            value={newData.serialNumber}
                             onValueChanged={(e) => handleChange("serialNumber", e.value)}
                         />
                     ) : (
-                        cardiograph.serialNumber
+                        newData.serialNumber
                     )}
                 </div>
                 <div><strong>Название модели:</strong>
                     {isModify ? (
                         <TextBox
-                            value={cardiograph.cardiographName}
+                            value={newData.cardiographName}
                             onValueChanged={(e) => handleChange("cardiographName", e.value)}
                         />
                     ) : (
-                        cardiograph.cardiographName || "Не указано"
+                        newData.cardiographName || "Не указано"
                     )}
                 </div>
             </div>
@@ -40,11 +59,11 @@ export function CardiographView({ cardiograph, isModify }) {
                 <div><strong>Компания:</strong>
                     {isModify ? (
                         <TextBox
-                            value={cardiograph.manufacturerName}
+                            value={newData.manufacturerName}
                             onValueChanged={(e) => handleChange("manufacturerName", e.value)}
                         />
                     ) : (
-                        cardiograph.manufacturerName || "Не указано"
+                        newData.manufacturerName || "Не указано"
                     )}
                 </div>
             </div>

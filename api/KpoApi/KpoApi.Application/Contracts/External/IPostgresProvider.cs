@@ -30,4 +30,6 @@ public interface IPostgresProvider
     Task<Call> SaveCall(Call newCall, CancellationToken cancellationToken);
     
     Task<Cardiograph> SaveCardiograph(Cardiograph newCardiograph, CancellationToken cancellationToken);
+    
+    Task<ResultsCardiogram> SaveResult(ResultsCardiogram newResults, CancellationToken cancellationToken);
 }
