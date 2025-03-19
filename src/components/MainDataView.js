@@ -14,10 +14,12 @@ import store from "../redux/store";
 import {logout} from "../redux/reducers/user";
 import {useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
+import CardiogramCreation from "./CreateCardiogram/CardiogramCreation";
 
 export default function MainDataView() {
     const [currentItem, setCurrentItem] = useState(null);
     const [itemVisible, setItemVisible] = useState(null);
+    const [isAdd, setIsAdd] = useState(false);
 
     const user = useSelector(state => state.user);
 
@@ -80,7 +82,7 @@ export default function MainDataView() {
                         }));
                     case 'user':
                         const cardiograph = await getCardiographs(guid);
-                        return cardiograph.map(graph => ({
+                        return cardiograph.successEntity.map(graph => ({
                             id: `cardiograph|${graph.serialNumber}|${Date.now()}`,
                             text:  graph.cardiographName,
                             parentId: parentNode,
@@ -116,12 +118,13 @@ export default function MainDataView() {
 
     return (<div className="form">
             {currentItem && <AdditionalInformation data={currentItem} visible={itemVisible} setVisible={setItemVisible}/>}
-
+            {isAdd && <CardiogramCreation isVisible={isAdd} setIsVisible={setIsAdd} />}
             <header className={"top-menu"} >
                 <div>
                     {user.user.login} {user.user.fullName}
                     <Button type={"default"}
                         width={"max-content"}
+                            onClick={() => setIsAdd(true)}
                     >
                         Добавить
                     </Button>

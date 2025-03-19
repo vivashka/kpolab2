@@ -44,6 +44,13 @@ public sealed class PostgresProvider : IPostgresProvider
         }
     }
 
+    public async Task<Call[]> GetCalls(CancellationToken cancellationToken)
+    {
+        var request = await _cardiogramsRepository.GetCalls(cancellationToken);
+
+        return request;
+    }
+
     public async Task<bool> ChangeCardiogramState(Guid guid, int cardiogramState, CancellationToken cancellationToken)
     {
         var request = await _cardiogramsRepository.ChangeCardiogramState(guid, cardiogramState, cancellationToken);
@@ -80,7 +87,7 @@ public sealed class PostgresProvider : IPostgresProvider
         return requestResult;
     }
 
-    public async Task<Cardiograph[]> GetCardiographs(Guid userGuid, CancellationToken cancellationToken)
+    public async Task<Cardiograph[]> GetCardiographs(Guid? userGuid, CancellationToken cancellationToken)
     {
         var requestResult = await _cardiogramsRepository.GetCardiographs(userGuid, cancellationToken);
 

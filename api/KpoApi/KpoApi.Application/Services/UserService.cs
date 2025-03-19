@@ -16,7 +16,7 @@ public class UserService : IUserService
         _efCoreProvider = efCoreProvider;
     }
 
-    public async Task<ResponseModel<User>> CreateUser(User user)
+    public async Task<ResponseModel<User>> CreateUser(User user, string CardiographId)
     {
         using (var md5 = MD5.Create())
         {
@@ -30,7 +30,7 @@ public class UserService : IUserService
             user.Password =  sb.ToString();
         }
 
-        var response = await _efCoreProvider.CreateUser(user);
+        var response = await _efCoreProvider.CreateUser(user, CardiographId);
 
         if (response is {})
         {

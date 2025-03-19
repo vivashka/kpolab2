@@ -13,14 +13,15 @@ public interface ICardiogramsRepository
     
     Task<CardiogramEntity[]> GetCardiograms(Filter filter, CancellationToken cancellationToken);
 
-
     Task<Organization[]> GetOrganizations(CancellationToken cancellationToken);
 
     Task<User[]> GetUsers(Guid organizationGuid, CancellationToken cancellationToken);
     
-    Task<Cardiograph[]> GetCardiographs(Guid userGuid, CancellationToken cancellationToken);
+    Task<Cardiograph[]> GetCardiographs(Guid? userGuid, CancellationToken cancellationToken);
     
     Task<Cardiogram[]> GetCardiograms(string serialNumber, CancellationToken cancellationToken);
     
     Task<User[]> GetUsersByCardiograms(Guid cardiogramUuid, CancellationToken cancellationToken);
+
+    Task<Call[]> GetCalls(CancellationToken cancellationToken);
 }

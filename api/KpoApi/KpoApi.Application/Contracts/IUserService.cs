@@ -5,7 +5,7 @@ namespace KpoApi.Application.Contracts;
 
 public interface IUserService
 {
-    Task<ResponseModel<User>> CreateUser(User user);
+    Task<ResponseModel<User>> CreateUser(User user, string CardiographId);
     
     Task<ResponseModel<User>> UserAuthentication(string login, string password);
 

@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KpoApi.Domain.Entities;
+namespace KpoApi.Presentation.Dtos.Request;
 
-public class User
+public class UserDto
 {
-    [Key]
     public Guid UserUuid { get; init; }
     
     [Required]
@@ -24,4 +23,6 @@ public class User
     
     [Required]
     public string Appointment { get; init; }
+    
+    public string CardiographId { get; init; }
 }

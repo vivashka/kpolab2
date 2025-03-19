@@ -1,5 +1,6 @@
 ﻿using KpoApi.Application.Contracts;
 using KpoApi.Domain.Entities;
+using KpoApi.Presentation.Dtos.Request;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -62,10 +63,15 @@ public class SaveEntitiesController : ControllerBase
     
     [EnableCors]
     [HttpPost("SaveResult")]
-    public async Task<IActionResult> SaveResult([FromBody] ResultsCardiogram newResult)
+    public async Task<IActionResult> SaveResult([FromBody] ResultsCardiogramDto newResult)
     {
+        var requestModel = new ResultsCardiogram()
+        {
+            DiagnosisMain = newResult.DiagnosisMain,
+            Description = newResult.Description
+        };
         _logger.Log(LogLevel.Information, "Поступил запрос сохранение результата кардиограммы");
-        var request = await _saveEntitiesService.SaveResult(newResult);
+        var request = await _saveEntitiesService.SaveResult(requestModel);
         
         return Ok(request);
     }

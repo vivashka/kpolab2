@@ -6,7 +6,7 @@ namespace KpoApi.Domain.Entities;
 public record Cardiogram
 {
     
-    public Guid CardiogramUuid { get; init; }
+    public Guid? CardiogramUuid { get; init; }
     public DateTime? ReceivedTime { get; init; }
     public DateTime? MeasurementTime { get; init; }
     public string CardiographUuid { get; init; }

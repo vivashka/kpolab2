@@ -78,7 +78,7 @@ public class CardiogramService : ICardiogramService, ISaveEntitiesService
             return new ResponseModel<Organization[]>(
                 IsSuccess: false,
                 SuccessEntity: null,
-                ErrorEntity: new ActionErrorModel("400", "Непредвиденная ошибка при получении организацйи"));
+                ErrorEntity: new ActionErrorModel("400", "Непредвиденная ошибка при получении оргинизаций"));
         }
         
     }
@@ -90,11 +90,35 @@ public class CardiogramService : ICardiogramService, ISaveEntitiesService
         return usersArray;
     }
 
-    public Task<Cardiograph[]> GetCardiographs(Guid userGuid)
+    public async Task<ResponseModel<Cardiograph[]>> GetCardiographs(Guid? userGuid)
     {
-        var cardiographs = _postgresProvider.GetCardiographs(userGuid ,CancellationToken.None);
-
-        return cardiographs;
+        try
+        {
+            var cardiographs = await _postgresProvider.GetCardiographs(userGuid ,CancellationToken.None);
+            
+            if (cardiographs.Length > 0)
+            {
+                return new ResponseModel<Cardiograph[]>(
+                    IsSuccess: true,
+                    SuccessEntity: cardiographs,
+                    ErrorEntity: null);
+            }
+            else
+            {
+                return new ResponseModel<Cardiograph[]>(
+                    IsSuccess: false,
+                    SuccessEntity: null,
+                    ErrorEntity: new ActionErrorModel("400", "Не удалось получить кардиографы"));
+            }
+           
+        }
+        catch (Exception e)
+        {
+             return new ResponseModel<Cardiograph[]>(
+                IsSuccess: false,
+                SuccessEntity: null,
+                ErrorEntity: new ActionErrorModel("400", "Непредвиденная ошибка при получении кардиографов"));
+        }
     }
 
     public Task<Cardiogram[]> GetCardiograms(string serialNumber)
@@ -277,11 +301,22 @@ public class CardiogramService : ICardiogramService, ISaveEntitiesService
                 ErrorEntity: new ActionErrorModel("400", "Описание не может быть менее 5 символов"));
         }
 
-        var cardiograph = await _postgresProvider.SaveResult(newCardiogram ,CancellationToken.None);
+        var result = await _postgresProvider.SaveResult(newCardiogram ,CancellationToken.None);
         
         return new ResponseModel<ResultsCardiogram>(
             IsSuccess: true,
-            SuccessEntity: cardiograph,
+            SuccessEntity: result,
             ErrorEntity: null);
+    }
+
+    public async Task<ResponseModel<Call[]>> GetCalls()
+    {
+        var calls = await _postgresProvider.GetCalls(CancellationToken.None);
+
+        return new ResponseModel<Call[]>(
+            IsSuccess: true,
+            SuccessEntity: calls,
+            ErrorEntity: null);
+
     }
 }

@@ -23,14 +23,25 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("CreateUser")]
-    public async Task<IActionResult> CreateUser([FromBody] User user)
+    public async Task<IActionResult> CreateUser([FromBody] UserDto userDto)
     {
+        var user = new User()
+        { 
+            UserUuid = userDto.UserUuid,
+            Login = userDto.Login,
+            Password = userDto.Password, 
+            PhoneNumber = userDto.PhoneNumber,
+            FullName = userDto.FullName,
+            OrganizationUuid = userDto.OrganizationUuid,
+            Appointment = userDto.Appointment
+        };
+        
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
         _logger.Log(LogLevel.Information, "Поступил запрос на регистрацию пользователя");
-        var request = await _userService.CreateUser(user);
+        var request = await _userService.CreateUser(user, userDto.CardiographId);
 
         return Ok(request);
     }
