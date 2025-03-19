@@ -2,24 +2,31 @@ import { formatDate } from "devextreme/localization";
 import { TextBox, SelectBox, DateBox } from "devextreme-react";
 import {useEffect, useState} from "react";
 import {SaveCall} from "../services/SaveCall";
+import {showModal} from "../redux/reducers/error";
 
-export default function CallView({ call, isModify, isSave }) {
+export default function CallView({ call, isModify, isSave, dispatch }) {
 
     const [newData, setNewData] = useState(call || {}); // Инициализируем данными
 
     const handleChange = (field, value) => {
         setNewData(prev => ({ ...prev, [field]: value })); // Меняем только одно поле
     };
+    useEffect(() => {
+        setNewData(call || {});
+    }, [call]);
 
     useEffect(() => {
 
-        if (!isModify) {
+        if (!isModify && isSave) {
             async function pushData() {
                 console.log(newData)
                 const response = await SaveCall(newData);
-                if (response.callUuid) {
+                if (response.isSuccess) {
                     console.log("Успешно обновлено");
-                    setNewData(response)
+                    setNewData(response.successEntity)
+                }
+                else {
+                    dispatch(showModal(response?.errorEntity))
                 }
             }
             pushData();

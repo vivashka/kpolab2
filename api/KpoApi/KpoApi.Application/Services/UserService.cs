@@ -2,13 +2,13 @@
 using System.Text;
 using KpoApi.Application.Contracts;
 using KpoApi.Application.Contracts.External;
+using KpoApi.Application.Models.ResultModels;
 using KpoApi.Domain.Entities;
 
 namespace KpoApi.Application.Services;
 
 public class UserService : IUserService
 {
-    
     private readonly IPostgresEfCoreProvider _efCoreProvider;
 
     public UserService(IPostgresEfCoreProvider efCoreProvider)
@@ -16,28 +16,52 @@ public class UserService : IUserService
         _efCoreProvider = efCoreProvider;
     }
 
-    public Task<User> CreateUser(User user)
+    public async Task<ResponseModel<User>> CreateUser(User user)
     {
-        var sha1 = new SHA1Managed();
-        var plaintextBytes = Encoding.UTF8.GetBytes(user.Password + user.Login);
-        var hashBytes = sha1.ComputeHash(plaintextBytes);
-        
-        var hashPassword = new StringBuilder();
-        foreach (var hashByte in hashBytes)
+        using (var md5 = MD5.Create())
         {
-            hashPassword.AppendFormat("{0:x2}", hashByte);
+            var inputBytes = Encoding.UTF8.GetBytes(user.Password + user.Login);
+            var hashBytes = md5.ComputeHash(inputBytes);
+            var sb = new StringBuilder();
+            foreach (var b in hashBytes)
+            {
+                sb.AppendFormat("{0:x2}", b);
+            }
+            user.Password =  sb.ToString();
         }
 
-        user.Password = hashPassword.ToString();
+        var response = await _efCoreProvider.CreateUser(user);
+
+        if (response is {})
+        {
+            return new ResponseModel<User>(
+                IsSuccess: true,
+                SuccessEntity: response,
+                ErrorEntity: null);
+        }
+        return new ResponseModel<User>(
+            IsSuccess: false,
+            SuccessEntity: null,
+            ErrorEntity: new ActionErrorModel("400", "Не удалось создать пользователя"));
         
-        var response = _efCoreProvider.CreateUser(user);
-        
-        return response;
     }
 
-    public Task<bool> UserAuthentication(string login, string password)
+    public async Task<ResponseModel<User>> UserAuthentication(string login, string password)
     {
-        throw new NotImplementedException();
+        var response = await _efCoreProvider.UserAuthentication(login, password);
+        if (response is {})
+        {
+            return new ResponseModel<User>(
+                IsSuccess: true,
+                SuccessEntity: response,
+                ErrorEntity: null);
+        }
+
+        return new ResponseModel<User>(
+            IsSuccess: false,
+            SuccessEntity: response,
+            ErrorEntity: new ActionErrorModel("400", 
+                "Не удалось найти пользователя с таким логином и паролем"));
     }
 
     public async Task<bool> DeleteUser(User user, bool isAdmin) // TODO как будет время нужно возвращать модель ответа 
@@ -46,7 +70,7 @@ public class UserService : IUserService
         {
             return await _efCoreProvider.DeleteUser(user); //TODO нужно удалять fk на таблину organization 
         }
-        
+
         return false;
     }
 

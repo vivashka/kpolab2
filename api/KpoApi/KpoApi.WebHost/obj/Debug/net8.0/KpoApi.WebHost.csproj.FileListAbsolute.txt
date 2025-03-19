@@ -258,3 +258,5 @@ C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250311.json
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250312.json
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250317.json
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250318.json
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250319.json

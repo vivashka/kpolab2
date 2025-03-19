@@ -6,7 +6,7 @@ public interface IUsersRepository
 {
     Task<User> CreateUsers(User user, CancellationToken cancellationToken);
     
-    Task<bool> UserAuthentication(string login, string password, CancellationToken cancellationToken);
+    Task<User?> UserAuthentication(string login, string password, CancellationToken cancellationToken);
     
     Task<bool> DeleteUser(User user, CancellationToken cancellationToken);
 

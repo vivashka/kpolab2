@@ -1,6 +1,7 @@
 ﻿namespace KpoApi.Presentation.Dtos.Request;
 
-public class AuthenticationDto
+public record AuthenticationDto
 {
-    
+    public string Login { get; init; }
+    public string Password { get; init; }
 }

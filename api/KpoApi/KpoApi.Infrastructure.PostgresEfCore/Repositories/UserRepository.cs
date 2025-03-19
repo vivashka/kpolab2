@@ -24,9 +24,11 @@ public class UserRepository : IUsersRepository
         return response.Entity;
     }
 
-    public Task<bool> UserAuthentication(string login, string password, CancellationToken cancellationToken)
+    public async Task<User?> UserAuthentication(string login, string password, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var response = await _appDbContext.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password)!;
+
+        return response;
     }
 
     public async Task<bool> DeleteUser(User user, CancellationToken cancellationToken)

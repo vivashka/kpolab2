@@ -1,9 +1,12 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Button } from "devextreme-react/button";
 import { UserView } from "./UserView";
 
 export function UsersList({ users }) {
     const [editingUserId, setEditingUserId] = useState(null);
+    useEffect(() => {
+        setEditingUserId(users || {});
+    }, [users]);
 
     return (
         <div className="users-list-container" style={{ padding: "20px", maxWidth: "800px" }}>

@@ -16,7 +16,7 @@ public interface ICardiogramService
     
     Task<ResponseModel<CardiogramModel[]>> GetCardiograms(Filter filter);
     
-    Task<Organization[]> GetOrganizations();
+    Task<ResponseModel<Organization[]>> GetOrganizations();
 
     Task<User[]> GetUsers(Guid organizationGuid);
     

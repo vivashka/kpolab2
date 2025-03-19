@@ -1,9 +1,9 @@
 import {TextArea, TextBox} from "devextreme-react";
 import {useEffect, useState} from "react";
 import {SaveResult} from "../services/SaveResult";
+import {showModal} from "../redux/reducers/error";
 
-export function ResultView({ result, isModify }) {
-    if (!result) return <div>Нет данных о результатах</div>;
+export function ResultView({ result, isModify, isSave, dispatch }) {
 
     const [newData, setNewData] = useState(result || {});
 
@@ -12,19 +12,27 @@ export function ResultView({ result, isModify }) {
     };
 
     useEffect(() => {
+        setNewData(result || {});
+    }, [result]);
 
-        if (!isModify) {
+    useEffect(() => {
+
+        if (!isModify && isSave) {
             async function pushData() {
                 console.log(newData)
                 const response = await SaveResult(newData);
-                if (response.cardiogramUuid) {
+                if (response.isSuccess) {
                     console.log("Успешно обновлено");
-                    setNewData(response)
+                    setNewData(response.successEntity)
+                }
+                else {
+                    dispatch(showModal(response?.errorEntity))
                 }
             }
             pushData();
         }
     }, [isModify]);
+    if (!result) return <div>Нет данных о результатах</div>;
 
     return (
         <div className="result-container" style={{ padding: "20px", maxWidth: "600px" }}>

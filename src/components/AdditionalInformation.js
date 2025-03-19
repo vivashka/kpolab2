@@ -7,7 +7,8 @@ import {CardiographView} from "./CardiographView";
 import {useEffect, useState} from "react";
 import {UserView} from "./UserView";
 import {UsersList} from "./UsersList";
-import {getCardiograms} from "../services/getUsersByCardiograms";
+import {getUsersByCardiograms} from "../services/getUsersByCardiograms";
+import {useDispatch} from "react-redux";
 
 
 export default function AdditionalInformation({
@@ -18,26 +19,22 @@ export default function AdditionalInformation({
     const [isModify, setIsModify] = useState(false);
     const [isSave, setIsSave] = useState(false);
 
-    const [users, setUsers] = useState([])
+    const dispatch = useDispatch();
 
+    const [users, setUsers] = useState([])
     useEffect(() => {
         async function fetchData() {
-            const request = await getCardiograms(data.cardiogramUuid);
-            console.log(request);
+            const request = await getUsersByCardiograms(data.cardiogramUuid);
             if (request.length > 0) {
                 setUsers(request)
             }
         }
-
         fetchData()
     }, []);
     const hide = () => {
         setVisible(false)
     };
 
-    const handleUsersChange = (updatedUsers) => {
-        setUsers(updatedUsers);
-    };
 
     return (
         <Popup
@@ -58,19 +55,21 @@ export default function AdditionalInformation({
                     <CardiogramView
                         cardiogram={data}
                         isModify={isModify}
+                        isSave={isSave}
+                        dispatch={dispatch}
                     />
                 </Item>
                 <Item title="Вызов">
-                    <CallView call={data.call} isModify={isModify} isSave={isSave} />
+                    <CallView call={data.call} isModify={isModify} isSave={isSave} dispatch={dispatch} />
                 </Item>
                 <Item title="Результат">
-                    <ResultView result={data.result} isModify={isModify}/>
+                    <ResultView result={data.result} isModify={isModify} isSave={isSave} dispatch={dispatch}/>
                 </Item>
                 <Item title="Кардиограф">
-                    <CardiographView cardiograph={data.cardiograph} isModify={isModify}/>
+                    <CardiographView cardiograph={data.cardiograph} isModify={isModify} isSave={isSave} dispatch={dispatch}/>
                 </Item>
                 <Item title="Авторы">
-                    <UsersList users={users} isModify={isModify}/>
+                    <UsersList users={users} isModify={isModify} isSave={isSave} dispatch={dispatch}/>
                 </Item>
 
             </TabPanel>

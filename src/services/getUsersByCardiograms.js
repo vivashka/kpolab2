@@ -1,4 +1,4 @@
-export async function getCardiograms(cardiogramUuid) {
+export async function getUsersByCardiograms(cardiogramUuid) {
     try {
         const url = process.env.REACT_APP_BASE_URL + process.env.REACT_GET_USERS_BY_CARDIOGRAMS + cardiogramUuid
         const response = await fetch(url, {

@@ -1,6 +1,7 @@
 ﻿using KpoApi.Application.Contracts;
 using KpoApi.Application.Contracts.External;
 using KpoApi.Domain.Entities;
+using KpoApi.Presentation.Dtos.Request;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -24,6 +25,10 @@ public class UserController : ControllerBase
     [HttpPost("CreateUser")]
     public async Task<IActionResult> CreateUser([FromBody] User user)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
         _logger.Log(LogLevel.Information, "Поступил запрос на регистрацию пользователя");
         var request = await _userService.CreateUser(user);
 
@@ -45,6 +50,16 @@ public class UserController : ControllerBase
         _logger.Log(LogLevel.Information, "Поступил запрос на удаление пользователя");
         
         var request = await _userService.GetUsers();
+
+        return Ok(request);
+    }
+    
+    [HttpPost("Authentication")]
+    public async Task<IActionResult> Authentication([FromBody] AuthenticationDto authenticationDto)
+    {
+        _logger.Log(LogLevel.Information, "Поступил запрос на авторизацию пользователя");
+        
+        var request = await _userService.UserAuthentication(authenticationDto.Login, authenticationDto.Password);
 
         return Ok(request);
     }

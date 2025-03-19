@@ -29,13 +29,7 @@ public class SeparateDataController : ControllerBase
         _logger.Log(LogLevel.Information, "Поступил запрос на получение организаций");
         var request = await _cardiogramService.GetOrganizations();
 
-        if (request.Length > 0)
-        {
-            return Ok(request);
-        }
-
-        return BadRequest();
-
+        return Ok(request);
     }
     
     [EnableCors]

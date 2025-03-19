@@ -10,11 +10,16 @@ import {getEntireCardiogram} from "../services/getEntireCardiogram";
 import AdditionalInformation from "./AdditionalInformation";
 import {Button} from "devextreme-react";
 import './MainDataView.scss'
+import store from "../redux/store";
+import {logout} from "../redux/reducers/user";
+import {useSelector} from "react-redux";
+import {Navigate} from "react-router-dom";
 
 export default function MainDataView() {
-    const [data, setData] = useState(null);
     const [currentItem, setCurrentItem] = useState(null);
     const [itemVisible, setItemVisible] = useState(null);
+
+    const user = useSelector(state => state.user);
 
     const handleItemClick = async (e) => {
         const { itemData } = e;
@@ -33,7 +38,6 @@ export default function MainDataView() {
                     setItemVisible(true);
                 } catch (error) {
                     console.error('Ошибка загрузки кардиограммы:', error);
-                    // Можно добавить уведомление об ошибке
                 }
             }
         }
@@ -54,7 +58,7 @@ export default function MainDataView() {
 
             if (!parentNode) {
                 const organizations = await getOrganizations();
-                return organizations.map(organization => ({
+                return organizations.successEntity.map(organization => ({
                     id: `organization|${organization.organizationUuid}`,
                     text: organization.name,
                     parentId: null,
@@ -102,16 +106,28 @@ export default function MainDataView() {
         }
     }), [getUsers, getCardiographs, getCardiograms]);
 
+    function Logout(){
+        store.dispatch(logout())
+    }
+
+    if (!user.isLoggedIn){
+        return <Navigate to="/login" />
+    }
 
     return (<div className="form">
             {currentItem && <AdditionalInformation data={currentItem} visible={itemVisible} setVisible={setItemVisible}/>}
 
             <header className={"top-menu"} >
-                <Button className={"button-apply"}
-                    width={"max-content"}
-                >
-                    Добавить
-                </Button>
+                <div>
+                    {user.user.login} {user.user.fullName}
+                    <Button type={"default"}
+                        width={"max-content"}
+                    >
+                        Добавить
+                    </Button>
+                </div>
+                <Button type={"danger"} text={"Выход"} onClick={Logout} />
+
             </header>
 
             <div className="form">

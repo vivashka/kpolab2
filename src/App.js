@@ -4,6 +4,7 @@ import {loadMessages, locale} from "devextreme/localization";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {MainPage} from "./pages/main-page";
 import './devextreme-theme/dx.generic.arm-theme.css'
+import {LoginPage} from "./pages/login-page";
 
 const routerProvider = createBrowserRouter([
     {
@@ -11,8 +12,12 @@ const routerProvider = createBrowserRouter([
         element: <MainPage />,
     },
     {
+        path: "/login",
+        element: <LoginPage />,
+    },
+    {
         path: "*",
-        element: <MainPage />,
+        element: <LoginPage />,
     }
 ])
 

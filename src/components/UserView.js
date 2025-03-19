@@ -1,26 +1,34 @@
 import { TextBox } from "devextreme-react";
 import {useEffect, useState} from "react";
-import {SaveResult} from "../services/SaveResult";
 import {SaveUser} from "../services/SaveUser";
+import {showModal} from "../redux/reducers/error";
+import {useDispatch} from "react-redux";
 
 export function UserView({ user, isModify }) {
     if (!user) return <div>Нет данных о пользователе</div>;
 
+    const dispatch = useDispatch();
     const [newData, setNewData] = useState(user || {});
+    const [isChange, setIsChange] = useState(false);
 
     const handleChange = (field, value) => {
         setNewData({ ...user, [field]: value });
+        setIsChange(true)
     };
 
     useEffect(() => {
 
-        if (!isModify) {
+        if (!isModify && isChange) {
             async function pushData() {
                 console.log(newData)
                 const response = await SaveUser(newData);
-                if (response.cardiogramUuid) {
+                if (response.isSuccess) {
                     console.log("Успешно обновлено");
-                    setNewData(response)
+                    setNewData(response.successEntity)
+                    setIsChange(false)
+                }
+                else {
+                    dispatch(showModal(response?.errorEntity))
                 }
             }
             pushData();

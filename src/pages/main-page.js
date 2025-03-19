@@ -1,8 +1,12 @@
 import MainDataView from "../components/MainDataView";
+import {Button} from "devextreme-react";
 
 
 export function MainPage(){
     return (
-        <MainDataView />
+        <div className="main-page">
+            <MainDataView />
+        </div>
+
     )
 }

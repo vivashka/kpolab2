@@ -20,9 +20,11 @@ public class PostgresEfCoreProvider : IPostgresEfCoreProvider
         return response;
     }
 
-    public Task<User> UserAuthentication(string login, string password)
+    public async Task<User?> UserAuthentication(string login, string password)
     {
-        throw new NotImplementedException();
+        var response = await _usersRepository.UserAuthentication(login, password, CancellationToken.None);
+        
+        return response;
     }
 
     public async Task<bool> DeleteUser(User user)
@@ -38,4 +40,6 @@ public class PostgresEfCoreProvider : IPostgresEfCoreProvider
 
         return users;
     }
+    
+    
 }

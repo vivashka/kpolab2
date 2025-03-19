@@ -18,17 +18,10 @@ public class SaveEntitiesRepository : BaseRepository, ISaveEntitiesRepository
                               "PhoneNumber" = @PhoneNumber,
                               "FullName" = @FullName,
                               "Appointment" = @Appointment,
-                              "Password" = @Password;
+                              "Password" = @Password
                           RETURNING *;
                           """;
-        var param = new DynamicParameters();
-        param.Add("UserUuid", newUser.UserUuid);
-        param.Add("OrganizationUuid", newUser.OrganizationUuid);
-        param.Add("PhoneNumber", newUser.PhoneNumber);
-        param.Add("FullName", newUser.FullName);
-        param.Add("Appointment", newUser.Appointment);
-        param.Add("Password", newUser.Password);
-        param.Add("Login", newUser.Login);
+        var param = new DynamicParameters(newUser);
 
         return await ExecuteQuerySingleAsync<User>(sqlQuery, param, cancellationToken);
     }

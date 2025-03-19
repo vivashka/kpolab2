@@ -1,27 +1,33 @@
 import { formatDate } from "devextreme/localization";
-import { TextBox, SelectBox, DateBox } from "devextreme-react";
+import {TextBox, SelectBox, DateBox, Form} from "devextreme-react";
 import {useEffect, useState} from "react";
 import {saveCardiogram} from "../services/SaveCardiogram";
+import {CustomRule} from "devextreme-react/form";
+import {showModal} from "../redux/reducers/error";
 
-export function CardiogramView({ cardiogram, isModify }) {
+export function CardiogramView({ cardiogram, isModify, dispatch, isSave }) {
 
-    const cardiogramState = {
-        cardiogramUuid: cardiogram.cardiogramUuid,
-        receivedTime: cardiogram.receivedTime,
-        measurementTime: cardiogram.measurementTime,
-        rawCardiogram: cardiogram.rawCardiogram,
-        cardiogramState: cardiogram.cardiogramState,
-        callUuid: cardiogram.call.callUuid,
-        cardiographUuid: cardiogram.cardiograph.serialNumber,
-        resultCardiogramUuid: cardiogram.result.resultCardiogramUuid
-    }
+    const getCardiogramState = (c) => ({
+        cardiogramUuid: c.cardiogramUuid,
+        receivedTime: c.receivedTime,
+        measurementTime: c.measurementTime,
+        rawCardiogram: c.rawCardiogram,
+        cardiogramState: c.cardiogramState,
+        callUuid: c.call.callUuid,
+        cardiographUuid: c.cardiograph.serialNumber,
+        resultCardiogramUuid: c.result.resultCardiogramUuid
+    });
 
-    const [newData, setNewData] = useState(cardiogramState || {});
+    // Инициализация state на основе cardiogram из props
+    const [newData, setNewData] = useState(getCardiogramState(cardiogram));
 
     const formatDateTime = (isoString) => {
         const date = new Date(isoString);
         return formatDate(date, "dd.MM.yyyy HH:mm") || "Не указано";
     };
+    useEffect(() => {
+        setNewData(getCardiogramState(cardiogram));
+    }, [cardiogram]);
 
     const handleChange = (field, value) => {
         setNewData(prev => ({ ...prev, [field]: value }));
@@ -29,13 +35,16 @@ export function CardiogramView({ cardiogram, isModify }) {
 
     useEffect(() => {
 
-        if (!isModify) {
+        if (!isModify && isSave) {
             async function pushData() {
                 console.log(newData)
                 const response = await saveCardiogram(newData);
-                if (response.cardiogramUuid) {
+                if (response.isSuccess) {
                     console.log("Успешно обновлено");
-                    setNewData(response)
+                    setNewData(response.successEntity)
+                }
+                else {
+                    dispatch(showModal(response.errorEntity))
                 }
             }
             pushData();
@@ -52,8 +61,12 @@ export function CardiogramView({ cardiogram, isModify }) {
         return Object.keys(object).find(key => object[key] === value);
     }
 
+    const validateDates = () => {
+        return newData.measurementTime > newData.receivedTime;
+    };
+
     return (
-        <div className="cardiogram-view">
+        <div className="cardiogram-view" >
             <h1>Кардиограмма</h1>
 
             <div className="field">
@@ -82,6 +95,7 @@ export function CardiogramView({ cardiogram, isModify }) {
                         }
                         type="datetime"
                     />
+
                 ) : (
                     <span>{formatDateTime(newData.measurementTime)}</span>
                 )}
@@ -93,10 +107,11 @@ export function CardiogramView({ cardiogram, isModify }) {
                     <DateBox
                         value={new Date(newData.receivedTime)}
                         onValueChanged={(e) =>
-                            handleChange("measurementTime", e.value.toISOString())
+                            handleChange("receivedTime", e.value.toISOString())
                         }
                         type="datetime"
-                    />
+                    >
+                    </DateBox>
                 ) : (
                     <span>{formatDateTime(newData.receivedTime)}</span>
                 )}

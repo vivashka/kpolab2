@@ -40,6 +40,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
         }),
+        new webpack.ProvidePlugin({
+            Buffer: ['buffer', 'Buffer']
+        }),
         new Dotenv(),
     ],
+    devServer: {
+        historyApiFallback: true,
+    },
 };
