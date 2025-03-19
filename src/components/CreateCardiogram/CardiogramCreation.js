@@ -18,12 +18,13 @@ export default function CardiogramCreation({isVisible, setIsVisible}) {
 
     // Состояние формы
     const [formData, setFormData] = useState({
-        cardiogramUuid: "",
+        cardiogramUuid: null,
         receivedTime: new Date(),
         measurementTime: new Date(),
         cardiographUuid: "",
         callUuid: "",
         cardiogramState: 0,
+        rawCardiogram: null,
         resultDescription: "",
         resultDiagnosisMain: "",
     });
@@ -31,11 +32,12 @@ export default function CardiogramCreation({isVisible, setIsVisible}) {
     const hide = () => {
         setIsVisible(false);
     };
-    const states = {
-        0 : "Просмотрено",
-        1 : "Не просмотрено",
-        2 : "Утверждено",
-    }
+    const states = [
+        { value: 0, text: "Не просмотрено" },
+        { value: 1, text: "Просмотрено"},
+        { value: 2, text: "Утверждено" }
+    ];
+
     async function onReadyShow() {
         const responseOrg = await getOrganizations();
         if (responseOrg.isSuccess) {
@@ -56,7 +58,6 @@ export default function CardiogramCreation({isVisible, setIsVisible}) {
             store.dispatch(showModal(responseCalls.errorEntity));
         }
     }
-
 
     const onFieldDataChanged = (e) => {
         setFormData((prev) => ({
@@ -166,12 +167,27 @@ export default function CardiogramCreation({isVisible, setIsVisible}) {
                 </Item>
 
                 <Item
+                    dataField="callUuid"
+                    editorType="dxSelectBox"
+                    label={{ text: "Вызов" }}
+                    editorOptions={{
+                        dataSource: calls,
+                        displayExpr: (item) => item ? `${item.dayNumber}/${item.yearNumber}` : "",
+                        valueExpr: "callUuid",
+                    }}
+                >
+                    <RequiredRule message="Необходимо выбрать вызов" />
+                </Item>
+
+                <Item
                     dataField="cardiogramState"
                     editorType="dxSelectBox"
                     label={{ text: "Статус кардиограммы" }}
                     editorOptions={{
-                            dataSource: Object.values(states)
-                        }}
+                        dataSource: states,
+                        displayExpr: "text",
+                        valueExpr: "value"
+                    }}
                 >
                     <RequiredRule message="Введите статус кардиограммы" />
                 </Item>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KpoApi.Infrastructure.PostgresEfCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be8189b3321c76d3652c9598b4f8238837bdb87b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7414f41c5c026f2cdcb2224b8c7164ac7ac211d")]
 [assembly: System.Reflection.AssemblyProductAttribute("KpoApi.Infrastructure.PostgresEfCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KpoApi.Infrastructure.PostgresEfCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

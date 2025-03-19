@@ -165,7 +165,7 @@ public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
     {
         string sqlQuery = """
                               SELECT *
-                              FROM "Cardiograms"
+                              FROM "Calls"
                           """;
         var param = new DynamicParameters();
         return await ExecuteQueryAsync<Call>(sqlQuery, param, cancellationToken);

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KpoApi.WebHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.0.2")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be8189b3321c76d3652c9598b4f8238837bdb87b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7414f41c5c026f2cdcb2224b8c7164ac7ac211d")]
 [assembly: System.Reflection.AssemblyProductAttribute("KpoApi.WebHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KpoApi.WebHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.0.2")]

@@ -31,7 +31,7 @@ public class SaveEntitiesRepository : BaseRepository, ISaveEntitiesRepository
         string sqlQuery = """
                              INSERT INTO "Cardiograms" 
                              VALUES (
-                                 CASE WHEN @CardiogramUuid IS NULL THEN uuid_generate_v4() ELSE @CardiogramUuid END,
+                                 CASE WHEN @CardiogramUuid IS NULL THEN gen_random_uuid() ELSE @CardiogramUuid END,
                                  @ReceivedTime,
                                  @MeasurementTime,
                                  @CardiographUuid,
