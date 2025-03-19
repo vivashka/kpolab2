@@ -13,6 +13,7 @@ import store from "../redux/store";
 import { showModal } from "../redux/reducers/error";
 import {registration} from "../services/registration";
 import {login_success} from "../redux/reducers/user";
+import {getCardiographs} from "../services/getCardiographs";
 
 export function RegistrationUser() {
     const [isVisible, setIsVisible] = useState(true);
@@ -22,9 +23,11 @@ export function RegistrationUser() {
         phoneNumber: '',
         fullName: '',
         organizationUuid: '',
-        appointment: ''
+        appointment: '',
+        cardiographId: '',
     });
     const [organizations, setOrganizations] = useState([]);
+    const [cardiographs, setCardiographs] = useState([]);
 
     // Реф для формы, чтобы вызвать метод validate()
     const formRef = useRef(null);
@@ -62,8 +65,10 @@ export function RegistrationUser() {
 
     async function onReadyShow() {
         const response = await getOrganizations();
-        if (response.isSuccess) {
+        const responseCardiographs = await getCardiographs("");
+        if (response.isSuccess && responseCardiographs.isSuccess) {
             setOrganizations(response.successEntity);
+            setCardiographs(responseCardiographs.successEntity);
         } else {
             store.dispatch(showModal(response.errorEntity));
         }
@@ -114,6 +119,18 @@ export function RegistrationUser() {
                         }}
                     >
                         <RequiredRule message="Необходимо выбрать организацию" />
+                    </Item>
+                    <Item
+                        dataField="cardiographId"
+                        editorType="dxSelectBox"
+                        label={{ text: "Кардиограф" }}
+                        editorOptions={{
+                            dataSource: cardiographs,
+                            displayExpr: (item) => item ? `${item.manufacturerName} (${item.serialNumber})` : "",
+                            valueExpr: "serialNumber",
+                        }}
+                    >
+                        <RequiredRule message="Необходимо выбрать кардиографы" />
                     </Item>
                     <Item dataField="appointment" editorType="dxTextBox">
                         <RequiredRule message="Поле должность обязательно" />

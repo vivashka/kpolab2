@@ -12,6 +12,8 @@ namespace KpoApi.Infrastructure.PostgresEfCore.Repositories;
 
 public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
 {
+    private ICardiogramsRepository _cardiogramsRepositoryImplementation;
+
     public async Task<EntireCardiogramEntity?> GetCardiogram(Guid guid, CancellationToken cancellationToken)
     {
         string sqlQuery = """
@@ -107,15 +109,27 @@ public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
         return await ExecuteQueryAsync<User>(sqlQuery, param, cancellationToken);
     }
 
-    public async Task<Cardiograph[]> GetCardiographs(Guid userGuid, CancellationToken cancellationToken)
+    public async Task<Cardiograph[]> GetCardiographs(Guid? userGuid, CancellationToken cancellationToken)
     {
-        string sqlQuery = """
-                          SELECT *
-                          FROM "Cardiographs" c
-                          INNER JOIN "UsersCardiographs" uc 
-                            ON c."SerialNumber" = uc."CardiographId"
-                          WHERE uc."UserUuid" = @userGuid;
-                          """;
+        string sqlQuery = "";
+        
+        if (userGuid == null)
+        {
+            sqlQuery = """
+                       SELECT *
+                       FROM "Cardiographs"
+                       """;
+        }
+        else
+        {
+            sqlQuery = """
+                       SELECT *
+                       FROM "Cardiographs" c
+                       INNER JOIN "UsersCardiographs" uc
+                         ON c."SerialNumber" = uc."CardiographId"
+                       WHERE uc."UserUuid" = @userGuid;
+                       """;
+        }
         var param = new DynamicParameters();
         param.Add("userGuid", userGuid);
         return await ExecuteQueryAsync<Cardiograph>(sqlQuery, param, cancellationToken);
@@ -145,5 +159,15 @@ public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
         var param = new DynamicParameters();
         param.Add("cardiogramUuid", cardiogramUuid);
         return await ExecuteQueryAsync<User>(sqlQuery, param, cancellationToken);
+    }
+
+    public async Task<Call[]> GetCalls(CancellationToken cancellationToken)
+    {
+        string sqlQuery = """
+                              SELECT *
+                              FROM "Cardiograms"
+                          """;
+        var param = new DynamicParameters();
+        return await ExecuteQueryAsync<Call>(sqlQuery, param, cancellationToken);
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KpoApi.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ee04856a7be2649c46baebb88da4d263fbeb87f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be8189b3321c76d3652c9598b4f8238837bdb87b")]
 [assembly: System.Reflection.AssemblyProductAttribute("KpoApi.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KpoApi.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

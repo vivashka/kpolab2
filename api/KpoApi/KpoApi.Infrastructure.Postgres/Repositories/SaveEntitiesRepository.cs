@@ -31,7 +31,7 @@ public class SaveEntitiesRepository : BaseRepository, ISaveEntitiesRepository
         string sqlQuery = """
                              INSERT INTO "Cardiograms" 
                              VALUES (
-                                 @CardiogramUuid,
+                                 CASE WHEN @CardiogramUuid IS NULL THEN uuid_generate_v4() ELSE @CardiogramUuid END,
                                  @ReceivedTime,
                                  @MeasurementTime,
                                  @CardiographUuid,
@@ -160,8 +160,14 @@ public class SaveEntitiesRepository : BaseRepository, ISaveEntitiesRepository
     {
         string sqlQuery = """
                               INSERT INTO "ResultsCardiograms"
-                              VALUES (
-                                  @ResultCardiogramUuid, @Description, @DiagnosisMain
+                              (
+                                  "ResultCardiogramUuid", "Description", "DiagnosisMain"
+                              )
+                              VALUES
+                              (
+                                  CASE WHEN @ResultCardiogramUuid IS NULL THEN gen_random_uuid() ELSE @ResultCardiogramUuid END,
+                                  @Description,
+                                  @DiagnosisMain
                               )
                               ON CONFLICT ("ResultCardiogramUuid")
                               DO UPDATE SET
@@ -171,7 +177,7 @@ public class SaveEntitiesRepository : BaseRepository, ISaveEntitiesRepository
                           """;
 
         var param = new DynamicParameters(newResult);
-
         return await ExecuteQuerySingleAsync<ResultsCardiogram>(sqlQuery, param, cancellationToken);
     }
+
 }

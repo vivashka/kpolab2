@@ -13,9 +13,9 @@ public class PostgresEfCoreProvider : IPostgresEfCoreProvider
         _usersRepository = usersRepository;
     }
 
-    public Task<User> CreateUser(User user)
+    public Task<User> CreateUser(User user, string CardiographId)
     {
-        var response = _usersRepository.CreateUsers(user, CancellationToken.None);
+        var response = _usersRepository.CreateUsers(user, CardiographId, CancellationToken.None);
 
         return response;
     }

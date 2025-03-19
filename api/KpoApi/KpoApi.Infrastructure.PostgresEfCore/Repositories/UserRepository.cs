@@ -15,13 +15,21 @@ public class UserRepository : IUsersRepository
     }
 
 
-    public async Task<User> CreateUsers(User user, CancellationToken cancellationToken)
+    public async Task<User> CreateUsers(User user, string CardiographId, CancellationToken cancellationToken)
     {
-        var response = await _appDbContext.Users.AddAsync(user, cancellationToken);
+        var responseUsers = await _appDbContext.Users.AddAsync(user, cancellationToken);
+
+        var userCardiographModel = new UserCardiograph()
+        {
+            UserUuid = user.UserUuid,
+            CardiographId = CardiographId
+        };
+        
+        await _appDbContext.UsersCardiographs.AddAsync(userCardiographModel, cancellationToken);
 
         await _appDbContext.SaveChangesAsync(cancellationToken);
 
-        return response.Entity;
+        return responseUsers.Entity;
     }
 
     public async Task<User?> UserAuthentication(string login, string password, CancellationToken cancellationToken)

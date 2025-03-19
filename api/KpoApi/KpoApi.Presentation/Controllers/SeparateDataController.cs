@@ -50,18 +50,12 @@ public class SeparateDataController : ControllerBase
     
     [EnableCors]
     [HttpGet("GetCardiographs")]
-    public async Task<IActionResult> GetCardiographs([FromQuery] Guid userGuid)
+    public async Task<IActionResult> GetCardiographs([FromQuery] Guid? userGuid)
     {
         _logger.Log(LogLevel.Information, "Поступил запрос на получение организаций");
         var request = await _cardiogramService.GetCardiographs(userGuid);
-
-        if (request.Length > 0)
-        {
-            return Ok(request);
-        }
-
-        return BadRequest();
-
+        
+        return Ok(request);
     }
     
     [EnableCors]
@@ -94,5 +88,15 @@ public class SeparateDataController : ControllerBase
 
         return BadRequest();
 
+    }
+    
+    [EnableCors]
+    [HttpGet("GetCalls")]
+    public async Task<IActionResult> GetCalls()
+    {
+        _logger.Log(LogLevel.Information, "Поступил запрос на получение пользователей по кардиограмме");
+        var request = await _cardiogramService.GetCalls();
+        
+        return Ok(request);
     }
 }
