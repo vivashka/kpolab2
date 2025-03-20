@@ -83,11 +83,24 @@ public class CardiogramService : ICardiogramService, ISaveEntitiesService
         
     }
 
-    public Task<User[]> GetUsers(Guid organizationGuid)
+    public async Task<ResponseModel<User[]>> GetUsers(Guid? organizationGuid)
     {
-        var usersArray = _postgresProvider.GetUsers(organizationGuid ,CancellationToken.None);
+        var usersArray = await _postgresProvider.GetUsers(organizationGuid ,CancellationToken.None);
 
-        return usersArray;
+        if (usersArray.Length > 0)
+        {
+            return new ResponseModel<User[]>(
+                IsSuccess: true,
+                SuccessEntity: usersArray,
+                ErrorEntity: null);
+        }
+        else
+        {
+            return new ResponseModel<User[]>(
+                IsSuccess: false,
+                SuccessEntity: null,
+                ErrorEntity: new ActionErrorModel("400", "Не удалось получить кардиографы"));
+        }
     }
 
     public async Task<ResponseModel<Cardiograph[]>> GetCardiographs(Guid? userGuid)
@@ -318,5 +331,26 @@ public class CardiogramService : ICardiogramService, ISaveEntitiesService
             SuccessEntity: calls,
             ErrorEntity: null);
 
+    }
+    
+    public async Task<ResponseModel<bool>> DeleteCardiogram(Guid guid)
+    {
+        bool isDelete = await _postgresProvider.DeleteCardiogram(guid, CancellationToken.None);
+
+        if (isDelete)
+        {
+            return new ResponseModel<bool>(
+                IsSuccess: true,
+                SuccessEntity: isDelete,
+                ErrorEntity: null);
+        }
+        else
+        {
+            return new ResponseModel<bool>(
+                IsSuccess: false,
+                SuccessEntity: false,
+                ErrorEntity:  new ActionErrorModel("400", "Не удалось удалить кардиограмму"));
+        }
+        
     }
 }

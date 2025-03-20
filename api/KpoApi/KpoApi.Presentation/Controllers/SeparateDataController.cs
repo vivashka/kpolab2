@@ -1,5 +1,6 @@
 ﻿using KpoApi.Application.Contracts;
 using KpoApi.Domain.Entities;
+using KpoApi.Presentation.Dtos.Request;
 using KpoApi.Presentation.Dtos.Response;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -34,17 +35,12 @@ public class SeparateDataController : ControllerBase
     
     [EnableCors]
     [HttpGet("GetUsers")]
-    public async Task<IActionResult> GetUsers([FromQuery] Guid organizationGuid)
+    public async Task<IActionResult> GetUsers([FromQuery] Guid? organizationGuid)
     {
         _logger.Log(LogLevel.Information, "Поступил запрос на получение организаций");
         var request = await _cardiogramService.GetUsers(organizationGuid);
-
-        if (request.Length > 0)
-        {
-            return Ok(request);
-        }
-
-        return BadRequest();
+        
+        return Ok(request);
 
     }
     
@@ -96,6 +92,16 @@ public class SeparateDataController : ControllerBase
     {
         _logger.Log(LogLevel.Information, "Поступил запрос на получение пользователей по кардиограмме");
         var request = await _cardiogramService.GetCalls();
+        
+        return Ok(request);
+    }
+    
+    [EnableCors]
+    [HttpPost("DeleteCardiogram")]
+    public async Task<IActionResult> DeleteCardiogram([FromBody] DeleteCardiogramDto deleteCardiogramDto)
+    {
+        _logger.Log(LogLevel.Information, "Поступил запрос на получение пользователей по кардиограмме");
+        var request = await _cardiogramService.DeleteCardiogram(deleteCardiogramDto.Guid);
         
         return Ok(request);
     }

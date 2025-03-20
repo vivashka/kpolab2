@@ -14,9 +14,9 @@ import {useDispatch} from "react-redux";
 export default function AdditionalInformation({
                                                   data,
                                                   visible,
-                                                  setVisible
+                                                  setVisible,
+                                                  modify, setModify
                                               }) {
-    const [isModify, setIsModify] = useState(false);
     const [isSave, setIsSave] = useState(false);
 
     const dispatch = useDispatch();
@@ -29,6 +29,7 @@ export default function AdditionalInformation({
                 setUsers(request)
             }
         }
+
         fetchData()
     }, []);
     const hide = () => {
@@ -54,35 +55,37 @@ export default function AdditionalInformation({
                 <Item title="Кардиограмма">
                     <CardiogramView
                         cardiogram={data}
-                        isModify={isModify}
+                        isModify={modify}
                         isSave={isSave}
                         dispatch={dispatch}
                     />
                 </Item>
                 <Item title="Вызов">
-                    <CallView call={data.call} isModify={isModify} isSave={isSave} dispatch={dispatch} />
+                    <CallView call={data.call} isModify={modify} isSave={isSave} dispatch={dispatch}/>
                 </Item>
                 <Item title="Результат">
-                    <ResultView result={data.result} isModify={isModify} isSave={isSave} dispatch={dispatch}/>
+                    <ResultView result={data.result} isModify={modify} isSave={isSave} dispatch={dispatch}/>
                 </Item>
                 <Item title="Кардиограф">
-                    <CardiographView cardiograph={data.cardiograph} isModify={isModify} isSave={isSave} dispatch={dispatch}/>
+                    <CardiographView cardiograph={data.cardiograph} isModify={modify} isSave={isSave}
+                                     dispatch={dispatch}/>
                 </Item>
                 <Item title="Авторы">
-                    <UsersList users={users} isModify={isModify} isSave={isSave} dispatch={dispatch}/>
+                    <UsersList users={users} isModify={modify} isSave={isSave} dispatch={dispatch}/>
                 </Item>
 
             </TabPanel>
             <div className="additional-buttons">
-                <Button className={"button button-change"} text={"Изменить"} onClick={() => setIsModify(true)}/>
+                <Button className={"button button-change"} text={"Изменить"} onClick={() => setModify(true)}/>
                 <Button
                     className={"button button-apply"}
                     text={"Сохранить"}
                     onClick={() => {
-                        setIsModify(false)
-                        setIsSave(true)}
+                        setModify(false)
+                        setIsSave(true)
                     }
-                    disabled={!isModify}/>
+                    }
+                    disabled={!modify}/>
             </div>
 
 

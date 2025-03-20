@@ -17,14 +17,16 @@ public sealed class PostgresProvider : IPostgresProvider
     private readonly IEntireCardiogramMapper _entireCardiogramMapper;
 
     private readonly ISaveEntitiesRepository _saveEntitiesRepository;
+    private readonly IDeleteEntitiesRepository _deleteEntitiesRepository;
 
     public PostgresProvider(ICardiogramsRepository cardiogramsRepository, ICardiogramsMapper cardiogramsMapper,
-        IEntireCardiogramMapper entireCardiogramMapper, ISaveEntitiesRepository saveEntitiesRepository)
+        IEntireCardiogramMapper entireCardiogramMapper, ISaveEntitiesRepository saveEntitiesRepository, IDeleteEntitiesRepository deleteEntitiesRepository)
     {
         _cardiogramsRepository = cardiogramsRepository;
         _cardiogramsMapper = cardiogramsMapper;
         _entireCardiogramMapper = entireCardiogramMapper;
         _saveEntitiesRepository = saveEntitiesRepository;
+        _deleteEntitiesRepository = deleteEntitiesRepository;
     }
 
 
@@ -80,7 +82,7 @@ public sealed class PostgresProvider : IPostgresProvider
         return requestResult;
     }
 
-    public async Task<User[]> GetUsers(Guid organizationGuid, CancellationToken cancellationToken)
+    public async Task<User[]> GetUsers(Guid? organizationGuid, CancellationToken cancellationToken)
     {
         var requestResult = await _cardiogramsRepository.GetUsers(organizationGuid, cancellationToken);
 
@@ -139,6 +141,13 @@ public sealed class PostgresProvider : IPostgresProvider
     public async Task<ResultsCardiogram> SaveResult(ResultsCardiogram newResult, CancellationToken cancellationToken)
     {
         var requestResult = await _saveEntitiesRepository.SaveResult(newResult, cancellationToken);
+
+        return requestResult;
+    }
+    
+    public async Task<bool> DeleteCardiogram(Guid guid, CancellationToken cancellationToken)
+    {
+        var requestResult = await _deleteEntitiesRepository.DeleteCardiogram(guid, cancellationToken);
 
         return requestResult;
     }

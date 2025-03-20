@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRef } from "react";
 import TreeView from "devextreme-react/tree-view";
 import { ContextMenu } from "devextreme-react/context-menu";
 import { formatDate } from "devextreme/localization";
@@ -9,66 +9,135 @@ import { getCardiographs } from "../services/getCardiographs";
 import { getCardiograms } from "../services/getCardiograms";
 import { getEntireCardiogram } from "../services/getEntireCardiogram";
 import AdditionalInformation from "./AdditionalInformation";
-import { Button } from "devextreme-react";
+import { Button, Popup } from "devextreme-react";
 import "./MainDataView.scss";
 import store from "../redux/store";
 import { logout } from "../redux/reducers/user";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import CardiogramCreation from "./CreateCardiogram/CardiogramCreation";
+import { OrganizationView } from "./CreateCardiogram/OrganizationView";
+import { UserView } from "./UserView";
+import { CardiographView } from "./CardiographView";
+import { deleteCardiogram } from "../services/deleteCardiogram";
+import { showModal } from "../redux/reducers/error";
 
 export default function MainDataView() {
     const [currentItem, setCurrentItem] = useState(null);
-    const [itemVisible, setItemVisible] = useState(null);
+    const [itemVisible, setItemVisible] = useState(false);
     const [isAdd, setIsAdd] = useState(false);
 
     const [contextMenuVisible, setContextMenuVisible] = useState(false);
     const [contextMenuTarget, setContextMenuTarget] = useState(null);
     const [contextMenuItem, setContextMenuItem] = useState(null);
+    const [modify, setModify] = useState(false);
+    const [separate, setSeparate] = useState(null);
+    const [data, setData] = useState(null);
+    const [isDataVisible, setIsDataVisible] = useState(false);
+    // Счетчик для принудительного обновления дерева
+    const [dataVersion, setDataVersion] = useState(0);
+
+    const treeRef = useRef(null);
 
     const user = useSelector((state) => state.user);
 
-    // Контекстное меню с вариантами действий
     const contextMenuItems = [
         { text: "Посмотреть", action: "view" },
         { text: "Изменить", action: "edit" },
         { text: "Удалить", action: "delete" }
     ];
 
-    const handleContextMenuItemClick = (e) => {
+    async function DataView(id, nodeType, isEdit) {
+        switch (nodeType) {
+            case "organization": {
+                const orgRes = await getOrganizations();
+                const organization = orgRes.successEntity.find(x => x.organizationUuid === id);
+                return organization ? (
+                    <OrganizationView organization={organization} isModify={isEdit} isSave={false} />
+                ) : (
+                    <div>Организация не найдена</div>
+                );
+            }
+            case "user": {
+                const usersRes = await getUsers("");
+                const foundUser = usersRes.successEntity.find(x => x.userUuid === id);
+                return foundUser ? (
+                    <UserView user={foundUser} isModify={isEdit} isSave={false} />
+                ) : (
+                    <div>Пользователь не найден</div>
+                );
+            }
+            case "cardiograph": {
+                const cardioRes = await getCardiographs("");
+                const cardiograph = cardioRes.successEntity.find(x => x.serialNumber === id);
+                return cardiograph ? (
+                    <CardiographView cardiograph={cardiograph} isModify={isEdit} isSave={false} />
+                ) : (
+                    <div>Кардиограф не найден</div>
+                );
+            }
+            default:
+                return <div>Нет данных</div>;
+        }
+    }
+
+    const handleContextMenuItemClick = async (e) => {
         const action = e.itemData.action;
         console.log("Context menu action:", action, "for item:", contextMenuItem);
-        // Здесь можно реализовать логику для каждого действия
-        // Например, если action === "view", то открыть окно с информацией
-        // Если "edit" – открыть форму редактирования, и т.д.
+        const [nodeType, guid] = contextMenuItem.id.split("|");
+
+        if (["organization", "user", "cardiograph"].includes(nodeType)) {
+            const isEdit = action === "edit";
+            setSeparate(nodeType);
+            setIsDataVisible(true);
+            const viewData = await DataView(guid, nodeType, isEdit);
+            setData(viewData);
+            setModify(isEdit);
+        }
+
+        if (nodeType === "cardiogram") {
+            if (action === "delete") {
+                const requestBody = { guid: guid };
+                const response = await deleteCardiogram(requestBody);
+                if (response.isSuccess) {
+                    // Обновляем дерево путем изменения ключа (dataVersion)
+                    setData(null);
+                    setDataVersion(prev => prev + 1);
+                    setContextMenuVisible(false);
+                    return;
+                } else {
+                    store.dispatch(showModal(response.errorEntity));
+                    setContextMenuVisible(false);
+                    return;
+                }
+            }
+            const request = await getEntireCardiogram(guid);
+            setCurrentItem(request);
+            setItemVisible(true);
+            setModify(action === "edit");
+        }
         setContextMenuVisible(false);
     };
 
     const handleItemContextMenu = (e) => {
-        // Отменяем стандартное контекстное меню браузера
         e.event.preventDefault();
-        // Сохраняем данные узла, на который был совершен правый клик
         setContextMenuItem(e.itemData);
-        // Сохраняем цель для отображения меню (DOM-элемент, на котором произошёл клик)
         setContextMenuTarget(e.event.target);
-        // Отображаем контекстное меню
         setContextMenuVisible(true);
     };
 
     const handleItemClick = async (e) => {
         const { itemData } = e;
-        // Если у узла есть дочерние элементы - раскрываем/закрываем
         if (itemData.hasItems) {
             await e.component.expandItem(itemData.id);
-        }
-        // Если это кардиограмма - показываем дополнительную информацию
-        else {
+        } else {
             const [nodeType, guid] = itemData.id.split("|");
             if (nodeType === "cardiogram") {
                 try {
                     const request = await getEntireCardiogram(guid);
                     setCurrentItem(request);
                     setItemVisible(true);
+                    setModify(false);
                 } catch (error) {
                     console.error("Ошибка загрузки кардиограммы:", error);
                 }
@@ -90,8 +159,8 @@ export default function MainDataView() {
                 async load(loadOptions) {
                     const parentNode = loadOptions?.filter[1] || null;
                     if (!parentNode) {
-                        const organizations = await getOrganizations();
-                        return organizations.successEntity.map((organization) => ({
+                        const orgRes = await getOrganizations();
+                        return orgRes.successEntity.map((organization) => ({
                             id: `organization|${organization.organizationUuid}`,
                             text: organization.name,
                             parentId: null,
@@ -101,23 +170,25 @@ export default function MainDataView() {
                     const [nodeType, guid] = parentNode.split("|");
                     try {
                         switch (nodeType) {
-                            case "organization":
-                                const users = await getUsers(guid);
-                                return users.map((user) => ({
+                            case "organization": {
+                                const usersRes = await getUsers(guid);
+                                return usersRes.successEntity.map((user) => ({
                                     id: `user|${user.userUuid}`,
                                     text: user.fullName,
                                     parentId: parentNode,
                                     hasItems: true
                                 }));
-                            case "user":
-                                const cardiograph = await getCardiographs(guid);
-                                return cardiograph.successEntity.map((graph) => ({
+                            }
+                            case "user": {
+                                const cardioRes = await getCardiographs(guid);
+                                return cardioRes.successEntity.map((graph) => ({
                                     id: `cardiograph|${graph.serialNumber}|${Date.now()}`,
                                     text: graph.cardiographName,
                                     parentId: parentNode,
                                     hasItems: true
                                 }));
-                            case "cardiograph":
+                            }
+                            case "cardiograph": {
                                 const cardiogram = await getCardiograms(guid);
                                 return cardiogram.map((gram) => ({
                                     id: `cardiogram|${gram.cardiogramUuid}|${Date.now()}`,
@@ -126,6 +197,7 @@ export default function MainDataView() {
                                     hasItems: false,
                                     data: gram
                                 }));
+                            }
                             default:
                                 return [];
                         }
@@ -153,9 +225,43 @@ export default function MainDataView() {
                     data={currentItem}
                     visible={itemVisible}
                     setVisible={setItemVisible}
+                    modify={modify}
+                    setModify={setModify}
                 />
             )}
-            {isAdd && <CardiogramCreation isVisible={isAdd} setIsVisible={setIsAdd} />}
+            <Popup
+                visible={isDataVisible}
+                onHiding={() => {
+                    setIsDataVisible(false);
+                    setData(null);
+                }}
+            >
+                <div
+                    style={{
+                        height: "calc(100% - 50px)",
+                        overflowY: "auto",
+                        padding: "10px"
+                    }}
+                >
+                    {data || <div>Загрузка...</div>}
+                </div>
+                <div className="additional-buttons">
+                    <Button
+                        className="button button-change"
+                        text="Изменить"
+                        onClick={() => setModify(true)}
+                    />
+                    <Button
+                        className="button button-apply"
+                        text="Сохранить"
+                        onClick={() => setModify(false)}
+                        disabled={!modify}
+                    />
+                </div>
+            </Popup>
+            {isAdd && (
+                <CardiogramCreation isVisible={isAdd} setIsVisible={setIsAdd} />
+            )}
             <header className="top-menu">
                 <div>
                     {user.user.login} {user.user.fullName}
@@ -171,6 +277,8 @@ export default function MainDataView() {
             </header>
             <div className="form">
                 <TreeView
+                    ref={treeRef}
+                    key={dataVersion}  // используем dataVersion как key для перерисовки
                     dataSource={dataSource}
                     dataStructure="plain"
                     rootValue={null}
@@ -184,7 +292,6 @@ export default function MainDataView() {
                     onItemContextMenu={handleItemContextMenu}
                 />
             </div>
-            {/* Контекстное меню */}
             <ContextMenu
                 dataSource={contextMenuItems}
                 target={contextMenuTarget}

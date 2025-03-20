@@ -15,22 +15,30 @@ public class UserRepository : IUsersRepository
     }
 
 
-    public async Task<User> CreateUsers(User user, string CardiographId, CancellationToken cancellationToken)
+    public async Task<User> CreateUsers(User user, string cardiographId, CancellationToken cancellationToken)
     {
-        var responseUsers = await _appDbContext.Users.AddAsync(user, cancellationToken);
+        bool exists = await _appDbContext.Users
+            .AnyAsync(u => u.Login == user.Login, cancellationToken);
 
-        var userCardiographModel = new UserCardiograph()
+        if (exists)
+        {
+            return null!;
+        }
+        
+        await _appDbContext.Users.AddAsync(user, cancellationToken);
+
+        var userCardiographModel = new UserCardiograph
         {
             UserUuid = user.UserUuid,
-            CardiographId = CardiographId
+            CardiographId = cardiographId
         };
-        
-        await _appDbContext.UsersCardiographs.AddAsync(userCardiographModel, cancellationToken);
 
+        await _appDbContext.UsersCardiographs.AddAsync(userCardiographModel, cancellationToken);
         await _appDbContext.SaveChangesAsync(cancellationToken);
 
-        return responseUsers.Entity;
+        return user;
     }
+
 
     public async Task<User?> UserAuthentication(string login, string password, CancellationToken cancellationToken)
     {

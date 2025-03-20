@@ -19,11 +19,13 @@ public interface ICardiogramService
     
     Task<ResponseModel<Organization[]>> GetOrganizations();
 
-    Task<User[]> GetUsers(Guid organizationGuid);
+    Task<ResponseModel<User[]>> GetUsers(Guid? organizationGuid);
     
     Task<ResponseModel<Cardiograph[]>> GetCardiographs(Guid? userGuid);
     
     Task<Cardiogram[]> GetCardiograms(string serialNumber);
     
     Task<User[]> GetUsersByCardiograms(Guid cardiogramUuid);
+
+    Task<ResponseModel<bool>> DeleteCardiogram(Guid guid);
 }

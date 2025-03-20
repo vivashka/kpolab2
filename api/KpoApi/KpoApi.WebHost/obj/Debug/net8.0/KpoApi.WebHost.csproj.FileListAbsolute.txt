@@ -117,7 +117,6 @@ C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\obj\Debug\net8
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\obj\Debug\net8.0\KpoApi.WebHost.pdb
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\obj\Debug\net8.0\KpoApi.WebHost.genruntimeconfig.cache
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\obj\Debug\net8.0\ref\KpoApi.WebHost.dll
-C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250307.json
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
@@ -260,3 +259,4 @@ C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250317.json
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250318.json
 C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250319.json
+C:\Users\nikch\WebstormProjects\kpolab2\api\KpoApi\KpoApi.WebHost\bin\Debug\net8.0\logs\log20250320.json

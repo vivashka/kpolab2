@@ -98,16 +98,29 @@ public class CardiogramsRepository : BaseRepository, ICardiogramsRepository
         return await ExecuteQueryAsync<Organization>(sqlQuery, param, cancellationToken);
     }
 
-    public async Task<User[]> GetUsers(Guid organizationGuid, CancellationToken cancellationToken)
+    public async Task<User[]> GetUsers(Guid? organizationGuid, CancellationToken cancellationToken)
     {
-        string sqlQuery = """
-                          SELECT * FROM "Users" AS u
-                          WHERE u."OrganizationUuid" = @OrganizationGuid
-                          """;
+        string sqlQuery;
         var param = new DynamicParameters();
-        param.Add("OrganizationGuid", organizationGuid);
+
+        if (organizationGuid.HasValue)
+        {
+            sqlQuery = """
+                       SELECT * FROM "Users" AS u
+                       WHERE u."OrganizationUuid" = @OrganizationGuid
+                       """;
+            param.Add("OrganizationGuid", organizationGuid.Value);
+        }
+        else
+        {
+            sqlQuery = """
+                       SELECT * FROM "Users"
+                       """;
+        }
+
         return await ExecuteQueryAsync<User>(sqlQuery, param, cancellationToken);
     }
+
 
     public async Task<Cardiograph[]> GetCardiographs(Guid? userGuid, CancellationToken cancellationToken)
     {

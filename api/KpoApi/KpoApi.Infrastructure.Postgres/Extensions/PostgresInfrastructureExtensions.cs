@@ -32,6 +32,7 @@ public static class PostgresInfrastructureExtensions
         services.AddScoped<ICardiogramsRepository, CardiogramsRepository>();
         services.AddScoped<IEntireCardiogramMapper, EntireCardiogramMapper>();
         services.AddScoped<ISaveEntitiesRepository, SaveEntitiesRepository>();
+        services.AddScoped<IDeleteEntitiesRepository, DeleteEntitiesRepository>();
         
         return services;
     }

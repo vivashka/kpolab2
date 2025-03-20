@@ -17,7 +17,7 @@ public interface IPostgresProvider
     
     Task<Organization[]> GetOrganizations(CancellationToken cancellationToken);
 
-    Task<User[]> GetUsers(Guid organizationGuid, CancellationToken cancellationToken);
+    Task<User[]> GetUsers(Guid? organizationGuid, CancellationToken cancellationToken);
     
     Task<Cardiograph[]> GetCardiographs(Guid? userGuid, CancellationToken cancellationToken);
     
@@ -34,4 +34,6 @@ public interface IPostgresProvider
     Task<Cardiograph> SaveCardiograph(Cardiograph newCardiograph, CancellationToken cancellationToken);
     
     Task<ResultsCardiogram> SaveResult(ResultsCardiogram newResults, CancellationToken cancellationToken);
+
+    Task<bool> DeleteCardiogram(Guid cardiogram, CancellationToken cancellationToken);
 }

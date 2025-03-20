@@ -2,8 +2,9 @@ import { TextBox } from "devextreme-react";
 import {useEffect, useState} from "react";
 import {SaveCardiograph} from "../services/SaveCardiograph";
 import {showModal} from "../redux/reducers/error";
+import store from "../redux/store";
 
-export function CardiographView({ cardiograph, isModify, isSave, dispatch }) {
+export function CardiographView({ cardiograph, isModify, isSave }) {
     if (!cardiograph) return <div>Нет данных об оборудовании</div>;
 
     const [newData, setNewData] = useState(cardiograph || {});
@@ -27,7 +28,7 @@ export function CardiographView({ cardiograph, isModify, isSave, dispatch }) {
                     setNewData(response.successEntity)
                 }
                 else {
-                    dispatch(showModal(response?.errorEntity))
+                    store.dispatch(showModal(response?.errorEntity))
                 }
             }
             pushData();

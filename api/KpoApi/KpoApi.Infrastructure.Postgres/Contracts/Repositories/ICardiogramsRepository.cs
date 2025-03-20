@@ -15,7 +15,7 @@ public interface ICardiogramsRepository
 
     Task<Organization[]> GetOrganizations(CancellationToken cancellationToken);
 
-    Task<User[]> GetUsers(Guid organizationGuid, CancellationToken cancellationToken);
+    Task<User[]> GetUsers(Guid? organizationGuid, CancellationToken cancellationToken);
     
     Task<Cardiograph[]> GetCardiographs(Guid? userGuid, CancellationToken cancellationToken);
     
